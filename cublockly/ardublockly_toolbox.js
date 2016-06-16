@@ -44,6 +44,10 @@ Cublockly.TOOLBOX_XML =
 '    <block type="inverse"></block>' +
 '  </category>' +
 '  <sep></sep>' +
+'  <category name="Messaging">' +
+'    <block type="get_block_value"></block>' +
+'    <block type="set_block_value"></block>' +
+'  </category>' +
 '  <category id="catLogic" name="Logic">' +
 '    <block type="controls_if"></block>' +
 '    <block type="logic_compare"></block>' +
