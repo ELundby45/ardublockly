@@ -5,7 +5,7 @@
 
 /**
  * @fileoverview Cubelets code generator for the Time blocks.
- *     Cubelets built-in function docs: http://arduino.cc/en/Reference/HomePage
+ *     Cubelets built-in function docs: http://Cubelets.cc/en/Reference/HomePage
  */
 'use strict';
 
@@ -16,58 +16,37 @@ goog.require('Blockly.Cubelets');
 
 /**
  * Code generator for the delay Cubelets block.
- * Cubelets code: loop { delay(X); }
+ * Cubelets code: loop { wait(X); }
  * @param {!Blockly.Block} block Block to generate the code from.
  * @return {string} Completed code.
  */
  Blockly.Cubelets['time_delay'] = function(block) {
   var delayTime = Blockly.Cubelets.valueToCode(
       block, 'DELAY_TIME_MILI', Blockly.Cubelets.ORDER_ATOMIC) || '0';
-  var code = 'delay(' + delayTime + ');\n';
+  var code = 'wait(' + delayTime + ');\n';
   return code;
 };
 
-/**
- * Code generator for the delayMicroseconds block.
- * Cubelets code: loop { delayMicroseconds(X); }
- * @param {!Blockly.Block} block Block to generate the code from.
- * @return {string} Completed code.
- */
- Blockly.Cubelets['time_delaymicros'] = function(block) {
-  var delayTimeMs = Blockly.Cubelets.valueToCode(
-      block, 'DELAY_TIME_MICRO', Blockly.Cubelets.ORDER_ATOMIC) || '0';
-  var code = 'delayMicroseconds(' + delayTimeMs + ');\n';
-  return code;
+Blockly.Cubelets['set_interval'] = function(block) {
+  var text_time_interval = block.getFieldValue('time_interval');
+  var text_callback_name = block.getFieldValue('callback_name');
+
+  var args = Blockly.Cubelets.statementToCode(block, 'callback_do');
+
+	var code = "void "+text_callback_name+"(void){\n"+args+"\n}"
+  Blockly.Cubelets.definitions_[text_callback_name] = code;
+
+  return "set_interval("+text_time_interval+", "+text_callback_name+");\n";
 };
 
-/**
- * Code generator for the elapsed time in milliseconds block.
- * Cubelets code: loop { millis() }
- * @param {!Blockly.Block} block Block to generate the code from.
- * @return {array} Completed code with order of operation.
- */
- Blockly.Cubelets['time_millis'] = function(block) {
-  var code = 'millis()';
-  return [code, Blockly.Cubelets.ORDER_ATOMIC];
-};
+Blockly.Cubelets['set_timeout'] = function(block) {
+  var text_time_interval = block.getFieldValue('time_interval');
+  var text_callback_name = block.getFieldValue('callback_name');
 
-/**
- * Code generator for the elapsed time in microseconds block.
- * Cubelets code: loop { micros() }
- * @param {!Blockly.Block} block Block to generate the code from.
- * @return {array} Completed code with order of operation.
- */
- Blockly.Cubelets['time_micros'] = function(block) {
-  var code = 'micros()';
-  return [code, Blockly.Cubelets.ORDER_ATOMIC];
-};
+  var args = Blockly.Cubelets.statementToCode(block, 'callback_do');
+	
+	var code = "void "+text_callback_name+"(void){\n"+args+"\n}"
+  Blockly.Cubelets.definitions_[text_callback_name] = code;
 
-/**
- * Code generator for the wait forever (end of program) block
- * Cubelets code: loop { while(true); }
- * @param {!Blockly.Block} block Block to generate the code from.
- * @return {string} Completed code.
- */
- Blockly.Cubelets['infinite_loop'] = function(block) {
-  return 'while(true);\n';
+  return "set_timeout("+text_time_interval+", "+text_callback_name+");\n";
 };

@@ -407,7 +407,7 @@ Cublockly.sketchNameSizeEffect = function() {
   var correctInput = function() {
     // If nothing in the input, add default name
     if ($(this).val() == '') {
-      $(this).val('Sketch_Name');
+      $(this).val('Program_name');
       $(this).attr('size', 10);
     }
     // Replace all spaces with underscores
@@ -415,7 +415,7 @@ Cublockly.sketchNameSizeEffect = function() {
   };
 
   var sketchNameInput = $('#sketch_name');
-  sketchNameInput.val('Sketch_Name');
+  sketchNameInput.val('Program_name');
   sketchNameInput.attr('size', 10);
   sketchNameInput.keyup(resizeInput).each(resizeInput);
   sketchNameInput.blur(correctInput);

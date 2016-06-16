@@ -37,6 +37,7 @@ Cublockly.TOOLBOX_XML =
 '    <block type="set_direction_forward"></block>' +
 '    <block type="set_direction_reverse"></block>' +
 '  </category>' +
+'  <sep></sep>' +
 '  <category id="catThinking" name="Thinking">' +
 '    <block type="weighted_average"></block>' +
 '    <block type="minimum"></block>' +
@@ -48,6 +49,19 @@ Cublockly.TOOLBOX_XML =
 '    <block type="get_block_value"></block>' +
 '    <block type="set_block_value"></block>' +
 '  </category>' +
+'  <sep></sep>' +
+'  <category id="catTiming" name="Timing">' +
+'    <block type="time_delay">' +
+'      <value name="DELAY_TIME_MILI">' +
+'        <block type="math_number">' +
+'          <field name="NUM">1000</field>' +
+'        </block>' +
+'      </value>' +
+'    </block>' +
+'    <block type="set_interval"></block>' +
+'    <block type="set_timeout"></block>' +
+'  </category>' +
+'  <sep></sep>' +
 '  <category id="catLogic" name="Logic">' +
 '    <block type="controls_if"></block>' +
 '    <block type="logic_compare"></block>' +
@@ -87,7 +101,7 @@ Cublockly.TOOLBOX_XML =
 '    <block type="controls_flow_statements"></block>' +
 '  </category>' +
 '  <sep></sep>' +
-'  <category id="catMath" name="Math">' +
+'  <category id="catMath" name="Math/Numbers">' +
 '    <block type="math_number"></block>' +
 '    <block type="math_arithmetic"></block>' +
 '    <block type="math_single"></block>' +
@@ -145,14 +159,5 @@ Cublockly.TOOLBOX_XML =
 '  <category id="catFunctions" name="Functions" custom="PROCEDURE"></category>' +
 '  <sep></sep>' +
 '  <sep></sep>' +
-'  <category id="catTime" name="Time">' +
-'    <block type="time_delay">' +
-'      <value name="DELAY_TIME_MILI">' +
-'        <block type="math_number">' +
-'          <field name="NUM">1000</field>' +
-'        </block>' +
-'      </value>' +
-'    </block>' +
-'  </category>' +
 '  <sep></sep>' +
 '</xml>';

@@ -26,7 +26,8 @@ Blockly.Blocks['time_delay'] = {
    */
   init: function() {
     this.setHelpUrl('http://arduino.cc/en/Reference/Delay');
-    this.setColour(Blockly.Blocks.time.HUE);
+    //this.setColour(Blockly.Blocks.time.HUE);
+    this.setColour(180);
     this.appendValueInput('DELAY_TIME_MILI')
         .setCheck(Blockly.Types.NUMBER.checkList)
         .appendField(Blockly.Msg.ARD_TIME_DELAY);
@@ -39,79 +40,38 @@ Blockly.Blocks['time_delay'] = {
   }
 };
 
-Blockly.Blocks['time_delaymicros'] = {
-  /**
-   * delayMicroseconds block definition
-   * @this Blockly.Block
-   */
+Blockly.Blocks['set_interval'] = {
   init: function() {
-    this.setHelpUrl('http://arduino.cc/en/Reference/DelayMicroseconds');
-    this.setColour(Blockly.Blocks.time.HUE);
-    this.appendValueInput('DELAY_TIME_MICRO')
-        .setCheck(Blockly.Types.NUMBER.checkList)
-        .appendField(Blockly.Msg.ARD_TIME_DELAY);
+  	this.setColour(180);
     this.appendDummyInput()
-        .appendField(Blockly.Msg.ARD_TIME_DELAY_MICROS);
-    this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setTooltip(Blockly.Msg.ARD_TIME_DELAY_MICRO_TIP);
-  }
-};
-
-Blockly.Blocks['time_millis'] = {
-  /**
-   * Elapsed time in milliseconds block definition
-   * @this Blockly.Block
-   */
-  init: function() {
-    this.setHelpUrl('http://arduino.cc/en/Reference/Millis');
-    this.setColour(Blockly.Blocks.time.HUE);
-    this.appendDummyInput()
-        .appendField(Blockly.Msg.ARD_TIME_MILLIS);
-    this.setOutput(true, Blockly.Types.LARGE_NUMBER.output);
-    this.setTooltip(Blockly.Msg.ARD_TIME_MILLIS_TIP);
-  },
-  /** @return {string} The type of return value for the block, an integer. */
-  getBlockType: function() {
-    return Blockly.Types.LARGE_NUMBER;
-  }
-};
-
-Blockly.Blocks['time_micros'] = {
-  /**
-   * Elapsed time in microseconds block definition
-   * @this Blockly.Block
-   */
-  init: function() {
-    this.setHelpUrl('http://arduino.cc/en/Reference/Micros');
-    this.setColour(Blockly.Blocks.time.HUE);
-    this.appendDummyInput()
-        .appendField(Blockly.Msg.ARD_TIME_MICROS);
-    this.setOutput(true, Blockly.Types.LARGE_NUMBER.output);
-    this.setTooltip(Blockly.Msg.ARD_TIME_MICROS_TIP);
-  },
-  /**
-   * Should be a long (32bit), but  for for now an int.
-   * @return {string} The type of return value for the block, an integer.
-   */
-  getBlockType: function() {
-    return Blockly.Types.LARGE_NUMBER;
-  }
-};
-
-Blockly.Blocks['infinite_loop'] = {
-  /**
-   * Waits forever, end of program.
-   * @this Blockly.Block
-   */
-  init: function() {
-    this.setHelpUrl('');
-    this.setColour(Blockly.Blocks.time.HUE);
-    this.appendDummyInput()
-        .appendField(Blockly.Msg.ARD_TIME_INF);
-    this.setInputsInline(true);
+        .appendField("every")
+        .appendField(new Blockly.FieldTextInput("100"), "time_interval")
+        .appendField("milliseconds");
+    this.appendStatementInput("callback_do")
+        .setCheck("timer_callback")
+        .appendField("do")
+        .appendField(new Blockly.FieldTextInput("something"), "callback_name");
     this.setPreviousStatement(true);
-    this.setTooltip(Blockly.Msg.ARD_TIME_INF_TIP);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['set_timeout'] = {
+  init: function() {
+  	this.setColour(180);
+    this.appendDummyInput()
+        .appendField("after")
+        .appendField(new Blockly.FieldTextInput("100"), "time_interval")
+        .appendField("milliseconds");
+    this.appendStatementInput("callback_do")
+        .setCheck("timer_callback")
+        .appendField("do")
+        .appendField(new Blockly.FieldTextInput("something"), "callback_name");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
   }
 };
