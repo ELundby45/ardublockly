@@ -37,6 +37,12 @@ Cublockly.TOOLBOX_XML =
 '    <block type="set_direction_forward"></block>' +
 '    <block type="set_direction_reverse"></block>' +
 '  </category>' +
+'  <category id="catThinking" name="Thinking">' +
+'    <block type="weighted_average"></block>' +
+'    <block type="minimum"></block>' +
+'    <block type="maximum"></block>' +
+'    <block type="inverse"></block>' +
+'  </category>' +
 '  <sep></sep>' +
 '  <category id="catLogic" name="Logic">' +
 '    <block type="controls_if"></block>' +
