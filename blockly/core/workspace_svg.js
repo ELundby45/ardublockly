@@ -27,7 +27,7 @@
 goog.provide('Blockly.WorkspaceSvg');
 
 // TODO(scr): Fix circular dependencies
-// goog.require('Blockly.Block');
+//goog.require('Blockly.BlockSvg');
 goog.require('Blockly.ConnectionDB');
 goog.require('Blockly.Options');
 goog.require('Blockly.ScrollbarPair');
@@ -63,6 +63,12 @@ Blockly.WorkspaceSvg = function(options) {
   this.SOUNDS_ = Object.create(null);
 };
 goog.inherits(Blockly.WorkspaceSvg, Blockly.Workspace);
+
+/**
+ * Wrapper function called when a resize event occurs.
+ * @type {Array.<!Array>} Data that can be passed to unbindEvent_
+ */
+Blockly.WorkspaceSvg.prototype.resizeHandlerWrapper_ = null;
 
 /**
  * Svg workspaces are user-visible (as opposed to a headless workspace).
@@ -130,6 +136,21 @@ Blockly.WorkspaceSvg.prototype.trashcan = null;
  * @type {Blockly.ScrollbarPair}
  */
 Blockly.WorkspaceSvg.prototype.scrollbar = null;
+
+/**
+ * Time that the last sound was played.
+ * @type {Date}
+ * @private
+ */
+Blockly.WorkspaceSvg.prototype.lastSound_ = null;
+
+/**
+ * Save resize handler data so we can delete it later in dispose.
+ * @param {!Array.<!Array>} handler Data that can be passed to unbindEvent_.
+ */
+Blockly.WorkspaceSvg.prototype.setResizeHandlerWrapper = function(handler) {
+  this.resizeHandlerWrapper_ = handler;
+};
 
 /**
  * Create the workspace DOM elements.
@@ -231,6 +252,10 @@ Blockly.WorkspaceSvg.prototype.dispose = function() {
     // Top-most workspace.  Dispose of the SVG too.
     goog.dom.removeNode(this.getParentSvg());
   }
+  if (this.resizeHandlerWrapper_) {
+    Blockly.unbindEvent_(this.resizeHandlerWrapper_);
+    this.resizeHandlerWrapper_ = null;
+  }
 };
 
 /**
@@ -283,7 +308,7 @@ Blockly.WorkspaceSvg.prototype.addFlyout_ = function() {
     parentWorkspace: this,
     RTL: this.RTL,
     horizontalLayout: this.horizontalLayout,
-    toolboxPosition: this.options.toolboxPosition,
+    toolboxPosition: this.options.toolboxPosition
   };
   /** @type {Blockly.Flyout} */
   this.flyout_ = new Blockly.Flyout(workspaceOptions);
@@ -293,7 +318,26 @@ Blockly.WorkspaceSvg.prototype.addFlyout_ = function() {
 };
 
 /**
- * Resize this workspace and its containing objects.
+ * Resize the parts of the workspace that change when the workspace
+ * contents (e.g. block positions) change.  This will also scroll the
+ * workspace contents if needed.
+ * @package
+ */
+Blockly.WorkspaceSvg.prototype.resizeContents = function() {
+  if (this.scrollbar) {
+    // TODO(picklesrus): Once rachel-fenichel's scrollbar refactoring
+    // is complete, call the method that only resizes scrollbar
+    // based on contents.
+    this.scrollbar.resize();
+  }
+};
+
+/**
+ * Resize and reposition all of the workspace chrome (toolbox,
+ * trash, scrollbars etc.)
+ * This should be called when something changes that
+ * requires recalculating dimensions and positions of the
+ * trash, zoom, toolbox, etc. (e.g. window resize).
  */
 Blockly.WorkspaceSvg.prototype.resize = function() {
   if (this.toolbox_) {
@@ -569,7 +613,6 @@ Blockly.WorkspaceSvg.prototype.onMouseDown_ = function(e) {
   if (Blockly.isTargetInput_(e)) {
     return;
   }
-  Blockly.svgResize(this);
   Blockly.terminateDrag_();  // In case mouse-up event was lost.
   Blockly.hideChaff();
   var isTargetWorkspace = e.target && e.target.nodeName &&
@@ -709,7 +752,7 @@ Blockly.WorkspaceSvg.prototype.cleanUp_ = function() {
   }
   Blockly.Events.setGroup(false);
   // Fire an event to allow scrollbars to resize.
-  Blockly.asyncSvgResize(this);
+  Blockly.resizeSvgContents(this);
 };
 
 /**
@@ -813,18 +856,7 @@ Blockly.WorkspaceSvg.prototype.showContextMenu_ = function(e) {
   for (var i = 0; i < topBlocks.length; i++) {
     addDeletableBlocks(topBlocks[i]);
   }
-  var deleteOption = {
-    text: deleteList.length == 1 ? Blockly.Msg.DELETE_BLOCK :
-        Blockly.Msg.DELETE_X_BLOCKS.replace('%1', String(deleteList.length)),
-    enabled: deleteList.length > 0,
-    callback: function() {
-      if (deleteList.length < 2 ||
-          window.confirm(Blockly.Msg.DELETE_ALL_BLOCKS.replace('%1',
-          String(deleteList.length)))) {
-        deleteNext();
-      }
-    }
-  };
+
   function deleteNext() {
     Blockly.Events.setGroup(eventGroup);
     var block = deleteList.shift();
@@ -838,6 +870,19 @@ Blockly.WorkspaceSvg.prototype.showContextMenu_ = function(e) {
     }
     Blockly.Events.setGroup(false);
   }
+
+  var deleteOption = {
+    text: deleteList.length == 1 ? Blockly.Msg.DELETE_BLOCK :
+        Blockly.Msg.DELETE_X_BLOCKS.replace('%1', String(deleteList.length)),
+    enabled: deleteList.length > 0,
+    callback: function() {
+      if (deleteList.length < 2 ||
+          window.confirm(Blockly.Msg.DELETE_ALL_BLOCKS.replace('%1',
+          String(deleteList.length)))) {
+        deleteNext();
+      }
+    }
+  };
   menuOptions.push(deleteOption);
 
   Blockly.ContextMenu.show(e, menuOptions, this.RTL);
@@ -904,6 +949,12 @@ Blockly.WorkspaceSvg.prototype.preloadAudio_ = function() {
 Blockly.WorkspaceSvg.prototype.playAudio = function(name, opt_volume) {
   var sound = this.SOUNDS_[name];
   if (sound) {
+    // Don't play one sound on top of another.
+    var now = new Date;
+    if (now - this.lastSound_ < Blockly.SOUND_LIMIT) {
+      return;
+    }
+    this.lastSound_ = now;
     var mySound;
     var ie9 = goog.userAgent.DOCUMENT_MODE &&
               goog.userAgent.DOCUMENT_MODE === 9;
