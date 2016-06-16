@@ -2,24 +2,24 @@
  * @license Licensed under the Apache License, Version 2.0 (the "License"):
  *          http://www.apache.org/licenses/LICENSE-2.0
  *
- * @fileoverview Ardublockly JavaScript for the Blockly resources and bindings.
+ * @fileoverview Cublockly JavaScript for the Blockly resources and bindings.
  */
 'use strict';
 
 /** Create a namespace for the application. */
-var Ardublockly = Ardublockly || {};
+var Cublockly = Cublockly || {};
 
 /**
  * Blockly main workspace.
  * @type Blockly.WorkspaceSvg
  */
-Ardublockly.workspace = null;
+Cublockly.workspace = null;
 
 /**
  * Blockly workspace toolbox XML.
  * @type Element
  */
-Ardublockly.xmlTree = null;
+Cublockly.xmlTree = null;
 
 /**
  * Injects Blockly into a given HTML element. Toolbox XMl has to be a string.
@@ -27,15 +27,15 @@ Ardublockly.xmlTree = null;
  * @param {!string} toolboxXml String containing the toolbox XML content.
  * @param {!string} blocklyPath String containing the Blockly directory path.
  */
-Ardublockly.injectBlockly = function(blocklyEl, toolboxXml, blocklyPath) {
+Cublockly.injectBlockly = function(blocklyEl, toolboxXml, blocklyPath) {
   // Remove any trailing slashes in the blockly path
   if (blocklyPath.substr(-1) === '/') {
     blocklyPath = blocklyPath.slice(0, -1);
   }
-  Ardublockly.xmlTree = Blockly.Xml.textToDom(toolboxXml);
+  Cublockly.xmlTree = Blockly.Xml.textToDom(toolboxXml);
   // The Toolbox menu language is edited directly from the XML nodes.
-  Ardublockly.updateToolboxLanguage();
-  Ardublockly.workspace = Blockly.inject(blocklyEl, {
+  Cublockly.updateToolboxLanguage();
+  Cublockly.workspace = Blockly.inject(blocklyEl, {
       collapse: true,
       comments: true,
       css: true,
@@ -46,7 +46,7 @@ Ardublockly.injectBlockly = function(blocklyEl, toolboxXml, blocklyPath) {
       rtl: false,
       scrollbars: true,
       sounds: true,
-      toolbox: Ardublockly.xmlTree,
+      toolbox: Cublockly.xmlTree,
       trashcan: true,
       zoom: {
         controls: true,
@@ -58,26 +58,26 @@ Ardublockly.injectBlockly = function(blocklyEl, toolboxXml, blocklyPath) {
       }
   });
   // On language change the blocks have been stored in session storage
-  Ardublockly.loadSessionStorageBlocks();
+  Cublockly.loadSessionStorageBlocks();
 };
 
 /** Binds the event listeners relevant to Blockly. */
-Ardublockly.bindBlocklyEventListeners = function() {
-  Ardublockly.workspace.addChangeListener(Ardublockly.renderContent);
+Cublockly.bindBlocklyEventListeners = function() {
+  Cublockly.workspace.addChangeListener(Cublockly.renderContent);
 
   // Ensure the Blockly workspace resizes accordingly
   window.addEventListener('resize',
-      function() { Blockly.svgResize(Ardublockly.workspace); }, false);
+      function() { Blockly.svgResize(Cublockly.workspace); }, false);
 };
 
 /** @return {!string} Generated Arduino code from the Blockly workspace. */
-Ardublockly.generateArduino = function() {
-  return Blockly.Arduino.workspaceToCode(Ardublockly.workspace);
+Cublockly.generateArduino = function() {
+  return Blockly.Cubelets.workspaceToCode(Cublockly.workspace);
 };
 
 /** @return {!string} Generated XML code from the Blockly workspace. */
-Ardublockly.generateXml = function() {
-  var xmlDom = Blockly.Xml.workspaceToDom(Ardublockly.workspace);
+Cublockly.generateXml = function() {
+  var xmlDom = Blockly.Xml.workspaceToDom(Cublockly.workspace);
   var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
   return xmlText;
 };
@@ -90,12 +90,12 @@ Ardublockly.generateXml = function() {
  * @param {!function} cbError Function to be called if there is a connection
  *     error to the XML server.
  */
-Ardublockly.loadXmlBlockFile = function(xmlFile, cbSuccess, cbError) {
-  var request = Ardublockly.ajaxRequest();
+Cublockly.loadXmlBlockFile = function(xmlFile, cbSuccess, cbError) {
+  var request = Cublockly.ajaxRequest();
   var requestCb = function() {
     if (request.readyState == 4) {
       if (request.status == 200) {
-        var success = Ardublockly.replaceBlocksfromXml(request.responseText);
+        var success = Cublockly.replaceBlocksfromXml(request.responseText);
         cbSuccess(success);
       } else {
         cbError();
@@ -117,17 +117,17 @@ Ardublockly.loadXmlBlockFile = function(xmlFile, cbSuccess, cbError) {
  * @param {!string} blocksXml String of XML code for the blocks.
  * @return {!boolean} Indicates if the XML into blocks parse was successful.
  */
-Ardublockly.replaceBlocksfromXml = function(blocksXml) {
+Cublockly.replaceBlocksfromXml = function(blocksXml) {
   var xmlDom = null;
   try {
     xmlDom = Blockly.Xml.textToDom(blocksXml);
   } catch (e) {
     return false;
   }
-  Ardublockly.workspace.clear();
+  Cublockly.workspace.clear();
   var sucess = false;
   if (xmlDom) {
-    sucess = Ardublockly.loadBlocksfromXmlDom(xmlDom);
+    sucess = Cublockly.loadBlocksfromXmlDom(xmlDom);
   }
   return sucess;
 };
@@ -138,9 +138,9 @@ Ardublockly.replaceBlocksfromXml = function(blocksXml) {
  * @param {!string} blocksXmlDom String of XML DOM code for the blocks.
  * @return {!boolean} Indicates if the XML into blocks parse was successful.
  */
-Ardublockly.loadBlocksfromXmlDom = function(blocksXmlDom) {
+Cublockly.loadBlocksfromXmlDom = function(blocksXmlDom) {
   try {
-    Blockly.Xml.domToWorkspace(blocksXmlDom, Ardublockly.workspace);
+    Blockly.Xml.domToWorkspace(blocksXmlDom, Cublockly.workspace);
   } catch (e) {
     return false;
   }
@@ -151,16 +151,16 @@ Ardublockly.loadBlocksfromXmlDom = function(blocksXmlDom) {
  * Save blocks into session storage. Note that MSIE 11 does not support
  * sessionStorage on file:// URLs.
  */
-Ardublockly.saveSessionStorageBlocks = function() {
+Cublockly.saveSessionStorageBlocks = function() {
   if (window.sessionStorage) {
-    var xml = Blockly.Xml.workspaceToDom(Ardublockly.workspace);
+    var xml = Blockly.Xml.workspaceToDom(Cublockly.workspace);
     var text = Blockly.Xml.domToText(xml);
     window.sessionStorage.loadOnceBlocks = text;
   }
 };
 
 /** Load blocks saved on session storage and deletes them from storage. */
-Ardublockly.loadSessionStorageBlocks = function() {
+Cublockly.loadSessionStorageBlocks = function() {
   try {
     var loadOnce = window.sessionStorage.loadOnceBlocks;
   } catch (e) {
@@ -171,50 +171,50 @@ Ardublockly.loadSessionStorageBlocks = function() {
   if (loadOnce) {
     delete window.sessionStorage.loadOnceBlocks;
     var xml = Blockly.Xml.textToDom(loadOnce);
-    Blockly.Xml.domToWorkspace(xml, Ardublockly.workspace);
+    Blockly.Xml.domToWorkspace(xml, Cublockly.workspace);
   }
 };
 
 /** Discard all blocks from the workspace. */
-Ardublockly.discardAllBlocks = function() {
-  var blockCount = Ardublockly.workspace.getAllBlocks().length;
+Cublockly.discardAllBlocks = function() {
+  var blockCount = Cublockly.workspace.getAllBlocks().length;
   if (blockCount == 1) {
-    Ardublockly.workspace.clear();
-    Ardublockly.renderContent();
+    Cublockly.workspace.clear();
+    Cublockly.renderContent();
   } else if (blockCount > 1) {
-    Ardublockly.alertMessage(
+    Cublockly.alertMessage(
         'Delete blocks?',
         'There are ' + blockCount + ' blocks on the workspace. Are you sure ' +
         'you want to delete them?',
         true,
         function() {
-          Ardublockly.workspace.clear();
-          Ardublockly.renderContent();
+          Cublockly.workspace.clear();
+          Cublockly.renderContent();
         });
   }
 };
 
 /** @return {!boolean} Indicates if the Blockly workspace has blocks. */
-Ardublockly.isWorkspaceEmpty = function() {
-  return Ardublockly.workspace.getAllBlocks().length ? false : true;
+Cublockly.isWorkspaceEmpty = function() {
+  return Cublockly.workspace.getAllBlocks().length ? false : true;
 };
 
 /**
  * Changes the Arduino board profile if different from the currently set one.
  * @param {string} newBoard Name of the new profile to set.
  */
-Ardublockly.changeBlocklyArduinoBoard = function(newBoard) {
-  if (Blockly.Arduino.Boards.selected !== Blockly.Arduino.Boards[newBoard]) {
-    Blockly.Arduino.Boards.changeBoard(Ardublockly.workspace, newBoard);
+Cublockly.changeBlocklyArduinoBoard = function(newBoard) {
+  if (Blockly.Cubelets.Boards.selected !== Blockly.Cubelets.Boards[newBoard]) {
+    Blockly.Cubelets.Boards.changeBoard(Cublockly.workspace, newBoard);
   }
 };
 
 /** Update the toolbox categories language. */
-Ardublockly.updateToolboxLanguage = function() {
+Cublockly.updateToolboxLanguage = function() {
   var categories = ['catLogic', 'catLoops', 'catMath', 'catText',
                     'catVariables', 'catFunctions', 'catInputOutput',
                     'catTime', 'catMusic', 'catMotors', 'catComms'];
-  var categoryNodes = Ardublockly.xmlTree.getElementsByTagName('category');
+  var categoryNodes = Cublockly.xmlTree.getElementsByTagName('category');
   for (var i = 0, cat; cat = categoryNodes[i]; i++) {
     var catId = cat.getAttribute('id');
     if (MSG[catId]) {
@@ -228,50 +228,50 @@ Ardublockly.updateToolboxLanguage = function() {
  * @param {!string} categoryTitle Toolbox category title.
  * @param {!Element} categoryDom Toolbox category to add add the end of tree.
  */
-Ardublockly.addToolboxCategory = function(categoryTitle, categoryDom) {
+Cublockly.addToolboxCategory = function(categoryTitle, categoryDom) {
   categoryDom.id = 'cat' + categoryTitle.replace(/\s+/g, '');
   categoryDom.setAttribute('name', categoryTitle);
-  Ardublockly.xmlTree.appendChild(document.createElement('sep'));
-  Ardublockly.xmlTree.appendChild(categoryDom);
-  Ardublockly.workspace.updateToolbox(Ardublockly.xmlTree);
+  Cublockly.xmlTree.appendChild(document.createElement('sep'));
+  Cublockly.xmlTree.appendChild(categoryDom);
+  Cublockly.workspace.updateToolbox(Cublockly.xmlTree);
 };
 
 /**
  * Removes a category to the current toolbox.
  * @param {!String} categoryTitle Toolbox category name to remove from tree.
  */
-Ardublockly.removeToolboxCategory = function(categoryTitle) {
+Cublockly.removeToolboxCategory = function(categoryTitle) {
   var categoryId = 'cat' + categoryTitle.replace(/\s+/g, '');
-  var categoryNodes = Ardublockly.xmlTree.getElementsByTagName('category');
+  var categoryNodes = Cublockly.xmlTree.getElementsByTagName('category');
   for (var i = 0; i < categoryNodes.length; i++) {
     if (categoryNodes[i].getAttribute('id') === categoryId) {
       var previousNode = categoryNodes[i].previousElementSibling;
-      Ardublockly.xmlTree.removeChild(categoryNodes[i]);
+      Cublockly.xmlTree.removeChild(categoryNodes[i]);
       if (previousNode && previousNode.nodeName == 'sep') {
-        Ardublockly.xmlTree.removeChild(previousNode);
+        Cublockly.xmlTree.removeChild(previousNode);
       }
     }
   }
-  Ardublockly.workspace.updateToolbox(Ardublockly.xmlTree);
+  Cublockly.workspace.updateToolbox(Cublockly.xmlTree);
 };
 
 /** Closes the toolbox block container sub-menu. */
-Ardublockly.blocklyCloseToolbox = function() {
-  Ardublockly.workspace.toolbox_.flyout_.hide();
+Cublockly.blocklyCloseToolbox = function() {
+  Cublockly.workspace.toolbox_.flyout_.hide();
 };
 
 /** @return {!integer} The width of the blockly workspace toolbox. */
-Ardublockly.blocklyToolboxWidth = function() {
-  return Ardublockly.workspace.toolbox_.width;
+Cublockly.blocklyToolboxWidth = function() {
+  return Cublockly.workspace.toolbox_.width;
 };
 
 /** @return {!boolean} Indicates if a block is currently being dragged. */
-Ardublockly.blocklyIsDragging = function() {
+Cublockly.blocklyIsDragging = function() {
   return (Blockly.dragMode_ != 0) ? true : false;
 };
 
 /** Wraps the blockly 'cut' functionality. */
-Ardublockly.blocklyCut = function() {
+Cublockly.blocklyCut = function() {
   if (Blockly.selected) {
     Blockly.copy_(Blockly.selected);
     Blockly.selected.dispose(true, true);
@@ -279,14 +279,14 @@ Ardublockly.blocklyCut = function() {
 };
 
 /** Wraps the blockly 'copy' functionality. */
-Ardublockly.blocklyCopy = function() {
+Cublockly.blocklyCopy = function() {
   if (Blockly.selected) {
     Blockly.copy_(Blockly.selected);
   }
 };
 
 /** Wraps the blockly 'paste' functionality. */
-Ardublockly.blocklyPaste = function() {
+Cublockly.blocklyPaste = function() {
   if (Blockly.clipboardXml_) {
     Blockly.hideChaff();
     Blockly.clipboardSource_.paste(Blockly.clipboardXml_);
@@ -294,7 +294,7 @@ Ardublockly.blocklyPaste = function() {
 };
 
 /** Wraps the blockly 'delete' functionality. */
-Ardublockly.blocklyDelete = function() {
+Cublockly.blocklyDelete = function() {
   if (Blockly.selected && Blockly.selected.isDeletable()) {
     Blockly.hideChaff();
     Blockly.selected.dispose(true, true);
@@ -302,7 +302,7 @@ Ardublockly.blocklyDelete = function() {
 };
 
 /** @return {XMLHttpRequest} An XML HTTP Request multi-browser compatible. */
-Ardublockly.ajaxRequest = function() {
+Cublockly.ajaxRequest = function() {
   var request;
   try {
     // Firefox, Chrome, IE7+, Opera, Safari

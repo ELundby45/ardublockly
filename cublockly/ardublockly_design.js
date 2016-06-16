@@ -2,26 +2,26 @@
  * @license Licensed under the Apache License, Version 2.0 (the "License"):
  *          http://www.apache.org/licenses/LICENSE-2.0
  *
- * @fileoverview JavaScript to configure front end design for Ardublockly app.
+ * @fileoverview JavaScript to configure front end design for Cublockly app.
  */
 'use strict';
 
 /** Create a namespace for the application. */
-var Ardublockly = Ardublockly || {};
+var Cublockly = Cublockly || {};
 
 
 /** Initialises all the design related JavaScript. */
-Ardublockly.designJsInit = function() {
-  Ardublockly.materializeJsInit();
-  Ardublockly.resizeToggleToolboxBotton();
-  Ardublockly.sketchNameSizeEffect();
+Cublockly.designJsInit = function() {
+  Cublockly.materializeJsInit();
+  Cublockly.resizeToggleToolboxBotton();
+  Cublockly.sketchNameSizeEffect();
 };
 
 /**
  * Initialises all required components from materialize framework.
  * The be executed on document ready.
  */
-Ardublockly.materializeJsInit = function() {
+Cublockly.materializeJsInit = function() {
   // Navigation bar
   $('.button-collapse').sideNav({
       menuWidth: 240,
@@ -44,24 +44,24 @@ Ardublockly.materializeJsInit = function() {
 };
 
 /** Binds the event listeners relevant to the page design. */
-Ardublockly.bindDesignEventListeners = function() {
+Cublockly.bindDesignEventListeners = function() {
   // Resize blockly workspace on window resize
   window.addEventListener(
-      'resize', Ardublockly.resizeBlocklyWorkspace, false);
+      'resize', Cublockly.resizeBlocklyWorkspace, false);
   // Display/hide the XML load button when the XML collapsible header is clicked
   document.getElementById('xml_collapsible_header').addEventListener(
-      'click', Ardublockly.buttonLoadXmlCodeDisplay);
+      'click', Cublockly.buttonLoadXmlCodeDisplay);
   // Toggle the content height on click to the IDE output collapsible header
   document.getElementById('ide_output_collapsible_header').addEventListener(
       'click', function() {
-        Ardublockly.contentHeightToggle();
+        Cublockly.contentHeightToggle();
       });
   // Display/hide the additional IDE buttons when mouse over/out of play button
   $('#button_ide_large').mouseenter(function() {
-      Ardublockly.showExtraIdeButtons(true);
+      Cublockly.showExtraIdeButtons(true);
   });
   $('#ide_buttons_wrapper').mouseleave(function() {
-      Ardublockly.showExtraIdeButtons(false);
+      Cublockly.showExtraIdeButtons(false);
   });
 };
 
@@ -69,7 +69,7 @@ Ardublockly.bindDesignEventListeners = function() {
  * Displays or hides the 'load textarea xml' button based on the state of the
  * collapsible 'xml_collapsible_body'.
  */
-Ardublockly.buttonLoadXmlCodeDisplay = function() {
+Cublockly.buttonLoadXmlCodeDisplay = function() {
   var xmlCollapsibleBody = document.getElementById('xml_collapsible_body');
   // Waiting 400 ms to check status due to the animation delay (300 ms)
   setTimeout(function() {
@@ -86,7 +86,7 @@ Ardublockly.buttonLoadXmlCodeDisplay = function() {
  * @param {!string} value One of the 3 possible values from the drop down select
  *     in the settings modal: 'upload', 'verify', or 'open'.
  */
-Ardublockly.changeIdeButtonsDesign = function(value) {
+Cublockly.changeIdeButtonsDesign = function(value) {
   var buttonLeft = document.getElementById('button_ide_left');
   var iconLeft = document.getElementById('button_ide_left_icon');
   var buttonMiddle = document.getElementById('button_ide_middle');
@@ -132,27 +132,27 @@ Ardublockly.changeIdeButtonsDesign = function(value) {
  * Hide/display effects done with CCS3 transitions on visibility and opacity.
  * @param {!boolean} show Indicates if the extra buttons are to be shown.
  */
-Ardublockly.showExtraIdeButtons = function(show) {
+Cublockly.showExtraIdeButtons = function(show) {
   var IdeButtonLeft = document.getElementById('button_ide_left');
   var IdeButtonMiddle = document.getElementById('button_ide_middle');
   if (show) {
     // prevent previously set time-out to hide buttons while trying to show them
-    clearTimeout(Ardublockly.outHoldtimeoutHandle);
-    clearTimeout(Ardublockly.hidetimeoutHandle);
+    clearTimeout(Cublockly.outHoldtimeoutHandle);
+    clearTimeout(Cublockly.hidetimeoutHandle);
     IdeButtonMiddle.style.visibility = 'visible';
     IdeButtonMiddle.style.opacity = '1';
-    Ardublockly.showtimeoutHandle = setTimeout(function() {
+    Cublockly.showtimeoutHandle = setTimeout(function() {
       IdeButtonLeft.style.visibility = 'visible';
       IdeButtonLeft.style.opacity = '1';
     }, 50);
   } else {
     // As the mouse out can be accidental, only hide them after a delay
-    Ardublockly.outHoldtimeoutHandle = setTimeout(function() {
+    Cublockly.outHoldtimeoutHandle = setTimeout(function() {
       // Prevent show time-out to affect the hiding of the buttons
-      clearTimeout(Ardublockly.showtimeoutHandle);
+      clearTimeout(Cublockly.showtimeoutHandle);
       IdeButtonLeft.style.visibility = 'hidden';
       IdeButtonLeft.style.opacity = '0';
-      Ardublockly.hidetimeoutHandle = setTimeout(function() {
+      Cublockly.hidetimeoutHandle = setTimeout(function() {
         IdeButtonMiddle.style.visibility = 'hidden';
         IdeButtonMiddle.style.opacity = '0';
       }, 50);
@@ -164,7 +164,7 @@ Ardublockly.showExtraIdeButtons = function(show) {
  * Shows or hides the spinner around the large IDE button.
  * @param {!boolean} active True turns ON the spinner, false OFF.
  */
-Ardublockly.largeIdeButtonSpinner = function(active) {
+Cublockly.largeIdeButtonSpinner = function(active) {
   var spinner = document.getElementById('button_ide_large_spinner');
   var buttonIdeLarge = document.getElementById('button_ide_large');
   var buttonClass = buttonIdeLarge.className;
@@ -184,7 +184,7 @@ Ardublockly.largeIdeButtonSpinner = function(active) {
  * no background, and the opposite when toolbox is hidden.
  * @param {!boolean} show Indicates if the toolbox should be set visible.
  */
-Ardublockly.displayToolbox = function(show) {
+Cublockly.displayToolbox = function(show) {
   var toolbox = $('.blocklyToolboxDiv');
   var toolboxTree = $('.blocklyTreeRoot');
   var button = document.getElementById('button_toggle_toolbox');
@@ -241,22 +241,22 @@ Ardublockly.displayToolbox = function(show) {
  * toolbox.
  * The toolbox width does not change with workspace width, so safe to do once.
  */
-Ardublockly.resizeToggleToolboxBotton = function() {
+Cublockly.resizeToggleToolboxBotton = function() {
   window.dispatchEvent(new Event('resize'));
   var button = $('#button_toggle_toolbox');
   // Sets the toolbox toggle button width to that of the toolbox
-  if (Ardublockly.isToolboxVisible() && Ardublockly.blocklyToolboxWidth()) {
+  if (Cublockly.isToolboxVisible() && Cublockly.blocklyToolboxWidth()) {
     // For some reason normal set style and getElementById didn't work
-    button.width(Ardublockly.blocklyToolboxWidth());
+    button.width(Cublockly.blocklyToolboxWidth());
     button[0].style.display = '';
   }
 };
 
 /** Resizes the container for the Blockly workspace. */
-Ardublockly.resizeBlocklyWorkspace = function() {
+Cublockly.resizeBlocklyWorkspace = function() {
   var contentBlocks = document.getElementById('content_blocks');
   var wrapperPanelSize =
-      Ardublockly.getBBox_(document.getElementById('blocks_panel'));
+      Cublockly.getBBox_(document.getElementById('blocks_panel'));
 
   contentBlocks.style.top = wrapperPanelSize.y + 'px';
   contentBlocks.style.left = wrapperPanelSize.x + 'px';
@@ -280,7 +280,7 @@ Ardublockly.resizeBlocklyWorkspace = function() {
  * @param {string=|function=} callback If confirm option is selected this would
  *     be the function called when clicked 'OK'.
  */
-Ardublockly.materialAlert = function(title, body, confirm, callback) {
+Cublockly.materialAlert = function(title, body, confirm, callback) {
   $('#gen_alert_title').text(title);
   $('#gen_alert_body').text('');
   $('#gen_alert_body').append(body);
@@ -298,7 +298,7 @@ Ardublockly.materialAlert = function(title, body, confirm, callback) {
 };
 
 /** Opens the modal that displays the "not connected to server" message. */
-Ardublockly.openNotConnectedModal = function() {
+Cublockly.openNotConnectedModal = function() {
   /*$('#not_running_dialog').openModal({
     dismissible: true,
     opacity: .5,
@@ -308,7 +308,7 @@ Ardublockly.openNotConnectedModal = function() {
 };
 
 /** Opens the modal that displays the Settings. */
-Ardublockly.openSettingsModal = function() {
+Cublockly.openSettingsModal = function() {
   $('#settings_dialog').openModal({
     dismissible: true,
     opacity: .5,
@@ -321,7 +321,7 @@ Ardublockly.openSettingsModal = function() {
  * Opens the modal that allows selection on additional toolbox categories.
  * @param {!element} htmlContent HTML to include in modal body.
  */
-Ardublockly.openAdditionalBlocksModal = function(htmlContent) {
+Cublockly.openAdditionalBlocksModal = function(htmlContent) {
   $('#blocks_menu_body').text('');
   $('#blocks_menu_body').append(htmlContent);
   $('#blocks_menu').openModal({
@@ -339,7 +339,7 @@ Ardublockly.openAdditionalBlocksModal = function(htmlContent) {
  * @param {!function} clickBind Function to bind to the tick box click.
  * @return {!element} HTML element to display the category content.
  */
-Ardublockly.createExtraBlocksCatHtml = function(title, description, clickBind) {
+Cublockly.createExtraBlocksCatHtml = function(title, description, clickBind) {
   var tickId = title.replace(/\s+/g, '');
   var tickHtml = document.createElement('input');
   tickHtml.type = 'checkbox';
@@ -369,7 +369,7 @@ Ardublockly.createExtraBlocksCatHtml = function(title, description, clickBind) {
  * Displays a short message for 4 seconds in the form of a Materialize toast.
  * @param {!string} message Text to be temporarily displayed.
  */
-Ardublockly.MaterialToast = function(message) {
+Cublockly.MaterialToast = function(message) {
   Materialize.toast(message, 4000);
 };
 
@@ -378,18 +378,18 @@ Ardublockly.MaterialToast = function(message) {
  * highlight to call for the user attention.
  * @param {!element} bodyEl HTML to include into IDE output content area.
  */
-Ardublockly.arduinoIdeOutput = function(bodyEl) {
+Cublockly.arduinoIdeOutput = function(bodyEl) {
   var ideOuputContent = document.getElementById('content_ide_output');
   ideOuputContent.innerHTML = '';
   ideOuputContent.appendChild(bodyEl);
-  Ardublockly.highlightIdeOutputHeader();
+  Cublockly.highlightIdeOutputHeader();
 };
 
 /**
  * Clears the content of the Arduino IDE output element to a default text.
  * @param {!element} bodyEl HTML to include into IDE output content area.
  */
-Ardublockly.resetIdeOutputContent = function(bodyEl) {
+Cublockly.resetIdeOutputContent = function(bodyEl) {
   var ideOuputContent = document.getElementById('content_ide_output');
   ideOuputContent.innerHTML = '<span class="arduino_dialog_out">Waiting for ' +
       'the IDE output...</span>';
@@ -399,7 +399,7 @@ Ardublockly.resetIdeOutputContent = function(bodyEl) {
  * Initialises the sketch name input text JavaScript to dynamically adjust its
  * width to the width of its contents.
  */
-Ardublockly.sketchNameSizeEffect = function() {
+Cublockly.sketchNameSizeEffect = function() {
   var resizeInput = function() {
     $(this).attr('size', $(this).val().length);
   };
@@ -422,7 +422,7 @@ Ardublockly.sketchNameSizeEffect = function() {
 };
 
 /** Creates a highlight animation to the Arduino IDE output header. */
-Ardublockly.highlightIdeOutputHeader = function() {
+Cublockly.highlightIdeOutputHeader = function() {
   var header = document.getElementById('ide_output_collapsible_header');
   var h = 'ide_output_header_highlight';
   var n = 'ide_output_header_normal';
@@ -445,7 +445,7 @@ Ardublockly.highlightIdeOutputHeader = function() {
  * collapsible functionality from Materialize framework adds the active class,
  * so this class is consulted to shrink or expand the content height.
  */
-Ardublockly.contentHeightToggle = function() {
+Cublockly.contentHeightToggle = function() {
   var outputHeader = document.getElementById('ide_output_collapsible_header');
   var blocks = document.getElementById('blocks_panel');
   var arduino = document.getElementById('content_arduino');
@@ -486,7 +486,7 @@ Ardublockly.contentHeightToggle = function() {
  * @return {!Object} Contains height, width, x, and y properties.
  * @private
  */
-Ardublockly.getBBox_ = function(element) {
+Cublockly.getBBox_ = function(element) {
   var height = element.offsetHeight;
   var width = element.offsetWidth;
   var x = 0;

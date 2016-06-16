@@ -2,12 +2,12 @@
  * @license Licensed under the Apache License, Version 2.0 (the "License"):
  *          http://www.apache.org/licenses/LICENSE-2.0
  *
- * @fileoverview Ajax calls to the Ardublockly Server python program.
+ * @fileoverview Ajax calls to the Cublockly Server python program.
  */
 'use strict';
 
 /** Create a name space for the application. */
-var ArdublocklyServer = {};
+var CublocklyServer = {};
 
 /**
  * Sends Form data to the ArduBlocklyServer using Ajax.
@@ -15,8 +15,8 @@ var ArdublocklyServer = {};
  * @param {!string} params Form parameters in the 'var=x&var2=y' format.
  * @param {!function} callback Request callback function.
  */
-ArdublocklyServer.ajaxPostForm = function(url, params, callback) {
-  var request = ArdublocklyServer.createAjaxRequest();
+CublocklyServer.ajaxPostForm = function(url, params, callback) {
+  var request = CublocklyServer.createAjaxRequest();
   try {
     request.open('POST', url, true);
     request.setRequestHeader(
@@ -55,8 +55,8 @@ ArdublocklyServer.ajaxPostForm = function(url, params, callback) {
  * @param {!string} data Plain text currently used to send Arduino code only.
  * @param {!function} callback Request callback function.
  */
-ArdublocklyServer.ajaxPostPlain = function(url, data, callback) {
-  var request = ArdublocklyServer.createAjaxRequest();
+CublocklyServer.ajaxPostPlain = function(url, data, callback) {
+  var request = CublocklyServer.createAjaxRequest();
   request.open('POST', url, true);
   request.setRequestHeader('Content-type', 'text/plain');
 
@@ -88,8 +88,8 @@ ArdublocklyServer.ajaxPostPlain = function(url, data, callback) {
  * @param {!string} fileLocation Location for the JSON data.
  * @param {!function} jsonDataCb Callback with JSON object or null for error.
  */
-Ardublockly.getJsonData = function(fileLocation, jsonDataCb) {
-  var request = ArdublocklyServer.createAjaxRequest();
+Cublockly.getJsonData = function(fileLocation, jsonDataCb) {
+  var request = CublocklyServer.createAjaxRequest();
   request.overrideMimeType("application/json");
   var requestCb = function() {
     if (request.readyState == 4) {
@@ -117,7 +117,7 @@ Ardublockly.getJsonData = function(fileLocation, jsonDataCb) {
 };
 
 /** @return {XMLHttpRequest} An XML HTTP Request multi-browser compatible. */
-ArdublocklyServer.createAjaxRequest = function() {
+CublocklyServer.createAjaxRequest = function() {
   var request = false;
   try {
     // Firefox, Chrome, IE7+, Opera, Safari
@@ -134,7 +134,7 @@ ArdublocklyServer.createAjaxRequest = function() {
       }
       catch (e) {
         throw 'Your browser does not support AJAX. You will not be able to' +
-              'use all of Ardublockly features.';
+              'use all of Cublockly features.';
         request = null;
       }
     }
@@ -148,7 +148,7 @@ ArdublocklyServer.createAjaxRequest = function() {
  * @return {!element} An HTML element, which type depends on the JSON 'element'
  *                    key (currently only text input or drop down).
  */
-ArdublocklyServer.createElementFromJson = function(json_data) {
+CublocklyServer.createElementFromJson = function(json_data) {
   var parsed_json = JSON.parse(json_data);
   var element = null;
 
@@ -204,64 +204,64 @@ ArdublocklyServer.createElementFromJson = function(json_data) {
 };
 
 /**
- * Gets the current Compiler location from the ArdublocklyServer settings.
+ * Gets the current Compiler location from the CublocklyServer settings.
  * @param {!function} callback Callback function for the server request, must
  *                             one argument to receive the new location within
  *                             an HTML element of type input text.
  */
-ArdublocklyServer.requestCompilerLocation = function(callback) {
-   ArdublocklyServer.ajaxPostForm(
+CublocklyServer.requestCompilerLocation = function(callback) {
+   CublocklyServer.ajaxPostForm(
       'ArduServerCompilerSettings.html',
       'compiler=get',
       callback);
 };
 
 /**
- * Request to the Ardublockly Server to prompt the user for a new compiler
+ * Request to the Cublockly Server to prompt the user for a new compiler
  * location. Done by the Python server because a 'file browse' triggered by
  * the browser with JS will obscure the user information for security reasons.
  * @param {!function} callback Callback function for the server request, must
  *                             one argument to receive the new location within
  *                             an HTML element of type input text.
  */
-ArdublocklyServer.requestNewCompilerLocation = function(callback) {
+CublocklyServer.requestNewCompilerLocation = function(callback) {
   //TODO: Remove the something=else, its there for testing purposes
-  ArdublocklyServer.ajaxPostForm(
+  CublocklyServer.ajaxPostForm(
       'ArduServerCompilerSettings.html',
       'compiler=set&something=else',
       callback);
 };
 
 /**
- * Gets the current Sketch location from the Ardublockly Server settings.
+ * Gets the current Sketch location from the Cublockly Server settings.
  * @param {!function} callback Callback function for the server request, must
  *                             one argument to receive the new location within
  *                             an HTML element of type input text.
  */
-ArdublocklyServer.requestSketchLocation = function(callback) {
-   ArdublocklyServer.ajaxPostForm(
+CublocklyServer.requestSketchLocation = function(callback) {
+   CublocklyServer.ajaxPostForm(
       'ArduServerCompilerSettings.html',
       'sketch=get',
       callback);
 };
 
 /**
- * Request to the Ardublockly Server to prompt the user for a new sketch
+ * Request to the Cublockly Server to prompt the user for a new sketch
  * location. Done by the Python server because a 'file browse' triggered by
  * the browser with JS will obscure the user information for security reasons.
  * @param {!function} callback Callback function for the server request, must
  *                             have one argument to receive the new location
  *                             within an HTML element of type input text.
  */
-ArdublocklyServer.requestNewSketchLocation = function(callback) {
-  ArdublocklyServer.ajaxPostForm(
+CublocklyServer.requestNewSketchLocation = function(callback) {
+  CublocklyServer.ajaxPostForm(
       'ArduServerCompilerSettings.html',
       'sketch=set',
       callback);
 };
 
 /**
- * Request to the Ardublockly Server to return JSON data containing all
+ * Request to the Cublockly Server to return JSON data containing all
  * available target Arduino Boards, and the selected one in the settings.
  * The data is then processed into an HTML element and sent to the callback
  * function as an argument.
@@ -269,15 +269,15 @@ ArdublocklyServer.requestNewSketchLocation = function(callback) {
  *                             have one argument to receive the new setting as
  *                             an HTML select element.
  */
-ArdublocklyServer.requestArduinoBoards = function(callback) {
-  ArdublocklyServer.ajaxPostForm(
+CublocklyServer.requestArduinoBoards = function(callback) {
+  CublocklyServer.ajaxPostForm(
       'ArduServerCompilerSettings.html',
       'board=get',
       callback);
 };
 
 /**
- * Sends the inputted Arduino Board type to the Ardublockly Server Settings.
+ * Sends the inputted Arduino Board type to the Cublockly Server Settings.
  * The new settings menu for the Board type is then processed into an HTML
  * element and sent to the callback function as an argument.
  * @param {!string} new_board Indicates which board has been selected.
@@ -285,15 +285,15 @@ ArdublocklyServer.requestArduinoBoards = function(callback) {
  *                             have one argument to receive the new setting as
  *                             an HTML select element.
  */
-ArdublocklyServer.setArduinoBoard = function(new_board, callback) {
-  ArdublocklyServer.ajaxPostForm(
+CublocklyServer.setArduinoBoard = function(new_board, callback) {
+  CublocklyServer.ajaxPostForm(
       'ArduServerCompilerSettings.html',
       'board=set&value=' + new_board,
       callback);
 };
 
 /**
- * Request to the Ardublockly Server to return JSON data containing all
+ * Request to the Cublockly Server to return JSON data containing all
  * available serial ports in the computer, and the selected one in the
  * settings. The data is then processed into an HTML element and sent to the
  * callback function as an argument.
@@ -301,15 +301,15 @@ ArdublocklyServer.setArduinoBoard = function(new_board, callback) {
  *                             have one argument to receive the new setting as
  *                             an HTML select element.
  */
-ArdublocklyServer.requestSerialPorts = function(callback) {
-  ArdublocklyServer.ajaxPostForm(
+CublocklyServer.requestSerialPorts = function(callback) {
+  CublocklyServer.ajaxPostForm(
       'ArduServerCompilerSettings.html',
       'serial=get',
       callback);
 };
 
 /**
- * Sends the inputted Serial Port to the Ardublockly Server Settings. The new
+ * Sends the inputted Serial Port to the Cublockly Server Settings. The new
  * settings menu for the Serial Port is then processed into an HTML element
  * and sent to the callback function as an argument.
  * @param {!string} new_port Indicates which port has been selected.
@@ -317,30 +317,30 @@ ArdublocklyServer.requestSerialPorts = function(callback) {
  *                             have one argument to receive the new setting as
  *                             an HTML select element.
  */
-ArdublocklyServer.setSerialPort = function(new_port, callback) {
-  ArdublocklyServer.ajaxPostForm(
+CublocklyServer.setSerialPort = function(new_port, callback) {
+  CublocklyServer.ajaxPostForm(
       'ArduServerCompilerSettings.html',
       'serial=set&value=' + new_port,
       callback);
 };
 
 /**
- * Gets the current IDE setting from the Ardublockly Server settings. The new
+ * Gets the current IDE setting from the Cublockly Server settings. The new
  * settings menu for the IDE options is then processed into an HTML element
  * and sent to the callback function as an argument.
  * @param {!function} callback Callback function for the server request, must
  *                             have one argument to receive the new setting as
  *                             an HTML select element.
  */
-ArdublocklyServer.requestIdeOptions = function(callback) {
-  ArdublocklyServer.ajaxPostForm(
+CublocklyServer.requestIdeOptions = function(callback) {
+  CublocklyServer.ajaxPostForm(
       'ArduServerCompilerSettings.html',
       'ide=get',
       callback);
 };
 
 /**
- * Sends the inputted IDE option to the Ardublockly Server Settings. The new
+ * Sends the inputted IDE option to the Cublockly Server Settings. The new
  * settings menu for the IDE options is then processed into an HTML element
  * and sent to the callback function as an argument.
  * @param {!string} ide_option Indicates which option has been selected.
@@ -348,8 +348,8 @@ ArdublocklyServer.requestIdeOptions = function(callback) {
  *                             have one argument to receive the new setting as
  *                             an HTML select element.
  */
-ArdublocklyServer.setIdeOptions = function(ide_option, callback) {
-  ArdublocklyServer.ajaxPostForm(
+CublocklyServer.setIdeOptions = function(ide_option, callback) {
+  CublocklyServer.ajaxPostForm(
       'ArduServerCompilerSettings.html',
       'ide=set&value=' + ide_option,
       callback);
@@ -357,15 +357,15 @@ ArdublocklyServer.setIdeOptions = function(ide_option, callback) {
 
 
 /**
- * Sends the Arduino code to the ArdublocklyServer to be processed as defined
+ * Sends the Arduino code to the CublocklyServer to be processed as defined
  * by the settings.
  * @param {!string} code Arduino code in a single string format.
  * @param {!function} callback Callback function for the server request, must
  *                             have one argument to receive the new setting as
  *                             an HTML select element.
  */
-ArdublocklyServer.sendSketchToServer = function(code, callback) {
-  ArdublocklyServer.ajaxPostPlain(
+CublocklyServer.sendSketchToServer = function(code, callback) {
+  CublocklyServer.ajaxPostPlain(
       'SendSketch.html',
       code,
       callback);

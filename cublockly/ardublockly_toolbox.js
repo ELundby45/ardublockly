@@ -7,9 +7,9 @@
 'use strict';
 
 /** Create a namespace for the application. */
-var Ardublockly = Ardublockly || {};
+var Cublockly = Cublockly || {};
 
-Ardublockly.TOOLBOX_XML =
+Cublockly.TOOLBOX_XML =
 '<xml>' +
 '  <sep></sep>' +
 '  <category id="catLogic" name="Logic">' +
@@ -92,7 +92,6 @@ Ardublockly.TOOLBOX_XML =
 '      </value>' +
 '    </block>' +
 '    <block type="math_random_float"></block>' +
-'    <block type="base_map"></block>' +
 '  </category>' +
 '  <sep></sep>' +
 '  <sep></sep>' +

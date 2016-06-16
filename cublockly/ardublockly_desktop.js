@@ -3,19 +3,19 @@
  *          http://www.apache.org/licenses/LICENSE-2.0
  *
  * @fileoverview Front end code relevant only to the Desktop version of
-*                Ardublockly.
+*                Cublockly.
  */
 'use strict';
 
 /** Create a namespace for the application. */
-var Ardublockly = Ardublockly || {};
+var Cublockly = Cublockly || {};
 
 /**
  * Checks if the current JavaScript is loaded in the rendered process of
  * Electron. Works even if the node integration is turned off.
- * @return {!boolean} True if Ardublockly running in Electron application
+ * @return {!boolean} True if Cublockly running in Electron application
  */
-Ardublockly.isRunningElectron = function() {
+Cublockly.isRunningElectron = function() {
   return navigator.userAgent.toLowerCase().indexOf('ardublockly') > -1;
 };
 
@@ -27,7 +27,7 @@ Ardublockly.isRunningElectron = function() {
  * is loaded.
  */
 (function loadJsInElectron(){
-  if (Ardublockly.isRunningElectron()) {
+  if (Cublockly.isRunningElectron()) {
     var projectLocator = require('electron').remote.require('./projectlocator.js');
     var projectRoot = projectLocator.getProjectRootPath();
     window.$ = window.jQuery = require(projectRoot +
@@ -38,7 +38,7 @@ Ardublockly.isRunningElectron = function() {
 })();
 
 /** Sets all the elements using the container class to have a width of 100%. */
-Ardublockly.containerFullWidth = function() {
+Cublockly.containerFullWidth = function() {
   var containers = $('.container');
   for (var i = 0; i < containers.length; i++) {
     containers[i].style.width = '100%';
@@ -46,18 +46,18 @@ Ardublockly.containerFullWidth = function() {
 };
 
 /** Hides the side menu button. */
-Ardublockly.hideSideMenuButton = function() {
+Cublockly.hideSideMenuButton = function() {
   var sideMenuButton = document.getElementById('button-collapse');
   sideMenuButton.style.setProperty ('display', 'none', 'important');
 };
 
 /**
- * Launches a materialize modal as a text prompt 
+ * Launches a materialize modal as a text prompt
  * @param {string} message Main text message for the window prompt.
  * @param {string=} defaultValue Input string to be displayed by default.
  * @param {function} callback To process the user input.
  */
-Ardublockly.htmlPrompt = function(message, defaultValue, callback) {
+Cublockly.htmlPrompt = function(message, defaultValue, callback) {
   $('#gen_prompt_message').text('');
   $('#gen_prompt_message').append(message);
   $('#gen_prompt_input').val(defaultValue);
@@ -72,13 +72,13 @@ Ardublockly.htmlPrompt = function(message, defaultValue, callback) {
   window.location.hash = '';
 };
 
-/** Initialize Ardublockly code required for Electron on page load. */
+/** Initialize Cublockly code required for Electron on page load. */
 window.addEventListener('load', function load(event) {
   window.removeEventListener('load', load, false);
-  if (Ardublockly.isRunningElectron()) {
+  if (Cublockly.isRunningElectron()) {
     // Edit the page layout for better appearance on desktop
-    Ardublockly.containerFullWidth();
-    Ardublockly.hideSideMenuButton();
+    Cublockly.containerFullWidth();
+    Cublockly.hideSideMenuButton();
 
     // Prevent browser zoom changes like pinch-to-zoom
     var webFrame = require('electron').webFrame;
@@ -86,6 +86,6 @@ window.addEventListener('load', function load(event) {
 
     // Electron does not offer a prompt, so replace Blocks version with modal
     // Original signature: function(message, opt_defaultInput, opt_callback)
-    Blockly.prompt = Ardublockly.htmlPrompt;
+    Blockly.prompt = Cublockly.htmlPrompt;
   }
 });
