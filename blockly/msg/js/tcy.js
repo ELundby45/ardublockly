@@ -481,12 +481,8 @@ Blockly.Msg.VARIABLES_GET_TOOLTIP = "ಈ ವ್ಯತ್ಯಯೊದ ಮೌಲ�
 Blockly.Msg.VARIABLES_SET = "%1 ಡ್ದು %2 ಮಲ್ಪುಲೆ";
 Blockly.Msg.VARIABLES_SET_CREATE_GET = "'%1' ರಚನೆ ಮಲ್ಪುಲೆ";
 Blockly.Msg.VARIABLES_SET_HELPURL = "https://github.com/google/blockly/wiki/Variables#set";  // untranslated
-<<<<<<< HEAD
-Blockly.Msg.VARIABLES_SET_TOOLTIP = "Sets this variable to be equal to the input.";  // untranslated
-Blockly.Msg.MATH_CHANGE_TITLE_ITEM = Blockly.Msg.VARIABLES_DEFAULT_NAME;
-=======
 Blockly.Msg.VARIABLES_SET_TOOLTIP = "ಉಲಯಿ ಬರ್ಪುನವು ಸಮಪಾಲ್ ಇಪ್ಪುನಂಚ ವ್ಯತ್ಯಾಸೊ ಮಾಲ್ಪು";
->>>>>>> c4b37a894309f7c87159644300b9e050bf0494e6
+Blockly.Msg.MATH_CHANGE_TITLE_ITEM = Blockly.Msg.VARIABLES_DEFAULT_NAME;
 Blockly.Msg.PROCEDURES_DEFRETURN_TITLE = Blockly.Msg.PROCEDURES_DEFNORETURN_TITLE;
 Blockly.Msg.CONTROLS_IF_IF_TITLE_IF = Blockly.Msg.CONTROLS_IF_MSG_IF;
 Blockly.Msg.CONTROLS_WHILEUNTIL_INPUT_DO = Blockly.Msg.CONTROLS_REPEAT_INPUT_DO;
