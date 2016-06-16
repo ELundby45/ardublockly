@@ -118,16 +118,6 @@ Ardublockly.TOOLBOX_XML =
 '        </block>' +
 '      </value>' +
 '    </block>' +
-'    <block type="time_delaymicros">' +
-'      <value name="DELAY_TIME_MICRO">' +
-'        <block type="math_number">' +
-'          <field name="NUM">100</field>' +
-'        </block>' +
-'      </value>' +
-'    </block>' +
-'    <block type="time_millis"></block>' +
-'    <block type="time_micros"></block>' +
-'    <block type="infinite_loop"></block>' +
 '  </category>' +
 '  <sep></sep>' +
 '</xml>';
