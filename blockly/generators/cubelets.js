@@ -126,6 +126,11 @@ Blockly.Cubelets.init = function(workspace) {
   }
 };
 
+Blockly.Cubelets.defaultGlobalVariables = function()
+{
+  return ['block_value', 'FORWARD', 'BACKWARD'];
+}
+
 /**
  * Prepare all generated code to be placed in the sketch specific locations.
  * @param {string} code Generated main program (loop function) code.
@@ -141,6 +146,10 @@ Blockly.Cubelets.finish = function(code) {
     includes.push('\n');
   }
   for (var name in Blockly.Cubelets.variables_) {
+    if(Blockly.Cubelets.defaultGlobalVariables().indexOf(name) > -1)
+    {
+      continue;
+    }
     variables.push(Blockly.Cubelets.variables_[name]);
   }
   if (variables.length) {
