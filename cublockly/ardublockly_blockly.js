@@ -173,6 +173,22 @@ Cublockly.loadSessionStorageBlocks = function() {
     var xml = Blockly.Xml.textToDom(loadOnce);
     Blockly.Xml.domToWorkspace(xml, Cublockly.workspace);
   }
+
+  //If there are not any blocks, load the default
+  if(Blockly.mainWorkspace.getAllBlocks().length < 2)
+  {
+    //TODO: This is ugly
+    var defaultXml = [	'<xml xmlns="http://www.w3.org/1999/xhtml">',
+              '<block type="cubelets_setup" id="2" x="-287" y="-37"></block>',
+              '<block type="cubelets_loop" id="5" x="13" y="-37"></block>',
+              '</xml>']
+
+      var xml = Blockly.Xml.textToDom(defaultXml.join(''));
+
+    Blockly.mainWorkspace.clear();
+    Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xml);
+  }
+
 };
 
 /** Discard all blocks from the workspace. */
@@ -190,6 +206,13 @@ Cublockly.discardAllBlocks = function() {
         function() {
           Cublockly.workspace.clear();
           Cublockly.renderContent();
+          var defaultXml = [	'<xml xmlns="http://www.w3.org/1999/xhtml">',
+            '<block type="cubelets_setup" id="2" x="-287" y="-37"></block>',
+            '<block type="cubelets_loop" id="5" x="13" y="-37"></block>',
+            '</xml>']
+
+          var xml = Blockly.Xml.textToDom(defaultXml.join(''));
+          Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xml);
         });
   }
 };
