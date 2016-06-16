@@ -689,5 +689,4 @@ Blockly.utils.wrapToText_ = function(words, wordBreaks) {
     }
   }
   return text.join('');
->>>>>>> c4b37a894309f7c87159644300b9e050bf0494e6
 };
