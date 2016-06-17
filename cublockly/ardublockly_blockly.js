@@ -194,14 +194,14 @@ Cublockly.loadSessionStorageBlocks = function() {
 /** Discard all blocks from the workspace. */
 Cublockly.discardAllBlocks = function() {
   var blockCount = Cublockly.workspace.getAllBlocks().length;
-  if (blockCount == 1) {
+  if (blockCount <= 1) {
     Cublockly.workspace.clear();
     Cublockly.renderContent();
-  } else if (blockCount > 1) {
+  } else if (blockCount > 2) {
     Cublockly.alertMessage(
         'Delete blocks?',
-        'There are ' + blockCount + ' blocks on the workspace. Are you sure ' +
-        'you want to delete them?',
+        ((blockCount-2) > 1 ? 'There are ' + (blockCount-2) + ' blocks on the workspace. Are you sure ' : 'There is a block on the workspace. Are you sure') +
+        'you want to delete '+((blockCount-2) > 1 ? 'them?' : 'it?'),
         true,
         function() {
           Cublockly.workspace.clear();
