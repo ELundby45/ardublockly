@@ -22,8 +22,13 @@ Blockly.Blocks['cubelets_loop'] = {
 		this.setDeletable(false);
 		this.setColour(275);
 	},
+	
 	getVars : function(){
 		//In here we will declare all global variables specific to Cubelets.
 		return ['block_value'];
-	}
+	},
+
+	getVarType: function(varName) {
+		return Blockly.Types.NUMBER;
+  }
 };
