@@ -104,10 +104,10 @@ Cublockly.TOOLBOX_XML =
 '  <category id="catMath" name="Math/Numbers">' +
 '    <block type="math_number"></block>' +
 '    <block type="math_arithmetic"></block>' +
-'    <block type="math_single"></block>' +
-'    <block type="math_trig"></block>' +
-'    <block type="math_constant"></block>' +
-'    <block type="math_number_property"></block>' +
+//'    <block type="math_single"></block>' +
+//'    <block type="math_trig"></block>' +
+//'    <block type="math_constant"></block>' +
+//'    <block type="math_number_property"></block>' +
 '    <block type="math_change">' +
 '      <value name="DELTA">' +
 '        <block type="math_number">' +
