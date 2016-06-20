@@ -1,0 +1,35 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="cubelets_setup" id="2" deletable="false" x="-287" y="-37">
+    <statement name="setup_do">
+      <block type="set_interval" id="f#b(TS?lR(.GF]W`X4tX">
+        <field name="time_interval">500</field>
+        <field name="callback_name">toggle_block_value</field>
+        <statement name="callback_do">
+          <block type="variables_set" id="6HJ=^;8}wC9Uf,fcLtp;">
+            <field name="VAR">block_value</field>
+            <value name="VALUE">
+              <block type="inverse" id="Xt*GF`.Wdf~=g`Bn~qL_">
+                <value name="inverse_of">
+                  <block type="variables_get" id="Wdd]#|lcf(?ZQQa:Bhlp">
+                    <field name="VAR">block_value</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="cubelets_loop" id="5" deletable="false" x="-286" y="97">
+    <statement name="loop_do">
+      <block type="set_flashlight" id="1kO_O6c?:7E~7w5AA3cQ">
+        <value name="block_value">
+          <block type="variables_get" id="{|w`%]/r3P)!3nsM=Eu_">
+            <field name="VAR">block_value</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+</xml>

@@ -1,0 +1,175 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="cubelets_setup" id="2" deletable="false" x="-291" y="-17">
+    <statement name="setup_do">
+      <block type="variables_set" id="28;oo{()o?:G?rNBIrP%">
+        <field name="VAR">direction_positive</field>
+        <value name="VALUE">
+          <block type="math_number" id="K9@-P8:?`?hfF8xzfdI?">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="*Y5wI,u~+`UV-;=NIYo;">
+            <field name="VAR">current_bar</field>
+            <value name="VALUE">
+              <block type="math_number" id=",:1;)iDpts61D;YTVS5m">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="cubelets_loop" id="5" deletable="false" x="-286" y="97">
+    <statement name="loop_do">
+      <block type="variables_set" id="}*BApdx.zP]_VZzbn`q]">
+        <field name="VAR">block_value</field>
+        <value name="VALUE">
+          <block type="weighted_average" id="]@OZVLs)=p67T7{#`/oL"></block>
+        </value>
+        <next>
+          <block type="controls_if" id="1FsAGxJT*5Lhs*2:)xTP">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="logic_compare" id="|rv?F[9mZfY8Yz9N[jhk">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id="D+!3%8eRIr55i9,~+-!i">
+                    <field name="VAR">direction_positive</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="=lu*yF=hp%4^`sjopohs">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="controls_if" id="IIFK8X6@Ho;HrN4Wf]|_">
+                <mutation else="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="wk[^iy@D4u@A_esXo86]">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="-4O:`H6}#:kVfu-|y~])">
+                        <field name="VAR">current_bar</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="VHvJoc=aIz`9}V.1L]XK">
+                        <field name="NUM">9</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="variables_set" id="iuyH,?T{PfF7KIWLpTq%">
+                    <field name="VAR">direction_positive</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="@1Uq_y{%pn8k%X%]7Q#A">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="math_change" id="ymuy;fZ{5|HxleWVLK08">
+                    <field name="VAR">current_bar</field>
+                    <value name="DELTA">
+                      <block type="math_number" id="fE.g@,!,TL~x,M^UPG*I">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="controls_if" id="SO/MPpl79*.-n|w*S#Wg">
+                <mutation else="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="98S}2)}dO5t/T(-;/BI@">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="pE3DqZzUUmdNWG^h.iqQ">
+                        <field name="VAR">current_bar</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="%o`tX,4B=}2]QvPh1!zv">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="variables_set" id="yX0-7lY82sRwGpbMQ`5%">
+                    <field name="VAR">direction_positive</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="c=UQk!@LN,(IVFv+dT}F">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="math_change" id="=KCdF^s(u`SkiZihHM0w">
+                    <field name="VAR">current_bar</field>
+                    <value name="DELTA">
+                      <block type="math_number" id="r]r?krTx~q+2@:X9eS]@">
+                        <field name="NUM">-1</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+            <next>
+              <block type="set_actuator_value" id="=nojq1IF!ETZ}7^m]*ry">
+                <value name="actuator_value">
+                  <block type="math_number" id="06s74I_G-7C1b8#KHS~#">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="set_bar" id="b*NGSed*9*IC1;MwxZeN">
+                    <value name="bar_index">
+                      <block type="variables_get" id="i;8,bP{Ndo@m4w@-(PkH">
+                        <field name="VAR">current_bar</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="time_delay" id="xJ@9Mk-FOCm84]ovm~M8">
+                        <value name="DELAY_TIME_MILI">
+                          <block type="math_arithmetic" id="HrJ2@fbvj`m%V`gZe-W4">
+                            <field name="OP">ADD</field>
+                            <value name="A">
+                              <block type="inverse" id="y2t)sZgeNw5j}{h9hU}n">
+                                <value name="inverse_of">
+                                  <block type="variables_get" id="#nTHwxl!Ze`I/RfrRCo3">
+                                    <field name="VAR">block_value</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="izzu+xeT:#~_kL}u2o)6">
+                                <field name="NUM">15</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

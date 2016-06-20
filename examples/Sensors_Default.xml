@@ -1,0 +1,13 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="cubelets_setup" id="2" deletable="false" x="-287" y="-37"></block>
+  <block type="cubelets_loop" id="5" deletable="false" x="13" y="-37">
+    <statement name="loop_do">
+      <block type="variables_set" id="i]Eh?[A.NbX9EH%=7xcM">
+        <field name="VAR">block_value</field>
+        <value name="VALUE">
+          <block type="get_sensor_value" id="cBAM[`fn;;e~-R:zX9u-"></block>
+        </value>
+      </block>
+    </statement>
+  </block>
+</xml>

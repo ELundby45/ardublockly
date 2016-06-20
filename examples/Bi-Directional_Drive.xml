@@ -1,0 +1,110 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="cubelets_setup" id="2" deletable="false" x="-287" y="-37"></block>
+  <block type="cubelets_loop" id="5" deletable="false" x="-286" y="52">
+    <statement name="loop_do">
+      <block type="variables_set" id="i]Eh?[A.NbX9EH%=7xcM">
+        <field name="VAR">block_value</field>
+        <value name="VALUE">
+          <block type="weighted_average" id="RS:23EZu4K[FoKB_]469"></block>
+        </value>
+        <next>
+          <block type="controls_if" id="n[]B5RCsfrAJ2/S(UtOO">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="logic_compare" id="1EwXNCo]hnJ9f7Cy~GI`">
+                <field name="OP">LT</field>
+                <value name="A">
+                  <block type="variables_get" id="G~AqyOgo~Un5b_^KEe9)">
+                    <field name="VAR">block_value</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="YA;#Kxd]o@V04!{bu+4M">
+                    <field name="NUM">128</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="set_direction_reverse" id="YVis1Foo5^I@6Zs%`^{C">
+                <next>
+                  <block type="variables_set" id="`TfI9pVMrYymwjeX+kl-">
+                    <field name="VAR">block_value</field>
+                    <value name="VALUE">
+                      <block type="math_arithmetic" id="+3RG=4,[T/%+1p#mTSHS">
+                        <field name="OP">MULTIPLY</field>
+                        <value name="A">
+                          <block type="math_number" id="us7?)J]`M2X`JA(-eC[n">
+                            <field name="NUM">2</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_arithmetic" id="XaX8d|iT6|8X8lPwnO(s">
+                            <field name="OP">MINUS</field>
+                            <value name="A">
+                              <block type="math_number" id="OS*F%|cYG:iEKyYqeTJ1">
+                                <field name="NUM">127</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id="-ab5u|yHkKGl*36yeGnx">
+                                <field name="VAR">block_value</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="set_direction_forward" id="S+9vn6mPv:IESNJ8_loL">
+                <next>
+                  <block type="variables_set" id="]}`P#o;MR?bX?geIKq,0">
+                    <field name="VAR">block_value</field>
+                    <value name="VALUE">
+                      <block type="math_arithmetic" id="*:(@2KvMe,Nl}MwQq%rx">
+                        <field name="OP">MULTIPLY</field>
+                        <value name="A">
+                          <block type="math_number" id="uh6e!|40=q;.Nom+UL:9">
+                            <field name="NUM">2</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_arithmetic" id="|xueFlX9A*elvh]A@_{t">
+                            <field name="OP">MINUS</field>
+                            <value name="A">
+                              <block type="variables_get" id="EX}Nmm)(sGa-FDbHst1I">
+                                <field name="VAR">block_value</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="EEz{L1:`Gv#~`ptR?bi(">
+                                <field name="NUM">128</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="set_actuator_value" id="^EpYGb1aF|nLA%2GdLe[">
+                <value name="actuator_value">
+                  <block type="variables_get" id=",BJ.Iv#^H:KK8T)~K4#d">
+                    <field name="VAR">block_value</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

@@ -387,11 +387,11 @@ Blockly.Cubelets.getCubeletsType_ = function(typeBlockly) {
     case Blockly.Types.DECIMAL.typeId:
       return 'float';
     case Blockly.Types.TEXT.typeId:
-      return 'String';
+      return 'char*';
     case Blockly.Types.CHARACTER.typeId:
       return 'char';
     case Blockly.Types.BOOLEAN.typeId:
-      return 'boolean';
+      return 'bool';
     case Blockly.Types.NULL.typeId:
       return 'void';
     case Blockly.Types.UNDEF.typeId:

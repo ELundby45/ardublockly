@@ -71,23 +71,23 @@ Cublockly.bindActionFunctions = function() {
   //  $('.button-collapse').sideNav('hide');
   //});
   Cublockly.bindClick_('menu_example_1', function() {
-    Cublockly.loadServerXmlFile('../examples/blink.xml');
+    Cublockly.loadServerXmlFile('../examples/Actions_Default.xml');
     $('.button-collapse').sideNav('hide');
   });
   Cublockly.bindClick_('menu_example_2', function() {
-    Cublockly.loadServerXmlFile('../examples/serial_print_ascii_.xml');
+    Cublockly.loadServerXmlFile('../examples/Sensors_Default.xml');
     $('.button-collapse').sideNav('hide');
   });
   Cublockly.bindClick_('menu_example_3', function() {
-    Cublockly.loadServerXmlFile('../examples/serial_repeat_game.xml');
+    Cublockly.loadServerXmlFile('../examples/Flashlight_Strobe.xml');
     $('.button-collapse').sideNav('hide');
   });
   Cublockly.bindClick_('menu_example_4', function() {
-    Cublockly.loadServerXmlFile('../examples/servo_knob.xml');
+    Cublockly.loadServerXmlFile('../examples/Bi-Directional_Drive.xml');
     $('.button-collapse').sideNav('hide');
   });
   Cublockly.bindClick_('menu_example_5', function() {
-    Cublockly.loadServerXmlFile('../examples/stepper_knob.xml');
+    Cublockly.loadServerXmlFile('../examples/Bar_Graph_Pong.xml');
     $('.button-collapse').sideNav('hide');
   });
 
