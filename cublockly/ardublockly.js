@@ -31,10 +31,10 @@ Cublockly.init = function() {
   // Inject Blockly into content_blocks and fetch additional blocks
   Cublockly.injectBlockly(document.getElementById('content_blocks'),
       Cublockly.TOOLBOX_XML, '../blockly/');
-  Cublockly.importExtraBlocks();
+  //Cublockly.importExtraBlocks();
 
   Cublockly.designJsInit();
-  Cublockly.initialiseIdeButtons();
+  //Cublockly.initialiseIdeButtons();
 
   Cublockly.bindDesignEventListeners();
   Cublockly.bindActionFunctions();
