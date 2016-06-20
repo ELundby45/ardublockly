@@ -50,7 +50,7 @@ Cublockly.init = function() {
 Cublockly.bindActionFunctions = function() {
   // Navigation buttons
   Cublockly.bindClick_('button_load', Cublockly.loadUserXmlFile);
-  Cublockly.bindClick_('button_save', Cublockly.saveXmlFile);
+  Cublockly.bindClick_('button_save', Cublockly.saveFile);
   Cublockly.bindClick_('button_delete', Cublockly.discardAllBlocks);
 
   // Side menu buttons, they also close the side menu
@@ -393,6 +393,22 @@ Cublockly.loadUserXmlFile = function() {
 };
 
 /**
+  Saves an XML file if the XML category is selected. Saves a Cubelets file
+  if Cubelets Code category is selected.
+*/
+Cublockly.saveFile = function()
+{
+  if(jQuery(".collapsible-header.active").attr('id') === "xml_collapsible_header")
+  {
+    Cublockly.saveXmlFile()
+  }
+  else
+  {
+    Cublockly.saveSketchFile();
+  }
+}
+
+/**
  * Creates an XML file containing the blocks from the Blockly workspace and
  * prompts the users to save it into their local file system.
  */
@@ -409,7 +425,7 @@ Cublockly.saveXmlFile = function() {
  */
 Cublockly.saveSketchFile = function() {
   Cublockly.saveTextFileAs(
-      document.getElementById('sketch_name').value + '.ino',
+      document.getElementById('sketch_name').value + '.c',
       Cublockly.generateArduino());
 };
 
