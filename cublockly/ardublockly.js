@@ -66,10 +66,10 @@ Cublockly.bindActionFunctions = function() {
     Cublockly.discardAllBlocks();
     $('.button-collapse').sideNav('hide');
   });
-  Cublockly.bindClick_('menu_settings', function() {
-    Cublockly.openSettings();
-    $('.button-collapse').sideNav('hide');
-  });
+  //Cublockly.bindClick_('menu_settings', function() {
+  //  Cublockly.openSettings();
+  //  $('.button-collapse').sideNav('hide');
+  //});
   Cublockly.bindClick_('menu_example_1', function() {
     Cublockly.loadServerXmlFile('../examples/blink.xml');
     $('.button-collapse').sideNav('hide');
