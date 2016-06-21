@@ -33,12 +33,12 @@ Blockly.Blocks['set_bar'] = {
   init: function() {
     this.appendValueInput("bar_index")
         .setCheck("Number")
-        .appendField("set bar");
+        .appendField("set bar graph led");
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(30);
-    this.setTooltip('');
+    this.setTooltip('Turns an individual LED on on a Bar Graph Cubelet. Pass in a number 0-9');
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -47,12 +47,12 @@ Blockly.Blocks['clear_bar'] = {
   init: function() {
     this.appendValueInput("bar_index")
         .setCheck("Number")
-        .appendField("clear bar");
+        .appendField("clear bar graph led");
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(30);
-    this.setTooltip('');
+    this.setTooltip('Turns an individual LED off on a Bar Graph Cubelet. Pass in a number 0-9');
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -60,10 +60,10 @@ Blockly.Blocks['clear_bar'] = {
 Blockly.Blocks['toggle_directions'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("toggle directions()");
+        .appendField("toggle motor direction");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setTooltip('');
+    this.setTooltip('Can be used only on Rotate or Drive Cubelets.');
     this.setColour(30);
     this.setHelpUrl('http://www.example.com/');
   }
@@ -72,10 +72,10 @@ Blockly.Blocks['toggle_directions'] = {
 Blockly.Blocks['set_direction_forward'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("set_direction_forward()");
+        .appendField("set motor direction forward");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setTooltip('');
+    this.setTooltip('Can be used only on Rotate or Drive Cubelets.');
     this.setColour(30);
     this.setHelpUrl('http://www.example.com/');
   }
@@ -84,10 +84,10 @@ Blockly.Blocks['set_direction_forward'] = {
 Blockly.Blocks['set_direction_reverse'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("set_direction_reverse()");
+        .appendField("set motor direction reverse");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setTooltip('');
+    this.setTooltip('Can be used only on Rotate or Drive Cubelets.');
     this.setColour(30);
     this.setHelpUrl('http://www.example.com/');
   }

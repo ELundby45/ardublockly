@@ -18,7 +18,7 @@ Cublockly.TOOLBOX_XML =
 '  <sep></sep>' +
 '  <category id="catActing" name="Acting">' +
 '    <block type="set_actuator_value"></block>' +
-'    <block type="set_flashlight"></block>' +
+//'    <block type="set_flashlight"></block>' +
 '    <block type="set_bar">' +
 '        <value name="bar_index">' +
 '          <block type="math_number">' +
@@ -101,7 +101,7 @@ Cublockly.TOOLBOX_XML =
 '    <block type="controls_flow_statements"></block>' +
 '  </category>' +
 '  <sep></sep>' +
-'  <category id="catMath" name="Math/Numbers">' +
+'  <category id="catMathNum" name="Math/Numbers">' +
 '    <block type="math_number"></block>' +
 '    <block type="math_arithmetic"></block>' +
 //'    <block type="math_single"></block>' +
