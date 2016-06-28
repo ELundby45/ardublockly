@@ -15,7 +15,7 @@ Blockly.Cubelets.set_block_value = function(block) {
 };
 
 Blockly.Cubelets.get_block_value = function(block) {
- var value_id = block.getFieldValue('ID')
+ var value_id = Blockly.Cubelets.valueToCode(block, 'ID', Blockly.Cubelets.ORDER_ATOMIC);
  value_id = value_id || 0;
  return ['get_block_value(' + value_id + ')', Blockly.Cubelets.ORDER_ATOMIC]
 };
