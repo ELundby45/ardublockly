@@ -39,6 +39,8 @@ Cublockly.init = function() {
   Cublockly.bindDesignEventListeners();
   Cublockly.bindActionFunctions();
   Cublockly.bindBlocklyEventListeners();
+
+  window.dispatchEvent(new Event('resize'));
 };
 
 /** Binds functions to each of the buttons, nav links, and related. */

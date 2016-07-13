@@ -49,14 +49,14 @@ body {
 #blocks_panel {
   padding: 0px;
   position: relative !important;
-  min-height: 480px;
+  /*min-height: 480px;*/
   height: 100vh;
 }
 
 #content_blocks {
   margin: 0;
   padding: 0;
-  min-height: 480px;
+  /*min-height: 480px;*/
   height: -moz-calc(100vh - 190px);     /* Firefox  */
   height: -webkit-calc(100vh - 190px);  /* WebKit   */
   height: -o-calc(100vh - 190px);       /* Opera    */
@@ -72,7 +72,7 @@ body {
   font-size: smaller;
   overflow: scroll;
   font-style: 0.2em !important;
-  min-height: 384px;
+  /*min-height: 384px;*/
 }
 .content_xml_large {
   height: -moz-calc(100vh - 286px);     /* Firefox  */
@@ -102,7 +102,7 @@ body {
   -webkit-user-select: text;
   -ms-user-select: text;
   user-select: text;
-  min-height: 388px;
+  /*min-height: 388px;*/
 }
 .content_arduino_large {
   height: -moz-calc(100vh - 280px);     /* Firefox  */
