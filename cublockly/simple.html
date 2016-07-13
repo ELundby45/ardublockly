@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#00878F">
+  <link rel="icon" href="img/favicon.ico">
+  <title>Cublockly</title>
+
+  <!-- Materialize, Prettify, and Cublockly CSS -->
+  <!--<link rel="stylesheet" href="materialize/materialize.css" media="screen,projection">-->
+  <link rel="stylesheet" href="prettify/arduino.css">
+  <link rel="stylesheet" href="cublockly.css" media="screen,projection">
+
+  <!-- Cublockly - These three files contain the compress version
+  <script src="../blockly/blockly_compressed.js"></script>
+  <script src="../blockly/blocks_compressed.js"></script>
+  <script src="../blockly/cubelets_compressed.js"></script> -->
+  <!-- To use the uncompressed version comment out the above and comment in the ones below -->
+  <script src="../blockly/blockly_uncompressed.js"></script>
+  <script src="../blockly/blocks/component_variable.js"></script>
+  <script src="../blockly/blocks/logic.js"></script>
+  <script src="../blockly/blocks/loops.js"></script>
+  <script src="../blockly/blocks/math.js"></script>
+  <script src="../blockly/blocks/text.js"></script>
+  <script src="../blockly/blocks/lists.js"></script>
+  <script src="../blockly/blocks/colour.js"></script>
+  <script src="../blockly/blocks/variables.js"></script>
+  <script src="../blockly/blocks/procedures.js"></script>
+  <script src="../blockly/blocks/cubelets/acting.js"></script>
+  <script src="../blockly/blocks/cubelets/cubelets.js"></script>
+  <script src="../blockly/blocks/cubelets/messaging.js"></script>
+  <script src="../blockly/blocks/cubelets/procedures.js"></script>
+  <script src="../blockly/blocks/cubelets/sensing.js"></script>
+  <script src="../blockly/blocks/cubelets/thinking.js"></script>
+  <script src="../blockly/blocks/cubelets/time.js"></script>
+  <script src="../blockly/blocks/cubelets/variables.js"></script>
+  <script src="../blockly/generators/cubelets.js"></script>
+  <script src="../blockly/generators/cubelets/acting.js"></script>
+  <script src="../blockly/generators/cubelets/cubelets.js"></script>
+  <script src="../blockly/generators/cubelets/lists.js"></script>
+  <script src="../blockly/generators/cubelets/logic.js"></script>
+  <script src="../blockly/generators/cubelets/loops.js"></script>
+  <script src="../blockly/generators/cubelets/math.js"></script>
+  <script src="../blockly/generators/cubelets/messaging.js"></script>
+  <script src="../blockly/generators/cubelets/procedures.js"></script>
+  <script src="../blockly/generators/cubelets/sensing.js"></script>
+  <script src="../blockly/generators/cubelets/thinking.js"></script>
+  <script src="../blockly/generators/cubelets/time.js"></script>
+  <script src="../blockly/generators/cubelets/variables.js"></script>
+
+  <!-- Default language js files, user selection appended to head on load -->
+  <script src="../blockly/msg/js/en.js"></script>
+  <script src="msg/en.js"></script>
+</head>
+
+<body>
+  <!-- Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m12 l12" style="position:relative">
+        <!-- Blockly Panel -->
+        <div class="card-panel white" style="padding: 0">
+          <div id="blocks_panel" class="content blocks_panel_large">
+            <div id="content_blocks" class="content z-depth-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery and Materialize JS -->
+  <script src="js_libs/jquery-2.1.3.min.js"></script>
+  <!--<script src="materialize/materialize.js"></script>-->
+  <!-- FileSaver JS -->
+  <script src="js_libs/FileSaver.min.js"></script>
+  <!-- JS Diff -->
+  <script src="js_libs/diff.js"></script>
+  <!-- Prettify JS -->
+  <script src="prettify/prettify.js"></script>
+  <!-- Cublockly app -->
+  <script src="Cublockly_design.js"></script>
+  <script src="ardublockly_toolbox.js"></script>
+  <script src="ardublockly_blockly.js"></script>
+  <script src="cublockly.js"></script>
+  <script>
+    window.addEventListener('load', function load(event) {
+      window.removeEventListener('load', load, false);
+      Cublockly.init();
+    });
+  </script>
+</body>
+</html>
