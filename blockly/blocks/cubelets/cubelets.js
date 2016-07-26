@@ -15,7 +15,7 @@ Blockly.Blocks['cubelets_setup'] = {
 
 Blockly.Blocks['cubelets_loop'] = {
 	init : function() {
-		this.appendDummyInput().appendField("loop");
+		this.appendDummyInput().appendField("forever");
 		this.appendStatementInput("loop_do").appendField("do");
 		this.setTooltip('Put your main routine in here. It will run over and over.');
 		this.setHelpUrl('http://www.example.com/');
