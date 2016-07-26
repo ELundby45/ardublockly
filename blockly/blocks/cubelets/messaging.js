@@ -2,10 +2,12 @@ goog.provide('Blockly.Blocks.messaging');
 
 goog.require('Blockly.Blocks');
 
+Blockly.Blocks.messaging.HUE = 206;
+
 Blockly.Blocks['set_block_value'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
-    this.setColour(60);
+    this.setColour(Blockly.Blocks.messaging.HUE);
     this.appendValueInput("block_value")
         .setCheck("Number")
         .appendField("set block value to");
@@ -26,7 +28,7 @@ Blockly.Blocks['get_block_value'] = {
         .appendField("get block value for block with ID");
     this.setInputsInline(true);
     this.setOutput(true, "Number");
-    this.setColour(65);
+    this.setColour(Blockly.Blocks.messaging.HUE);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }

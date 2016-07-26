@@ -2,9 +2,11 @@ goog.provide('Blockly.Blocks.thinking');
 
 goog.require('Blockly.Blocks');
 
+Blockly.Blocks.thinking.HUE = 120;
+
 Blockly.Blocks['weighted_average'] = {
   init: function() {
-  	this.setColour(45);
+  	this.setColour(Blockly.Blocks.thinking.HUE);
     this.appendDummyInput()
         .appendField("weighted average");
     this.setOutput(true, Blockly.Types.NUMBER.output);
@@ -18,7 +20,7 @@ Blockly.Blocks['weighted_average'] = {
 
 Blockly.Blocks['maximum'] = {
   init: function() {
-  	this.setColour(45);
+  	this.setColour(Blockly.Blocks.thinking.HUE);
     this.appendDummyInput()
         .appendField("maximum");
     this.setOutput(true, Blockly.Types.NUMBER.output);
@@ -32,7 +34,7 @@ Blockly.Blocks['maximum'] = {
 
 Blockly.Blocks['minimum'] = {
   init: function() {
-  	this.setColour(45);
+  	this.setColour(Blockly.Blocks.thinking.HUE);
     this.appendDummyInput()
         .appendField("minimum");
     this.setOutput(true, Blockly.Types.NUMBER.output);
@@ -46,7 +48,7 @@ Blockly.Blocks['minimum'] = {
 
 Blockly.Blocks['inverse'] = {
   init: function() {
-  	this.setColour(45);
+  	this.setColour(Blockly.Blocks.thinking.HUE);
     this.appendValueInput("inverse_of")
         .setCheck("Number")
         .appendField("inverse of");

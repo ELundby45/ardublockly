@@ -9,7 +9,7 @@ Blockly.Blocks['cubelets_setup'] = {
 		this.setTooltip('Put code in in here that you want to execute once.');
 		this.setHelpUrl('http://www.example.com/');
 		this.setDeletable(false);
-		this.setColour(275);
+		//this.setColour(275);
 	}
 };
 
@@ -20,9 +20,9 @@ Blockly.Blocks['cubelets_loop'] = {
 		this.setTooltip('Put your main routine in here. It will run over and over.');
 		this.setHelpUrl('http://www.example.com/');
 		this.setDeletable(false);
-		this.setColour(275);
+		//this.setColour(275);
 	},
-	
+
 	getVars : function(){
 		//In here we will declare all global variables specific to Cubelets.
 		return ['block_value'];

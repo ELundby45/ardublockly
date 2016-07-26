@@ -144,7 +144,6 @@ Cublockly.TOOLBOX_XML =
 '    <block type="math_random_float"></block>' +
 '  </category>' +
 '  <sep></sep>' +
-'  <sep></sep>' +
 '  <category id="catVariables" name="Variables">' +
 '    <block type="variables_get"></block>' +
 '    <block type="variables_set"></block>' +
@@ -157,7 +156,5 @@ Cublockly.TOOLBOX_XML =
 '  </category>' +
 '  <sep></sep>' +
 '  <category id="catFunctions" name="Functions" custom="PROCEDURE"></category>' +
-'  <sep></sep>' +
-'  <sep></sep>' +
 '  <sep></sep>' +
 '</xml>';

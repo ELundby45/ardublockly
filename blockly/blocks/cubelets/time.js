@@ -17,7 +17,7 @@ goog.require('Blockly.Types');
 
 
 /** Common HSV hue for all blocks in this category. */
-Blockly.Blocks.time.HUE = 140;
+Blockly.Blocks.time.HUE = 155;
 
 Blockly.Blocks['time_delay'] = {
   /**
@@ -27,7 +27,7 @@ Blockly.Blocks['time_delay'] = {
   init: function() {
     this.setHelpUrl('http://arduino.cc/en/Reference/Delay');
     //this.setColour(Blockly.Blocks.time.HUE);
-    this.setColour(180);
+    this.setColour(Blockly.Blocks.time.HUE);
     this.appendValueInput('DELAY_TIME_MILI')
         .setCheck(Blockly.Types.NUMBER.checkList)
         .appendField(Blockly.Msg.ARD_TIME_DELAY);
@@ -42,7 +42,7 @@ Blockly.Blocks['time_delay'] = {
 
 Blockly.Blocks['set_interval'] = {
   init: function() {
-  	this.setColour(180);
+  	this.setColour(Blockly.Blocks.time.HUE);
     this.appendDummyInput()
         .appendField("every")
         .appendField(new Blockly.FieldTextInput("100"), "time_interval")
@@ -60,7 +60,7 @@ Blockly.Blocks['set_interval'] = {
 
 Blockly.Blocks['set_timeout'] = {
   init: function() {
-  	this.setColour(180);
+  	this.setColour(Blockly.Blocks.time.HUE);
     this.appendDummyInput()
         .appendField("after")
         .appendField(new Blockly.FieldTextInput("100"), "time_interval")

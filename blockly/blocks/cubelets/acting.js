@@ -2,9 +2,11 @@ goog.provide('Blockly.Blocks.acting');
 
 goog.require('Blockly.Blocks');
 
+Blockly.Blocks.acting.HUE = 53;
+
 Blockly.Blocks['set_actuator_value'] = {
   init: function() {
-  	this.setColour(30);
+  	this.setColour(Blockly.Blocks.acting.HUE);
     this.appendValueInput("actuator_value")
         .setCheck("Number")
         .appendField("set actuator value to");
@@ -23,7 +25,7 @@ Blockly.Blocks['set_flashlight'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setColour(30);
+    this.setColour(Blockly.Blocks.acting.HUE);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
@@ -37,7 +39,7 @@ Blockly.Blocks['set_bar'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setColour(30);
+    this.setColour(Blockly.Blocks.acting.HUE);
     this.setTooltip('Turns an individual LED on on a Bar Graph Cubelet. Pass in a number 0-9');
     this.setHelpUrl('http://www.example.com/');
   }
@@ -51,7 +53,7 @@ Blockly.Blocks['clear_bar'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setColour(30);
+    this.setColour(Blockly.Blocks.acting.HUE);
     this.setTooltip('Turns an individual LED off on a Bar Graph Cubelet. Pass in a number 0-9');
     this.setHelpUrl('http://www.example.com/');
   }
@@ -64,7 +66,7 @@ Blockly.Blocks['toggle_directions'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip('Can be used only on Rotate or Drive Cubelets.');
-    this.setColour(30);
+    this.setColour(Blockly.Blocks.acting.HUE);
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -76,7 +78,7 @@ Blockly.Blocks['set_direction_forward'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip('Can be used only on Rotate or Drive Cubelets.');
-    this.setColour(30);
+    this.setColour(Blockly.Blocks.acting.HUE);
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -88,7 +90,7 @@ Blockly.Blocks['set_direction_reverse'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip('Can be used only on Rotate or Drive Cubelets.');
-    this.setColour(30);
+    this.setColour(Blockly.Blocks.acting.HUE);
     this.setHelpUrl('http://www.example.com/');
   }
 };
