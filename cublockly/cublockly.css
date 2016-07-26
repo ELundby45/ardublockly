@@ -717,3 +717,8 @@ ul.side-nav li ul li ul li {
   width: 100% !important;
   background-color: white !important;
 }
+
+.blocklyTreeIcon
+{
+  visibility: hidden !important;
+}
