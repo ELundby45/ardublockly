@@ -61,6 +61,8 @@ Blockly.Cubelets['procedures_defreturn'] = function(block) {
   // Construct code
   var code = returnType + ' ' + funcName + '(' + args.join(', ') + ') {\n' +
       branch + returnValue + '}';
+  var forwardDeclartion = returnType + ' ' + funcName + '(' + args.join(', ') + ');';
+  Blockly.Cubelets.addInclude("function_"+funcName, forwardDeclartion)
   code = Blockly.Cubelets.scrub_(block, code);
   Blockly.Cubelets.userFunctions_[funcName] = code;
   return null;
