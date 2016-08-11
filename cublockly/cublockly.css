@@ -598,10 +598,10 @@ body {
   box-sizing: content-box !important;
 }
 .blocklyTreeSelected {
-  background-color: #E47128 !important;  /* arduino orange */
+  background-color: #F58130 !important;  /* arduino orange */
 }
 .blocklyTreeRow:not(.blocklyTreeSelected):hover {
-  background-color: rgba(255, 204, 51, 1) !important;  /* arduino yellow */
+  background-color: #399F66 !important;  /* cubelet yellow */
 }
 .blocklyTreeLabel {
 }
