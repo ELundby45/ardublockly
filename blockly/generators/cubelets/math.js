@@ -331,6 +331,10 @@ Blockly.Cubelets['math_random_int'] = function(block) {
       '}'];
   var funcName = Blockly.Cubelets.addFunction('mathRandomInt', func.join('\n'));
   var code = funcName + '(' + argument0 + ', ' + argument1 + ')';
+
+  var forwardDeclartion = 'int ' + funcName + '(int min, int max);';
+  Blockly.Cubelets.addInclude("function_"+funcName, forwardDeclartion)
+
   return [code, Blockly.Cubelets.ORDER_UNARY_POSTFIX];
 };
 
