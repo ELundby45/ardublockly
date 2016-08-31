@@ -14,6 +14,7 @@ goog.provide('Blockly.Cubelets.loops');
 
 goog.require('Blockly.Cubelets');
 
+var CUBELETS_SYSTEM_LOOP = '   system_loop(); \n ';
 
 /**
  * Generator for the repeat block (number in a drop down) using a For loop
@@ -31,6 +32,7 @@ Blockly.Cubelets['controls_repeat'] = function(block) {
   var code = 'for (int ' + loopVar + ' = 0; ' +
       loopVar + ' < ' + repeats + '; ' +
       loopVar + '++) {\n' +
+      CUBELETS_SYSTEM_LOOP +
       branch + '}\n';
   return code;
 };
@@ -59,6 +61,7 @@ Blockly.Cubelets['controls_repeat_ext'] = function(block) {
   code += 'for (int ' + loopVar + ' = 0; ' +
       loopVar + ' < ' + endVar + '; ' +
       loopVar + '++) {\n' +
+      CUBELETS_SYSTEM_LOOP +
       branch + '}\n';
   return code;
 };
@@ -83,7 +86,7 @@ Blockly.Cubelets['controls_whileUntil'] = function(block) {
     }
     argument0 = '!' + argument0;
   }
-  return 'while (' + argument0 + ') {\n' + branch + '}\n';
+  return 'while (' + argument0 + ') {\n' + CUBELETS_SYSTEM_LOOP + branch + '}\n';
 };
 
 /**
@@ -103,6 +106,7 @@ Blockly.Cubelets['controls_for'] = function(block) {
       Blockly.Cubelets.ORDER_ASSIGNMENT) || '1';
   var branch = Blockly.Cubelets.statementToCode(block, 'DO');
   branch = Blockly.Cubelets.addLoopTrap(branch, block.id);
+  branch = CUBELETS_SYSTEM_LOOP + branch
   var code;
   if (Blockly.isNumber(argument0) && Blockly.isNumber(argument1) &&
       Blockly.isNumber(increment)) {
