@@ -368,7 +368,7 @@ Blockly.Blocks['math_change'] = {
    * @return {string} String to indicate the variable type.
    */
   getVarType: function(varName) {
-    return Blockly.Types.NUMBER;
+    return Blockly.Types.NUMBER.checkList;
   }
 };
 
