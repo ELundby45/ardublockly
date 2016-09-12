@@ -46,8 +46,25 @@ Cublockly.TOOLBOX_XML =
 '  </category>' +
 '  <sep></sep>' +
 '  <category name="Messaging">' +
-'    <block type="get_block_value"></block>' +
-'    <block type="set_block_value"></block>' +
+'    <block type="get_block_value">' +
+'       <value name="ID">' +
+'          <block type="math_number">' +
+'              <field name="NUM"></field>' +
+'          </block>' +
+'       </value>' +
+'    </block>' +
+'    <block type="set_block_value">' +
+'       <value name="block_value">' +
+'          <block type="math_number">' +
+'              <field name="NUM">255</field>' +
+'          </block>' +
+'       </value>' +
+'       <value name="ID">' +
+'          <block type="math_number">' +
+'              <field name="NUM">0</field>' +
+'          </block>' +
+'       </value>' +
+'    </block>' +
 '  </category>' +
 '  <sep></sep>' +
 '  <category id="catTiming" name="Timing">' +

@@ -12,7 +12,7 @@ Blockly.Blocks['set_block_value'] = {
         .setCheck("Number")
         .appendField("set block value to");
     this.appendValueInput("ID")
-        .setCheck("Number")
+        .setCheck(Blockly.Types.NUMBER.checkList)
         .appendField("for id");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
