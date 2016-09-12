@@ -31,5 +31,8 @@ Blockly.Blocks['get_block_value'] = {
     this.setColour(Blockly.Blocks.messaging.HUE);
     this.setTooltip('Retrieve the block value of another Cubelet based on its ID.');
     //this.setHelpUrl('http://www.example.com/');
+  },
+  getBlockType: function() {
+    return Blockly.Types.NUMBER;
   }
 };
