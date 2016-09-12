@@ -11,7 +11,7 @@ Blockly.Blocks['get_sensor_value'] = {
     this.setOutput(true, Blockly.Types.NUMBER.output);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.sensing.HUE);
-    this.setHelpUrl('http://www.example.com/');
+    //this.setHelpUrl('http://www.example.com/');
   },
   getBlockType: function() {
     return Blockly.Types.NUMBER;

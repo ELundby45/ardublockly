@@ -41,7 +41,7 @@ Blockly.Blocks['math_number'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setHelpUrl(Blockly.Msg.MATH_NUMBER_HELPURL);
+    //this.setHelpUrl(Blockly.Msg.MATH_NUMBER_HELPURL);
     this.setColour(Blockly.Blocks.math.HUE);
     this.appendDummyInput()
         .appendField(
@@ -101,7 +101,7 @@ Blockly.Blocks['math_arithmetic'] = {
       "inputsInline": true,
       "output": Blockly.Types.NUMBER.output,
       "colour": Blockly.Blocks.math.HUE,
-      "helpUrl": Blockly.Msg.MATH_ARITHMETIC_HELPURL
+      //"helpUrl": Blockly.Msg.MATH_ARITHMETIC_HELPURL
     });
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
@@ -150,7 +150,7 @@ Blockly.Blocks['math_single'] = {
       ],
       "output": Blockly.Types.DECIMAL.output,
       "colour": Blockly.Blocks.math.HUE,
-      "helpUrl": Blockly.Msg.MATH_SINGLE_HELPURL
+      //"helpUrl": Blockly.Msg.MATH_SINGLE_HELPURL
     });
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
@@ -203,7 +203,7 @@ Blockly.Blocks['math_trig'] = {
       ],
       "output": Blockly.Types.DECIMAL.output,
       "colour": Blockly.Blocks.math.HUE,
-      "helpUrl": Blockly.Msg.MATH_TRIG_HELPURL
+      //"helpUrl": Blockly.Msg.MATH_TRIG_HELPURL
     });
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
@@ -251,7 +251,7 @@ Blockly.Blocks['math_constant'] = {
       "output": Blockly.Types.DECIMAL.output,
       "colour": Blockly.Blocks.math.HUE,
       "tooltip": Blockly.Msg.MATH_CONSTANT_TOOLTIP,
-      "helpUrl": Blockly.Msg.MATH_CONSTANT_HELPURL
+      //"helpUrl": Blockly.Msg.MATH_CONSTANT_HELPURL
     });
   }
 };
@@ -352,7 +352,7 @@ Blockly.Blocks['math_change'] = {
       "previousStatement": null,
       "nextStatement": null,
       "colour": Blockly.Blocks.math.HUE,
-      "helpUrl": Blockly.Msg.MATH_CHANGE_HELPURL
+      //"helpUrl": Blockly.Msg.MATH_CHANGE_HELPURL
     });
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
@@ -399,7 +399,7 @@ Blockly.Blocks['math_round'] = {
       "output": Blockly.Types.DECIMAL.output,
       "colour": Blockly.Blocks.math.HUE,
       "tooltip": Blockly.Msg.MATH_ROUND_TOOLTIP,
-      "helpUrl": Blockly.Msg.MATH_ROUND_HELPURL
+      //"helpUrl": Blockly.Msg.MATH_ROUND_HELPURL
     });
   },
   /** @return {!string} Type of the block, round always returns a float. */
@@ -426,7 +426,7 @@ Blockly.Blocks['math_on_list'] = {
          [Blockly.Msg.MATH_ONLIST_OPERATOR_RANDOM, 'RANDOM']];
     // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
-    this.setHelpUrl(Blockly.Msg.MATH_ONLIST_HELPURL);
+    //this.setHelpUrl(Blockly.Msg.MATH_ONLIST_HELPURL);
     this.setColour(Blockly.Blocks.math.HUE);
     this.setOutput(true, Blockly.Types.NUMBER.output);
     var dropdown = new Blockly.FieldDropdown(OPERATORS, function(newOp) {
@@ -508,7 +508,7 @@ Blockly.Blocks['math_modulo'] = {
       "output": Blockly.Types.NUMBER.output,
       "colour": Blockly.Blocks.math.HUE,
       "tooltip": Blockly.Msg.MATH_MODULO_TOOLTIP,
-      "helpUrl": Blockly.Msg.MATH_MODULO_HELPURL
+      //"helpUrl": Blockly.Msg.MATH_MODULO_HELPURL
     });
   },
   /** @return {!string} Type of the block, modulus only works on integers. */
@@ -548,7 +548,7 @@ Blockly.Blocks['math_constrain'] = {
       "output": Blockly.Types.NUMBER.output,
       "colour": Blockly.Blocks.math.HUE,
       "tooltip": Blockly.Msg.MATH_CONSTRAIN_TOOLTIP,
-      "helpUrl": Blockly.Msg.MATH_CONSTRAIN_HELPURL
+      //"helpUrl": Blockly.Msg.MATH_CONSTRAIN_HELPURL
     });
   }
   //TODO: a getBlockType of the same type as the inputs.
@@ -578,7 +578,7 @@ Blockly.Blocks['math_random_int'] = {
       "output": Blockly.Types.NUMBER.output,
       "colour": Blockly.Blocks.math.HUE,
       "tooltip": Blockly.Msg.MATH_RANDOM_INT_TOOLTIP,
-      "helpUrl": Blockly.Msg.MATH_RANDOM_INT_HELPURL
+      //"helpUrl": Blockly.Msg.MATH_RANDOM_INT_HELPURL
     });
   },
   /** @return {!string} Type of the block, by definition always an integer. */
@@ -598,7 +598,7 @@ Blockly.Blocks['math_random_float'] = {
       "output": Blockly.Types.DECIMAL.output,
       "colour": Blockly.Blocks.math.HUE,
       "tooltip": Blockly.Msg.MATH_RANDOM_FLOAT_TOOLTIP,
-      "helpUrl": Blockly.Msg.MATH_RANDOM_FLOAT_HELPURL
+      //"helpUrl": Blockly.Msg.MATH_RANDOM_FLOAT_HELPURL
     });
   },
   /** @return {!string} Type of the block, by definition always a float. */

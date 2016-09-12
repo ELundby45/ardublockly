@@ -11,7 +11,7 @@ Blockly.Blocks['weighted_average'] = {
         .appendField("weighted average");
     this.setOutput(true, Blockly.Types.NUMBER.output);
     this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
+    //this.setHelpUrl('http://www.example.com/');
   },
   getBlockType: function() {
     return Blockly.Types.NUMBER;
@@ -25,7 +25,7 @@ Blockly.Blocks['maximum'] = {
         .appendField("maximum");
     this.setOutput(true, Blockly.Types.NUMBER.output);
     this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
+    //this.setHelpUrl('http://www.example.com/');
   },
   getBlockType: function() {
     return Blockly.Types.NUMBER;
@@ -39,7 +39,7 @@ Blockly.Blocks['minimum'] = {
         .appendField("minimum");
     this.setOutput(true, Blockly.Types.NUMBER.output);
     this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
+    //this.setHelpUrl('http://www.example.com/');
   },
   getBlockType: function() {
     return Blockly.Types.NUMBER;
@@ -54,7 +54,7 @@ Blockly.Blocks['inverse'] = {
         .appendField("inverse of");
     this.setOutput(true, Blockly.Types.NUMBER.output);
     this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
+    //this.setHelpUrl('http://www.example.com/');
   },
   getBlockType: function() {
     return Blockly.Types.NUMBER;

@@ -7,7 +7,7 @@ Blockly.Blocks['cubelets_setup'] = {
 		this.appendDummyInput().appendField("setup");
 		this.appendStatementInput("setup_do").appendField("do");
 		this.setTooltip('Put code in in here that you want to execute once.');
-		this.setHelpUrl('http://www.example.com/');
+		//this.setHelpUrl('http://www.example.com/');
 		this.setDeletable(false);
 		//this.setColour(275);
 	}
@@ -18,7 +18,7 @@ Blockly.Blocks['cubelets_loop'] = {
 		this.appendDummyInput().appendField("forever");
 		this.appendStatementInput("loop_do").appendField("do");
 		this.setTooltip('Put your main routine in here. It will run over and over.');
-		this.setHelpUrl('http://www.example.com/');
+		//this.setHelpUrl('http://www.example.com/');
 		this.setDeletable(false);
 		//this.setColour(275);
 	},

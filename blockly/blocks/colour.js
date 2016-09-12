@@ -76,7 +76,7 @@ Blockly.Blocks['colour_random'] = {
       "output": "Colour",
       "colour": Blockly.Blocks.colour.HUE,
       "tooltip": Blockly.Msg.COLOUR_RANDOM_TOOLTIP,
-      "helpUrl": Blockly.Msg.COLOUR_RANDOM_HELPURL
+      //"helpUrl": Blockly.Msg.COLOUR_RANDOM_HELPURL
     });
   }
 };
@@ -87,7 +87,7 @@ Blockly.Blocks['colour_rgb'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setHelpUrl(Blockly.Msg.COLOUR_RGB_HELPURL);
+    //this.setHelpUrl(Blockly.Msg.COLOUR_RGB_HELPURL);
     this.setColour(Blockly.Blocks.colour.HUE);
     this.appendValueInput('RED')
         .setCheck(Blockly.Types.NUMBER.checkList)
@@ -113,7 +113,7 @@ Blockly.Blocks['colour_blend'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setHelpUrl(Blockly.Msg.COLOUR_BLEND_HELPURL);
+    //this.setHelpUrl(Blockly.Msg.COLOUR_BLEND_HELPURL);
     this.setColour(Blockly.Blocks.colour.HUE);
     this.appendValueInput('COLOUR1')
         .setCheck('Colour')

@@ -50,7 +50,7 @@ Blockly.Blocks['lists_create_empty'] = {
       "output": "Array",
       "colour": Blockly.Blocks.lists.HUE,
       "tooltip": Blockly.Msg.LISTS_CREATE_EMPTY_TOOLTIP,
-      "helpUrl": Blockly.Msg.LISTS_CREATE_EMPTY_HELPURL
+      //"helpUrl": Blockly.Msg.LISTS_CREATE_EMPTY_HELPURL
     });
   }
 };
@@ -61,7 +61,7 @@ Blockly.Blocks['lists_create_with'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setHelpUrl(Blockly.Msg.LISTS_CREATE_WITH_HELPURL);
+    //this.setHelpUrl(Blockly.Msg.LISTS_CREATE_WITH_HELPURL);
     this.setColour(Blockly.Blocks.lists.HUE);
     this.itemCount_ = 3;
     this.updateShape_();
@@ -232,7 +232,7 @@ Blockly.Blocks['lists_repeat'] = {
       "output": "Array",
       "colour": Blockly.Blocks.lists.HUE,
       "tooltip": Blockly.Msg.LISTS_REPEAT_TOOLTIP,
-      "helpUrl": Blockly.Msg.LISTS_REPEAT_HELPURL
+      //"helpUrl": Blockly.Msg.LISTS_REPEAT_HELPURL
     });
   }
 };
@@ -255,7 +255,7 @@ Blockly.Blocks['lists_length'] = {
       "output": Blockly.Types.NUMBER.output,
       "colour": Blockly.Blocks.lists.HUE,
       "tooltip": Blockly.Msg.LISTS_LENGTH_TOOLTIP,
-      "helpUrl": Blockly.Msg.LISTS_LENGTH_HELPURL
+      //"helpUrl": Blockly.Msg.LISTS_LENGTH_HELPURL
     });
   }
 };
@@ -278,7 +278,7 @@ Blockly.Blocks['lists_isEmpty'] = {
       "output": Blockly.Types.BOOLEAN.output,
       "colour": Blockly.Blocks.lists.HUE,
       "tooltip": Blockly.Msg.LISTS_ISEMPTY_TOOLTIP,
-      "helpUrl": Blockly.Msg.LISTS_ISEMPTY_HELPURL
+      //"helpUrl": Blockly.Msg.LISTS_ISEMPTY_HELPURL
     });
   }
 };
@@ -292,7 +292,7 @@ Blockly.Blocks['lists_indexOf'] = {
     var OPERATORS =
         [[Blockly.Msg.LISTS_INDEX_OF_FIRST, 'FIRST'],
          [Blockly.Msg.LISTS_INDEX_OF_LAST, 'LAST']];
-    this.setHelpUrl(Blockly.Msg.LISTS_INDEX_OF_HELPURL);
+    //this.setHelpUrl(Blockly.Msg.LISTS_INDEX_OF_HELPURL);
     this.setColour(Blockly.Blocks.lists.HUE);
     this.setOutput(true, Blockly.Types.NUMBER.output);
     this.appendValueInput('VALUE')
@@ -321,7 +321,7 @@ Blockly.Blocks['lists_getIndex'] = {
          [Blockly.Msg.LISTS_GET_INDEX_FIRST, 'FIRST'],
          [Blockly.Msg.LISTS_GET_INDEX_LAST, 'LAST'],
          [Blockly.Msg.LISTS_GET_INDEX_RANDOM, 'RANDOM']];
-    this.setHelpUrl(Blockly.Msg.LISTS_GET_INDEX_HELPURL);
+    //this.setHelpUrl(Blockly.Msg.LISTS_GET_INDEX_HELPURL);
     this.setColour(Blockly.Blocks.lists.HUE);
     var modeMenu = new Blockly.FieldDropdown(MODE, function(value) {
       var isStatement = (value == 'REMOVE');
@@ -452,7 +452,7 @@ Blockly.Blocks['lists_setIndex'] = {
          [Blockly.Msg.LISTS_GET_INDEX_FIRST, 'FIRST'],
          [Blockly.Msg.LISTS_GET_INDEX_LAST, 'LAST'],
          [Blockly.Msg.LISTS_GET_INDEX_RANDOM, 'RANDOM']];
-    this.setHelpUrl(Blockly.Msg.LISTS_SET_INDEX_HELPURL);
+    //this.setHelpUrl(Blockly.Msg.LISTS_SET_INDEX_HELPURL);
     this.setColour(Blockly.Blocks.lists.HUE);
     this.appendValueInput('LIST')
         .setCheck('Array')
@@ -553,7 +553,7 @@ Blockly.Blocks['lists_getSublist'] = {
         [[Blockly.Msg.LISTS_GET_SUBLIST_END_FROM_START, 'FROM_START'],
          [Blockly.Msg.LISTS_GET_SUBLIST_END_FROM_END, 'FROM_END'],
          [Blockly.Msg.LISTS_GET_SUBLIST_END_LAST, 'LAST']];
-    this.setHelpUrl(Blockly.Msg.LISTS_GET_SUBLIST_HELPURL);
+    //this.setHelpUrl(Blockly.Msg.LISTS_GET_SUBLIST_HELPURL);
     this.setColour(Blockly.Blocks.lists.HUE);
     this.appendValueInput('LIST')
         .setCheck('Array')
@@ -681,7 +681,7 @@ Blockly.Blocks['lists_sort'] = {
       "output": "Array",
       "colour": Blockly.Blocks.lists.HUE,
       "tooltip": Blockly.Msg.LISTS_SORT_TOOLTIP,
-      "helpUrl": Blockly.Msg.LISTS_SORT_HELPURL
+      //"helpUrl": Blockly.Msg.LISTS_SORT_HELPURL
     });
   }
 };
@@ -700,7 +700,7 @@ Blockly.Blocks['lists_split'] = {
         function(newMode) {
           thisBlock.updateType_(newMode);
         });
-    this.setHelpUrl(Blockly.Msg.LISTS_SPLIT_HELPURL);
+    //this.setHelpUrl(Blockly.Msg.LISTS_SPLIT_HELPURL);
     this.setColour(Blockly.Blocks.lists.HUE);
     this.appendValueInput('INPUT')
         .setCheck(Blockly.Types.TEXT.checkList)

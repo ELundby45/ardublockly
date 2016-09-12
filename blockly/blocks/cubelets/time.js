@@ -25,7 +25,7 @@ Blockly.Blocks['time_delay'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setHelpUrl('http://arduino.cc/en/Reference/Delay');
+    //this.setHelpUrl('http://arduino.cc/en/Reference/Delay');
     //this.setColour(Blockly.Blocks.time.HUE);
     this.setColour(Blockly.Blocks.time.HUE);
     this.appendValueInput('DELAY_TIME_MILI')
@@ -54,7 +54,7 @@ Blockly.Blocks['set_interval'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
+    //this.setHelpUrl('http://www.example.com/');
   }
 };
 
@@ -72,6 +72,6 @@ Blockly.Blocks['set_timeout'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
+    //this.setHelpUrl('http://www.example.com/');
   }
 };

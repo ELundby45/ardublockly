@@ -6,7 +6,7 @@ Blockly.Blocks.messaging.HUE = 206;
 
 Blockly.Blocks['set_block_value'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
+    //this.setHelpUrl('http://www.example.com/');
     this.setColour(Blockly.Blocks.messaging.HUE);
     this.appendValueInput("block_value")
         .setCheck("Number")
@@ -30,6 +30,6 @@ Blockly.Blocks['get_block_value'] = {
     this.setOutput(true, "Number");
     this.setColour(Blockly.Blocks.messaging.HUE);
     this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
+    //this.setHelpUrl('http://www.example.com/');
   }
 };
