@@ -17,7 +17,7 @@ Blockly.Blocks['set_block_value'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setInputsInline(true);
-    this.setTooltip('');
+    this.setTooltip("Override the block value of another Cubelet based on that Cubelet's ID.");
   }
 };
 
@@ -29,7 +29,7 @@ Blockly.Blocks['get_block_value'] = {
     this.setInputsInline(true);
     this.setOutput(true, "Number");
     this.setColour(Blockly.Blocks.messaging.HUE);
-    this.setTooltip('');
+    this.setTooltip('Retrieve the block value of another Cubelet based on its ID.');
     //this.setHelpUrl('http://www.example.com/');
   }
 };

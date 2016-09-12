@@ -12,7 +12,7 @@ Blockly.Blocks['set_actuator_value'] = {
         .appendField("set actuator value to");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setTooltip('');
+    this.setTooltip('For use with Action Cubelets only. Sets the actuator value to a number 0-255.');
     //this.setHelpUrl('http://www.example.com/');
   }
 };

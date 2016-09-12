@@ -53,7 +53,7 @@ Blockly.Blocks['set_interval'] = {
         .appendField(new Blockly.FieldTextInput("something"), "callback_name");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setTooltip('');
+    this.setTooltip('Repeatedly run the supplied code with a timed break in between.');
     //this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -71,7 +71,7 @@ Blockly.Blocks['set_timeout'] = {
         .appendField(new Blockly.FieldTextInput("something"), "callback_name");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setTooltip('');
+    this.setTooltip('Run the supplied code a single time after __ milliseconds');
     //this.setHelpUrl('http://www.example.com/');
   }
 };

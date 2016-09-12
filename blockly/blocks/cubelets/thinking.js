@@ -10,7 +10,7 @@ Blockly.Blocks['weighted_average'] = {
     this.appendDummyInput()
         .appendField("weighted average");
     this.setOutput(true, Blockly.Types.NUMBER.output);
-    this.setTooltip('');
+    this.setTooltip('Calculate the Cubelets weighted average of neighboring Cubelets blocks values.');
     //this.setHelpUrl('http://www.example.com/');
   },
   getBlockType: function() {
@@ -24,7 +24,7 @@ Blockly.Blocks['maximum'] = {
     this.appendDummyInput()
         .appendField("maximum");
     this.setOutput(true, Blockly.Types.NUMBER.output);
-    this.setTooltip('');
+    this.setTooltip('Returns the largest block value from neighboring blocks.');
     //this.setHelpUrl('http://www.example.com/');
   },
   getBlockType: function() {
@@ -38,7 +38,7 @@ Blockly.Blocks['minimum'] = {
     this.appendDummyInput()
         .appendField("minimum");
     this.setOutput(true, Blockly.Types.NUMBER.output);
-    this.setTooltip('');
+    this.setTooltip('Returns the smallest block value from neighboring blocks.');
     //this.setHelpUrl('http://www.example.com/');
   },
   getBlockType: function() {
@@ -53,7 +53,7 @@ Blockly.Blocks['inverse'] = {
         .setCheck("Number")
         .appendField("inverse of");
     this.setOutput(true, Blockly.Types.NUMBER.output);
-    this.setTooltip('');
+    this.setTooltip('Returns the inverse of the supplied block value.');
     //this.setHelpUrl('http://www.example.com/');
   },
   getBlockType: function() {
