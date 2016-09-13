@@ -122,7 +122,7 @@ Blockly.Cubelets.init = function(workspace) {
   for (var varName in varsWithTypes) {
     Blockly.Cubelets.addVariable(varName,
         Blockly.Cubelets.getCubeletsType_(varsWithTypes[varName]) +' ' +
-        varName + ';');
+        Blockly.Cubelets.variableDB_.getName(varName, Blockly.Variables.NAME_TYPE) + ';');
   }
 };
 
