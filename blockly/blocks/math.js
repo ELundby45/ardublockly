@@ -89,8 +89,8 @@ Blockly.Blocks['math_arithmetic'] = {
             [[Blockly.Msg.MATH_ADDITION_SYMBOL, 'ADD'],
              [Blockly.Msg.MATH_SUBTRACTION_SYMBOL, 'MINUS'],
              [Blockly.Msg.MATH_MULTIPLICATION_SYMBOL, 'MULTIPLY'],
-             [Blockly.Msg.MATH_DIVISION_SYMBOL, 'DIVIDE'],
-             [Blockly.Msg.MATH_POWER_SYMBOL, 'POWER']]
+             [Blockly.Msg.MATH_DIVISION_SYMBOL, 'DIVIDE']]//,
+             //[Blockly.Msg.MATH_POWER_SYMBOL, 'POWER']]
         },
         {
           "type": "input_value",
@@ -137,9 +137,9 @@ Blockly.Blocks['math_single'] = {
             [Blockly.Msg.MATH_SINGLE_OP_ABSOLUTE, 'ABS'],
             ['-', 'NEG'],
             ['ln', 'LN'],
-            ['log10', 'LOG10'],
-            ['e^', 'EXP'],
-            ['10^', 'POW10']
+            ['log10', 'LOG10']//,
+            //['e^', 'EXP'],
+            //['10^', 'POW10']
           ]
         },
         {
