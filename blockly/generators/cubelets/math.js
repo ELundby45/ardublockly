@@ -45,8 +45,8 @@ Blockly.Cubelets['math_arithmetic'] = function(block) {
     ADD: [' + ', Blockly.Cubelets.ORDER_ADDITIVE],
     MINUS: [' - ', Blockly.Cubelets.ORDER_ADDITIVE],
     MULTIPLY: [' * ', Blockly.Cubelets.ORDER_MULTIPLICATIVE],
-    DIVIDE: [' / ', Blockly.Cubelets.ORDER_MULTIPLICATIVE],
-    POWER: [null, Blockly.Cubelets.ORDER_NONE]  // Handle power separately.
+    DIVIDE: [' / ', Blockly.Cubelets.ORDER_MULTIPLICATIVE]//,
+    //POWER: [null, Blockly.Cubelets.ORDER_NONE]  // Handle power separately.
   };
   var tuple = OPERATORS[block.getFieldValue('OP')];
   var operator = tuple[0];
@@ -56,7 +56,8 @@ Blockly.Cubelets['math_arithmetic'] = function(block) {
   var code;
   // Power in C++ requires a special case since it has no operator.
   if (!operator) {
-    code = 'Math.pow(' + argument0 + ', ' + argument1 + ')';
+    Blockly.Cubelets.addInclude('math', '#include <math.h>');
+    code = 'pow(' + argument0 + ', ' + argument1 + ')';
     return [code, Blockly.Cubelets.ORDER_UNARY_POSTFIX];
   }
   code = argument0 + operator + argument1;
