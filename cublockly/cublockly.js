@@ -437,3 +437,8 @@ Cublockly.bindClick_ = function(el, func) {
   el.addEventListener('ontouchend', propagateOnce);
   el.addEventListener('click', propagateOnce);
 };
+
+window.addEventListener('load', function load(event) {
+  window.removeEventListener('load', load, false);
+  Cublockly.init();
+});
