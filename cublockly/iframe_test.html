@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <style>
+      body{
+        height: 100%;
+        width: 100%;
+      }
+      #blockyFrame{
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+
+  </head>
+  <body>
+    <iframe id="blockyFrame" src="simple.html" frameborder="0" scrolling="no" seamless onLoad="javascript:blocklyLoaded()"></iframe>
+
+    <script>
+    var Cublockly;
+    function blocklyLoaded(){
+      Cublockly = document.getElementById("blockyFrame").contentWindow
+
+      var message = {
+        "request": 'getXml'
+      }
+      sendBlocklyMessage(message);
+
+      message.request = "getCubeletsCode";
+      sendBlocklyMessage(message)
+
+      message.request = "registerChangeListener"
+      sendBlocklyMessage(message);
+    }
+    function sendBlocklyMessage(message){
+      Cublockly.postMessage(JSON.stringify(message),  '*');
+    }
+    window.addEventListener('message', function(event) {
+      if(!event.data)  {
+        return;
+      }
+      var message = JSON.parse(event.data);
+      if(!message.response && !message.event){
+        console.log("There was no response or event from this message.")
+        return;
+      }
+      if(message.response == 'getXml'){
+        console.log("XML: ", message.data)
+      }
+      else if(message.response == 'getCubeletsCode'){
+        console.log("Cubelets CODE: ", message.data)
+      }
+      else if(message.event == "onBlocklyWorkspaceChanged")
+      {
+        console.log("WorkSpaceChanged: ", message.data);
+      }
+    });
+
+    </script>
+  </body>
+
+  <script>
+
+
+  </script>
+</html>
