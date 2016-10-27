@@ -1,6 +1,5 @@
 //Incoming Messages/Requests from our parent.
 window.addEventListener('message', function(event) {
-  console.log("ON MESSAGE", event)
   if(!event.data)  {
     return;
   }
