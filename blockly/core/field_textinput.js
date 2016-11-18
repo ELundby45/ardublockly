@@ -112,15 +112,17 @@ Blockly.FieldTextInput.prototype.showEditor_ = function(opt_quietInput) {
   var quietInput = opt_quietInput || false;
   if (!quietInput && (goog.userAgent.MOBILE || goog.userAgent.ANDROID ||
                       goog.userAgent.IPAD)) {
+    var that = this;
     // Mobile browsers have issues with in-line textareas (focus & keyboards).
-    var newValue = Blockly.prompt(Blockly.Msg.CHANGE_VALUE_TITLE, this.text_);
-    if (this.sourceBlock_ && this.validator_) {
-      var override = this.validator_(newValue);
-      if (override !== undefined) {
-        newValue = override;
+    var newValue = Blockly.prompt(Blockly.Msg.CHANGE_VALUE_TITLE, this.text_, function(newValue){
+      if (that.sourceBlock_ && that.validator_) {
+        var override = that.validator_(newValue);
+        if (override !== undefined) {
+          newValue = override;
+        }
       }
-    }
-    this.setValue(newValue);
+      that.setValue(newValue);
+    });
     return;
   }
 
