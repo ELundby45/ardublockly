@@ -4,6 +4,8 @@
 var Cublockly = Cublockly || {};
 
 Cublockly.htmlPrompt = function(message, defaultValue, callback) {
+  //iOS is having troubles when modal closes with infinite scrolling. disable until closed.
+  Cublockly.disableResize = true;
   var input = null;
   if(!isNaN(defaultValue) && defaultValue){
     input = $('#gen_prompt_input_number');
@@ -20,15 +22,12 @@ Cublockly.htmlPrompt = function(message, defaultValue, callback) {
   $('#gen_prompt_message').append(message);
   input.val(defaultValue);
   // Bind callback events to buttons
-  $('#gen_prompt_ok_link').bind('click', function() {
-    input.off('keypress');
+  $('#gen_prompt_ok_link').on('click', function() {
+    input.blur();
+    $('#gen_prompt_ok_link').off('click');
     $('#changeValueModal').foundation('close');
     callback(input.val());
-  });
-  $('#gen_prompt_cancel_link').bind('click', function() {
-    input.off('keypress');
-    //$('#changeValueModal').foundation('close');
-    callback(null);
+    Cublockly.disableResize = true;
   });
 
   input.keypress(function (e) {
@@ -38,13 +37,20 @@ Cublockly.htmlPrompt = function(message, defaultValue, callback) {
       return false;
     }
   });
-  //TODO on close:
-  //$('#gen_prompt_input').off('keypress');
+
+  var onCloseHandler = function(){
+    $('#changeValueModal').off('closed.zf.reveal', onCloseHandler);
+    $('#gen_prompt_ok_link').off('click');
+  }
+  $('#changeValueModal').on('closed.zf.reveal', onCloseHandler);
 
   $('#changeValueModal').foundation('open');
-  input.focus();
-  input.select();
-  window.location.hash = '';
+
+  //These don't behave nicely on iOS
+  //input.click();
+  //input.focus();
+  //input.select();
+  //window.location.hash = '';
 };
 
 /** Initialize Cublockly code required for Electron on page load. */

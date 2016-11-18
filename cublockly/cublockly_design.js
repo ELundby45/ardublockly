@@ -81,9 +81,12 @@ Cublockly.displayToolbox = function(show) {
     });
   }
 };
-
+Cublockly.disableResize = false;
 /** Resizes the container for the Blockly workspace. */
 Cublockly.resizeBlocklyWorkspace = function() {
+  if(Cublockly.disableResize){
+    return;
+  }
   var contentBlocks = document.getElementById('content_blocks');
   var wrapperPanelSize =
       Cublockly.getBBox_(document.getElementById('blocks_panel'));
