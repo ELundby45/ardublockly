@@ -7,14 +7,16 @@
   <link rel="icon" href="img/favicon.ico">
   <title>Cublockly</title>
 
+  <link rel="stylesheet" href="vendor/foundation/css/foundation.css">
+
   <link rel="stylesheet" href="cublockly.css?v=1" media="screen,projection">
 
-  <!-- Cublockly - These three files contain the compress version -->
+  <!-- Cublockly - These three files contain the compress version
   <script src="../blockly/blockly_compressed.js"></script>
   <script src="../blockly/blocks_compressed.js"></script>
-  <script src="../blockly/cubelets_compressed.js"></script>
+  <script src="../blockly/cubelets_compressed.js"></script>-->
   <!-- To use the uncompressed version comment out the above and comment in the ones below -->
-  <!--<script src="../blockly/blockly_uncompressed.js"></script>
+  <script src="../blockly/blockly_uncompressed.js"></script>
   <script src="../blockly/blocks/component_variable.js"></script>
   <script src="../blockly/blocks/logic.js"></script>
   <script src="../blockly/blocks/loops.js"></script>
@@ -44,7 +46,7 @@
   <script src="../blockly/generators/cubelets/sensing.js"></script>
   <script src="../blockly/generators/cubelets/thinking.js"></script>
   <script src="../blockly/generators/cubelets/time.js"></script>
-  <script src="../blockly/generators/cubelets/variables.js"></script>-->
+  <script src="../blockly/generators/cubelets/variables.js"></script>
 
   <!-- Default language js files, user selection appended to head on load -->
   <script src="../blockly/msg/js/en.js"></script>
@@ -55,7 +57,7 @@
   <!-- Content -->
   <div class="container">
     <div class="row" style="height: 100%;">
-      <div class="col s12 m12 l12" style="position:relative; height: 100%;">
+      <div class="columns small-12" style="position:relative; height: 100%; padding: 0;">
         <!-- Blockly Panel -->
         <div class="card-panel white" style="padding: 0; height: 100%;">
           <div id="blocks_panel" class="content blocks_panel_large" style="height: 100%;">
@@ -69,13 +71,38 @@
   <!-- jQuery  -->
   <script src="js_libs/jquery-2.1.3.min.js"></script>
 
+  <!-- Foundation -->
+  <script src="vendor/foundation/js/vendor/what-input.js"></script>
+  <script src="vendor/foundation/js/vendor/foundation.js"></script>
+
   <!-- JS Diff -->
   <script src="js_libs/diff.js"></script>
   <!-- Cublockly app -->
+  <script src="cublockly_mobile.js"></script>
   <script src="cublockly_design.js"></script>
   <script src="ardublockly_toolbox.js"></script>
   <script src="ardublockly_blockly.js"></script>
   <script src="cublockly.js"></script>
   <script src="csp_messaging.js"></script>
+
+  <div class="reveal tiny" id="changeValueModal" data-reveal>
+    <div class="row collapse">
+      <div class="columns small-12">
+        <div id="gen_prompt_message">Change Value:</div>
+        <input id="gen_prompt_input_number" type="number" value="" style="width:100%;"/>
+        <input id="gen_prompt_input_text" type="text" value="" style="display:none; width:100%;"/>
+      </div>
+    </div>
+    <div class="row align-right align-bottom collapse">
+      <div class="columns shrink">
+        <a id="gen_prompt_ok_link" class="button float-right" style=" margin-top: 10px; margin-bottom: 0px;" >OK</a>
+      </div>
+    </div>
+
+    <button class="close-button" data-close aria-label="Close reveal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <!--<a id="gen_prompt_cancel_link" class="button">Cancel</a>-->
+  </div>
 </body>
 </html>
