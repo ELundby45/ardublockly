@@ -84,10 +84,7 @@ Cublockly.displayToolbox = function(show) {
 Cublockly.disableResize = false;
 /** Resizes the container for the Blockly workspace. */
 Cublockly.resizeBlocklyWorkspace = function() {
-  //iOS is still having problems with infinite scroll. With our iFrame
-  //resize is unneeded.
-
-  /*if(Cublockly.disableResize){
+  if(Cublockly.disableResize){
     return;
   }
   var contentBlocks = document.getElementById('content_blocks');
@@ -103,7 +100,7 @@ Cublockly.resizeBlocklyWorkspace = function() {
       (2 * wrapperPanelSize.height - contentBlocks.offsetHeight) + 'px';
   contentBlocks.style.width = wrapperPanelSize.width + 'px';
   contentBlocks.style.width =
-      (2 * wrapperPanelSize.width - contentBlocks.offsetWidth) + 'px';*/
+      (2 * wrapperPanelSize.width - contentBlocks.offsetWidth) + 'px';
 };
 
 
