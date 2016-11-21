@@ -31,7 +31,6 @@ Cublockly.htmlPrompt = function(message, defaultValue, callback) {
   });
 
   input.keypress(function (e) {
-    console.log(e);
     if (e.which == 13) {
       $('#gen_prompt_ok_link').click();
       return false;
