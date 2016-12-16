@@ -39,14 +39,22 @@ Blockly.Cubelets['set_interval'] = function(block) {
   return "set_interval("+text_time_interval+", "+text_callback_name+");\n";
 };
 
+Blockly.Cubelets['clear_interval'] = function(block) {
+  return "clear_interval();\n";
+};
+
 Blockly.Cubelets['set_timeout'] = function(block) {
   var text_time_interval = block.getFieldValue('time_interval');
   var text_callback_name = block.getFieldValue('callback_name');
 
   var args = Blockly.Cubelets.statementToCode(block, 'callback_do');
-	
+
 	var code = "void "+text_callback_name+"(void){\n"+args+"\n}"
   Blockly.Cubelets.definitions_[text_callback_name] = code;
 
   return "set_timeout("+text_time_interval+", "+text_callback_name+");\n";
+};
+
+Blockly.Cubelets['clear_timeout'] = function(block) {
+  return "clear_timeout();\n";
 };
