@@ -58,6 +58,17 @@ Blockly.Blocks['set_interval'] = {
   }
 };
 
+Blockly.Blocks['clear_interval'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.time.HUE);
+    this.appendDummyInput()
+        .appendField("cancel 'every' timing block");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('Used to halt execution of the timing block that performs an action every __ milliseconds.');
+  }
+};
+
 Blockly.Blocks['set_timeout'] = {
   init: function() {
   	this.setColour(Blockly.Blocks.time.HUE);
@@ -73,5 +84,16 @@ Blockly.Blocks['set_timeout'] = {
     this.setNextStatement(true);
     this.setTooltip('Run the supplied code a single time after __ milliseconds');
     //this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['clear_timeout'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.time.HUE);
+    this.appendDummyInput()
+        .appendField("cancel 'after' timing block");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('Used to halt execution of the timing block that performs an action after __ milliseconds.');
   }
 };

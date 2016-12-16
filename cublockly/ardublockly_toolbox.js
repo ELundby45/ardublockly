@@ -76,7 +76,9 @@ Cublockly.TOOLBOX_XML =
 '      </value>' +
 '    </block>' +
 '    <block type="set_interval"></block>' +
+//'    <block type="clear_interval"></block>' +
 '    <block type="set_timeout"></block>' +
+//'    <block type="clear_timeout"></block>' +
 '  </category>' +
 '  <sep></sep>' +
 '  <category id="catLogic" name="Logic">' +
