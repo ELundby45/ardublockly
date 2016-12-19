@@ -159,7 +159,13 @@ Blockly.resizeSvgContents = function(workspace) {
  * Record the height/width of the SVG image.
  * @param {!Blockly.WorkspaceSvg} workspace Any workspace in the SVG.
  */
+ //TODO (EL): Hack to prevent a bug on iPad that causes the workspace to grow infinitely.
+ var svgHasResized = false;
 Blockly.svgResize = function(workspace) {
+  if(svgHasResized && goog.userAgent.IPAD){
+    return;
+  }
+  svgHasResized = true;
   var mainWorkspace = workspace;
   while (mainWorkspace.options.parentWorkspace) {
     mainWorkspace = mainWorkspace.options.parentWorkspace;
