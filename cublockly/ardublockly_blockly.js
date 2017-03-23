@@ -48,6 +48,7 @@ Cublockly.injectBlockly = function(blocklyEl, toolboxXml, blocklyPath) {
       sounds: true,
       toolbox: Cublockly.xmlTree,
       trashcan: true,
+    	//horizontalLayout : true, 
       zoom: {
         controls: true,
         wheel: true,

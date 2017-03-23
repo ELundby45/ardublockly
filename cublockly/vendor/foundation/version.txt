@@ -1,0 +1,12 @@
+6.2.4
+
+Customizations:
+- Grid Type: Flex grid
+- Max Width: 150rem
+- Primary Color: #e23473
+- Global Radius: 0
+
+Components:
+- Modal
+- Button
+- Close Button
