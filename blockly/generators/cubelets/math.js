@@ -309,6 +309,8 @@ Blockly.Cubelets['math_constrain'] = function(block) {
  * Generator for a random integer between two numbers (X and Y).
  * Cubelets code: loop { math_random_int(X, Y); }
  *               and an aditional math_random_int function
+ * Adapted code for a smaller random function 
+ * TODO: figure out how to add seed
  * @param {!Blockly.Block} block Block to generate the code from.
  * @return {array} Completed code with order of operation.
  */
@@ -321,23 +323,58 @@ Blockly.Cubelets['math_random_int'] = function(block) {
       'math_random_int', Blockly.Generator.NAME_TYPE);
   Blockly.Cubelets.math_random_int.random_function = functionName;
   var func = [
-      'int ' + Blockly.Cubelets.DEF_FUNC_NAME + '(int min, int max) {',
-      '  if (min > max) {',
-      '    // Swap min and max to ensure min is smaller.',
-      '    int temp = min;',
-      '    min = max;',
-      '    max = temp;',
-      '  }',
-      '  return min + (rand() % (max - min + 1));',
+      'uint8_t prn;',
+      'uint8_t ' + Blockly.Cubelets.DEF_FUNC_NAME + '(uint8_t min, uint8_t max) {',
+      '   uint8_t feedback_bit= ((prn >> 0) ^ (prn >> 2) ^ (prn >> 3) ^ (prn >> 4)) & 1;',
+      '   prn = (prn >> 1) | (feedback_bit << 7);',
+      '  return min + prn % (max - min +1);',
       '}'];
   var funcName = Blockly.Cubelets.addFunction('mathRandomInt', func.join('\n'));
   var code = funcName + '(' + argument0 + ', ' + argument1 + ')';
+  var forwardDeclartion = 'uint8_t ' + funcName + '(uint8_t min, uint8_t max);';
+  Blockly.Cubelets.addInclude("function_"+funcName, forwardDeclartion);
 
-  var forwardDeclartion = 'int ' + funcName + '(int min, int max);';
-  Blockly.Cubelets.addInclude("function_"+funcName, forwardDeclartion)
+/**The following steps work to get the code for the seed into set up. 
+  *Currently, the best solution is to create a seed block and make that
+  *appear when the random int is called, however this could be confusing 
+  *to the user**/ 
+
+
+//Find the "setup" block on the workspace
+var setupBlock;
+Blockly.mainWorkspace.getTopBlocks(true).forEach(function(block){
+  if(block.type == "cubelets_setup"){
+    setupBlock = block;
+  }
+});
+
+var checkSeed=0; 
+//search through set up to see if the seed has already been planted and change variable if it has been
+setupBlock.getChildren().forEach(function(child){
+  if(child.type == "seed"){
+    checkSeed=1;
+  }
+});
+
+if(checkSeed==0){
+
+        Blockly.Cubelets.addInclude("prn", "uint_8 prn");
+      //Create a new child block: in this case our "wait" block from blocks\cubelets\time.js
+      var childBlock = Blockly.mainWorkspace.newBlock('seed');
+
+      //Draw the blocks and calculate positions
+      childBlock.initSvg();
+      childBlock.render();
+
+      //Connect the top of the new block to the input of the "setup" block.
+      var parentConnection = setupBlock.getInput('setup_do').connection;
+      var childConnection = childBlock.previousConnection;
+      parentConnection.connect(childConnection);
+}
 
   return [code, Blockly.Cubelets.ORDER_UNARY_POSTFIX];
-};
+}; 
+
 
 /**
  * Generator for a random float from 0 to 1.
@@ -348,3 +385,35 @@ Blockly.Cubelets['math_random_int'] = function(block) {
 Blockly.Cubelets['math_random_float'] = function(block) {
   return ['(rand() / RAND_MAX)', Blockly.Cubelets.ORDER_UNARY_POSTFIX];
 };
+/**
+ * Map a value in a range to be a value in a different range
+ * Cubelets code: loop {(value-startMinVal)*(endMaxVal-endMinVal))/(startMaxVal-startMinVal)+endMinVal};
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {array} Completed code with order of operation.
+ */
+Blockly.Cubelets['mapFunc'] = function(block) {
+  var argument0 = Blockly.Cubelets.valueToCode(block, 'value',
+      Blockly.Cubelets.ORDER_MULTIPLICATIVE) || '0'
+  var argument1 = Blockly.Cubelets.valueToCode(block, 'startMinVal',
+      Blockly.Cubelets.ORDER_MULTIPLICATIVE) || '0';
+  var argument2 = Blockly.Cubelets.valueToCode(block, 'startMaxVal',
+      Blockly.Cubelets.ORDER_MULTIPLICATIVE) || '0';
+  var argument3 = Blockly.Cubelets.valueToCode(block, 'endMinVal',
+      Blockly.Cubelets.ORDER_MULTIPLICATIVE) || '0';
+  var argument4 = Blockly.Cubelets.valueToCode(block, 'endMaxVal',
+      Blockly.Cubelets.ORDER_MULTIPLICATIVE) || '0';
+  var code= '((' + argument0 + '-' + argument1 + ')*(' + argument4 + '-' + argument3+'))/('+argument2+ '-' +argument1+')'+ '+' + argument3;
+  console.log(code);
+  return [code, Blockly.Cubelets.ORDER_UNARY_POSTFIX];
+};
+
+
+/**
+ * Map a value in a range to be a value in a different range
+ * Cubelets code: loop {(value-startMinVal)*(endMaxVal-endMinVal))/(startMaxVal-startMinVal)+endMinVal};
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code with order of operation.
+ */
+Blockly.Cubelets['seed']=function(block){
+  return 'prn = (MyID0 == 0) ? 1 : MyID0;\n';
+}
