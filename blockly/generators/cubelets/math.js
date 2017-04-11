@@ -334,43 +334,8 @@ Blockly.Cubelets['math_random_int'] = function(block) {
   var forwardDeclartion = 'uint8_t ' + funcName + '(uint8_t min, uint8_t max);';
   Blockly.Cubelets.addInclude("function_"+funcName, forwardDeclartion);
 
-/**The following steps work to get the code for the seed into set up. 
-  *Currently, the best solution is to create a seed block and make that
-  *appear when the random int is called, however this could be confusing 
-  *to the user**/ 
-
-
-//Find the "setup" block on the workspace
-var setupBlock;
-Blockly.mainWorkspace.getTopBlocks(true).forEach(function(block){
-  if(block.type == "cubelets_setup"){
-    setupBlock = block;
-  }
-});
-
-var checkSeed=0; 
-//search through set up to see if the seed has already been planted and change variable if it has been
-setupBlock.getChildren().forEach(function(child){
-  if(child.type == "seed"){
-    checkSeed=1;
-  }
-});
-
-if(checkSeed==0){
-
-        Blockly.Cubelets.addInclude("prn", "uint_8 prn");
-      //Create a new child block: in this case our "wait" block from blocks\cubelets\time.js
-      var childBlock = Blockly.mainWorkspace.newBlock('seed');
-
-      //Draw the blocks and calculate positions
-      childBlock.initSvg();
-      childBlock.render();
-
-      //Connect the top of the new block to the input of the "setup" block.
-      var parentConnection = setupBlock.getInput('setup_do').connection;
-      var childConnection = childBlock.previousConnection;
-      parentConnection.connect(childConnection);
-}
+//set the seed in set up
+Blockly.Cubelets.addSetup('seed','prn = (MyID0 == 0) ? 1 : MyID0; //used for random integer', false);
 
   return [code, Blockly.Cubelets.ORDER_UNARY_POSTFIX];
 }; 
@@ -417,3 +382,33 @@ Blockly.Cubelets['mapFunc'] = function(block) {
 Blockly.Cubelets['seed']=function(block){
   return 'prn = (MyID0 == 0) ? 1 : MyID0;\n';
 }
+
+
+/**
+ * Code generator to add code into the setup() and loop() functions.
+ * Its use is not mandatory, but necessary to add manual code to setup().
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+
+Blockly.Cubelets['arduino_functions'] = function(block) {
+  // Edited version of Blockly.Generator.prototype.statementToCode
+  function statementToCodeNoTab(block, name) {
+    var targetBlock = block.getInputTargetBlock('seed');
+    var code = Blockly.Cubelets.blockToCode(targetBlock);
+    if (!goog.isString(code)) {
+      throw 'Expecting code from statement block "' + targetBlock.type + '".';
+    }
+    return code;
+  }
+
+  var setupBranch = Blockly.Cubelets.statementToCode(block, 'SETUP_FUNC');
+  //var setupCode = Blockly.Cubelets.scrub_(block, setupBranch); No comment block
+  if (setupBranch) {
+    Blockly.Cubelets.addSetup('userSetupCode', setupBranch, true);
+  }
+
+  var loopBranch = statementToCodeNoTab(block, 'LOOP_FUNC');
+  //var loopcode = Blockly.Cubelets.scrub_(block, loopBranch); No comment block
+  return loopBranch;
+};
