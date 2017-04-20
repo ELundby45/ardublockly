@@ -373,4 +373,42 @@ Blockly.Cubelets['mapFunc'] = function(block) {
 };
 
 
+/**
+ * Map a value in a range to be a value in a different range
+ * Cubelets code: loop {(value-startMinVal)*(endMaxVal-endMinVal))/(startMaxVal-startMinVal)+endMinVal};
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code with order of operation.
+ */
+Blockly.Cubelets['seed']=function(block){
+  return 'prn = (MyID0 == 0) ? 1 : MyID0;\n';
+}
 
+
+/**
+ * Code generator to add code into the setup() and loop() functions.
+ * Its use is not mandatory, but necessary to add manual code to setup().
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+
+Blockly.Cubelets['arduino_functions'] = function(block) {
+  // Edited version of Blockly.Generator.prototype.statementToCode
+  function statementToCodeNoTab(block, name) {
+    var targetBlock = block.getInputTargetBlock('seed');
+    var code = Blockly.Cubelets.blockToCode(targetBlock);
+    if (!goog.isString(code)) {
+      throw 'Expecting code from statement block "' + targetBlock.type + '".';
+    }
+    return code;
+  }
+
+  var setupBranch = Blockly.Cubelets.statementToCode(block, 'SETUP_FUNC');
+  //var setupCode = Blockly.Cubelets.scrub_(block, setupBranch); No comment block
+  if (setupBranch) {
+    Blockly.Cubelets.addSetup('userSetupCode', setupBranch, true);
+  }
+
+  var loopBranch = statementToCodeNoTab(block, 'LOOP_FUNC');
+  //var loopcode = Blockly.Cubelets.scrub_(block, loopBranch); No comment block
+  return loopBranch;
+};
