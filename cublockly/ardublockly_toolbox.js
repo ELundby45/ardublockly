@@ -36,6 +36,23 @@ Cublockly.TOOLBOX_XML =
 '    <block type="toggle_directions"></block>' +
 '    <block type="set_direction_forward"></block>' +
 '    <block type="set_direction_reverse"></block>' +
+'	 <block type="ramp_func">'+
+'		<value name="from_ramp">'+
+'			<block type="math_number">'+
+'				<field name="NUM">0</field>'+
+'			</block>'+
+'		</value>'+
+'		<value name="to_ramp">'+
+'			<block type="math_number">'+
+'				<field name="NUM">255</field>'+
+'			</block>'+
+'		</value>'+
+'		<value name="time_ramp">'+
+'			<block type="math_number">'+
+'				<field name="NUM">10000</field>'+
+'			</block>'+
+'		</value>'+
+'	</block>'+
 '  </category>' +
 '  <sep></sep>' +
 '  <category id="catThinking" name="Thinking">' +

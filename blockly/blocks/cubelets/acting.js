@@ -94,3 +94,22 @@ Blockly.Blocks['set_direction_reverse'] = {
     //this.setHelpUrl('http://www.example.com/');
   }
 };
+Blockly.Blocks['ramp_func'] = {
+  init: function() {
+    this.appendValueInput("from_ramp")
+        .setCheck("Number")
+        .appendField("Ramp from");
+    this.appendValueInput("to_ramp")
+        .setCheck("Number")
+        .appendField("to");
+    this.appendValueInput("time_ramp")
+        .setCheck("Number")
+        .appendField("in ");
+    this.appendDummyInput()
+        .appendField("milliseconds");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.acting.HUE);
+  }
+};
