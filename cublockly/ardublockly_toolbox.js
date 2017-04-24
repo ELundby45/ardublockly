@@ -180,7 +180,7 @@ Cublockly.TOOLBOX_XML =
 '    <block type="math_random_float"></block>' +
 '    <block type="mapFunc">' +
 '      <value name="value">' +
-'   	 <block type="weighted_average"></block>' +
+'   	 <block type="get_sensor_value"></block>' +
 '      </value>' +
 '      <value name="startMinVal">' +
 '        <block type="math_number">' +

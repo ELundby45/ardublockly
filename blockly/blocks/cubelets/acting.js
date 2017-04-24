@@ -94,22 +94,41 @@ Blockly.Blocks['set_direction_reverse'] = {
     //this.setHelpUrl('http://www.example.com/');
   }
 };
+
+  /**
+   * Block for increasing/decreasing actuator value over a period of time 
+   * @this Blockly.Block
+   */
 Blockly.Blocks['ramp_func'] = {
+
   init: function() {
-    this.appendValueInput("from_ramp")
-        .setCheck("Number")
-        .appendField("Ramp from");
-    this.appendValueInput("to_ramp")
-        .setCheck("Number")
-        .appendField("to");
-    this.appendValueInput("time_ramp")
-        .setCheck("Number")
-        .appendField("in ");
-    this.appendDummyInput()
-        .appendField("milliseconds");
-    this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(Blockly.Blocks.acting.HUE);
-  }
+    this.jsonInit(
+{
+  "type": "block_type",
+  "message0": "Ramp %1 to %2 in  %3 milliseconds",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "from_ramp",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "to_ramp",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "time_ramp",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "output": Blockly.Types.UNDEF.output,
+  "colour": Blockly.Blocks.acting.HUE,
+  "tooltip": "",
+  "helpUrl": ""
+
+      });
+    }
 };
