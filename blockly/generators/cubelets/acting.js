@@ -42,8 +42,47 @@ Blockly.Cubelets['set_direction_reverse'] = function(block) {
   return code;
 };
 
-//Version of ramp that puts code into void loop 
-/*Blockly.Cubelets['ramp_func']=function(block){
+
+Blockly.Cubelets['bidirectional_rotate']= function(block){
+    var argument0 = Blockly.Cubelets.valueToCode(block, 'source',
+      Blockly.Cubelets.ORDER_NONE) || '0';
+  /*instead of doing this just say functionName= what is wanted if the below function call is run then it checks for a safe name twice 
+   *because at func name it also runs safe name, which means all the calls end up being written as function_2
+   */
+  //var functionName = Blockly.Cubelets.variableDB_.getDistinctName('bidirectional_rotate', Blockly.Generator.NAME_TYPE);
+  var functionName="bidirectional_rotate";
+  Blockly.Cubelets.bidirectional_rotate.bi_directional_rotate = functionName;
+  var func = [
+      'void bidirectional_rotate(uint8_t bv) {',
+      '   uint8_t direction = FORWARD;',
+      //Below line is specific to the snow cat, otherwise use just forward (the line above)
+     // '   uint8_t direction = FORWARD-control_side;',
+      '   static uint8_t motor_speed;',
+      '       if (bv < 123) {',
+      '         set_drive_direction(direction);',
+      '         motor_speed = 2 * (127 - bv);',
+      '       } else if (bv > 131) {',
+      '             set_drive_direction(!direction);',
+      '             motor_speed = 2 * (bv - 128);',
+      '       } else {',
+      '           motor_speed = 0;',
+      '       }',
+      '       set_actuator_value(motor_speed);',
+      '}'];
+  var funcName = Blockly.Cubelets.addFunction('bidirectional_rotate', func.join('\n'));
+  var code = funcName + '('+argument0+');';
+  var forwardDeclartion = 'void ' + funcName + '(uint8_t bv);';
+  Blockly.Cubelets.addInclude("function_"+funcName, forwardDeclartion);
+  return code;
+}
+
+/**
+ * Changes actuator value consistently over a set time 
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+//Version of ramp that puts code into void loop and only inserts code for that case 
+Blockly.Cubelets['ramp_func']=function(block){
   var argument0 = Blockly.Cubelets.valueToCode(block, 'from_ramp',
       Blockly.Cubelets.ORDER_NONE) || '0';
   var argument1 = Blockly.Cubelets.valueToCode(block, 'to_ramp',
@@ -74,16 +113,15 @@ Blockly.Cubelets['set_direction_reverse'] = function(block) {
   }
   return code;
 
-}*/
+}
 
 
-/**
- * Changes actuator value consistently over a set time 
- * Cubelets code: complex code, can create external functions.
- * @param {!Blockly.Block} block Block to generate the code from.
- * @return {array} Completed code.
- */
-Blockly.Cubelets['ramp_func']=function(block){
+/**This version of ramp inserts a function and function call
+  *This version needs to be an output connecter, but since void 
+  *dont need to have an output. To not be output and keep as top/bottom connector
+  *take out the array return and just return string code
+  **/
+/*Blockly.Cubelets['ramp_func']=function(block){
   var argument0 = Blockly.Cubelets.valueToCode(block, 'from_ramp',
       Blockly.Cubelets.ORDER_NONE) || '0';
   var argument1 = Blockly.Cubelets.valueToCode(block, 'to_ramp',
@@ -123,7 +161,7 @@ Blockly.Cubelets['ramp_func']=function(block){
 
 
   return [code, Blockly.Cubelets.ORDER_UNARY_POSTFIX];
-}; 
+}; */
 
 
 

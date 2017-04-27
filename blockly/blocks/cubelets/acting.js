@@ -95,6 +95,22 @@ Blockly.Blocks['set_direction_reverse'] = {
   }
 };
 
+Blockly.Blocks['bidirectional_rotate']={
+  init: function() {
+    this.jsonInit({
+    "type": "block_type",
+   "message0": "bidirectional rotate %1",
+    "args0": [
+    {
+      "type": "input_value",
+      "name": "source"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": Blockly.Blocks.acting.HUE,
+  })
+}};
   /**
    * Block for increasing/decreasing actuator value over a period of time 
    * @this Blockly.Block
@@ -105,7 +121,7 @@ Blockly.Blocks['ramp_func'] = {
     this.jsonInit(
 {
   "type": "block_type",
-  "message0": "Ramp %1 to %2 in  %3 milliseconds",
+  "message0": "ramp %1 to %2 in  %3 milliseconds",
   "args0": [
     {
       "type": "input_value",
@@ -124,7 +140,12 @@ Blockly.Blocks['ramp_func'] = {
     }
   ],
   "inputsInline": true,
-  "output": Blockly.Types.UNDEF.output,
+/*if wanting to use the ramp function instead of putting code in loop
+ *need to either include output/ take out previous and next, this will make it a left output 
+ *to keep as a top/bottom connector, leave out output and change generator code*/
+// "output": Blockly.Types.UNDEF.output,
+  "previousStatement": null,
+  "nextStatement": null,
   "colour": Blockly.Blocks.acting.HUE,
   "tooltip": "",
   "helpUrl": ""
