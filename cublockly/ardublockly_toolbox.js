@@ -161,6 +161,21 @@ Cublockly.TOOLBOX_XML =
 '      </value>' +
 '    </block>' +
 '    <block type="math_random_float"></block>' +
+'    <block type="mapFunc">' +
+'      <value name="value">' +
+'   	 <block type="weighted_average"></block>' +
+'      </value>' +
+'      <value name="startMinVal">' +
+'        <block type="math_number">' +
+'          <field name="NUM">0</field>' +
+'        </block>' +
+'      </value>' +
+'      <value name="startMaxVal">' +
+'        <block type="math_number">' +
+'          <field name="NUM">255</field>' +
+'        </block>' +
+'      </value>' +
+'    </block>' +
 '  </category>' +
 '  <sep></sep>' +
 '  <category id="catVariables" name="Variables">' +

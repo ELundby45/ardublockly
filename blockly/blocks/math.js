@@ -587,6 +587,21 @@ Blockly.Blocks['math_random_int'] = {
   }
 };
 
+  /**
+   * Block that gets automatically added to Set Up when random integer is called. Served the purpose of setting a seed.
+   * @this Blockly.Block
+   */
+Blockly.Blocks['seed']={
+  init: function(){
+    this.jsonInit({
+        "message0": "set up for random integer",
+        "previousStatement": null,
+        "nextStatement": null,
+        "colour": Blockly.Blocks.math.HUE,
+    });
+  }
+}
+
 Blockly.Blocks['math_random_float'] = {
   /**
    * Block for random fraction between 0 and 1.
@@ -606,3 +621,49 @@ Blockly.Blocks['math_random_float'] = {
     return Blockly.Types.DECIMAL;
   }
 };
+
+Blockly.Blocks['mapFunc'] = {
+  /**
+   * Block for mapping a value
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.jsonInit({
+        "message0":  "map %1 between %2 and %3 to value between %4 and %5"
+        ,
+        "args0": [
+          {
+            "type": "input_value",
+            "name": "value",
+            "check": Blockly.Types.NUMBER.checkList
+          },
+          {
+            "type": "input_value",
+            "name": "startMinVal",
+            "check": Blockly.Types.NUMBER.checkList
+          },
+          {
+            "type": "input_value",
+            "name": "startMaxVal",
+            "check": Blockly.Types.NUMBER.checkList
+          },
+          {
+            "type": "input_value",
+            "name": "endMinVal",
+            "check": Blockly.Types.NUMBER.checkList
+          },
+          {
+            "type": "input_value",
+            "name": "endMaxVal",
+            "check": Blockly.Types.NUMBER.checkList
+          }
+        ],
+        "inputsInline": true,
+        "output": Blockly.Types.NUMBER.output,
+        "colour": Blockly.Blocks.math.HUE,
+        //"tooltip": "",
+      });
+    }
+};
+
+
