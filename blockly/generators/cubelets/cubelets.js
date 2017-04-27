@@ -15,7 +15,9 @@ Blockly.Cubelets['cubelets_setup'] = function(block) {
 
 Blockly.Cubelets['cubelets_loop'] = function(block) {
   var args = Blockly.Cubelets.statementToCode(block, 'loop_do');
-
   var loopBranch = Blockly.Cubelets.statementToCode(block, 'loop_do');
+ var block= Cublockly.workspace.getAllBlocks();
+ console.log(block);
   return loopBranch;
 };
+

@@ -27,7 +27,8 @@ Blockly.Blocks['set_flashlight'] = {
     this.setNextStatement(true);
     this.setColour(Blockly.Blocks.acting.HUE);
     this.setTooltip('');
-    //this.setHelpUrl('http://www.example.com/');
+
+
   }
 };
 
@@ -41,7 +42,6 @@ Blockly.Blocks['set_bar'] = {
     this.setNextStatement(true);
     this.setColour(Blockly.Blocks.acting.HUE);
     this.setTooltip('Turns an individual LED on on a Bar Graph Cubelet. Pass in a number 0-9');
-    //this.setHelpUrl('http://www.example.com/');
   }
 };
 
