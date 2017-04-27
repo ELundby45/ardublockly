@@ -625,11 +625,14 @@ Blockly.Blocks['math_random_float'] = {
 Blockly.Blocks['mapFunc'] = {
   /**
    * Block for mapping a value
+   *It works like the arduino mapping function
+   *For example, could map a sensor value that is between 0 to 255 to be 0 through 10 for a bar graph 
+   *Another example, could map sensor value between 0 and 50 to be 0 to 255 
    * @this Blockly.Block
    */
   init: function() {
     this.jsonInit({
-        "message0":  "map %1 between %2 and %3 to value between %4 and %5"
+        "message0":  "map %1 between %2 and %3 to between %4 and %5"
         ,
         "args0": [
           {
@@ -665,5 +668,4 @@ Blockly.Blocks['mapFunc'] = {
       });
     }
 };
-
 
