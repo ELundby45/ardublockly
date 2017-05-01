@@ -35,7 +35,6 @@ Blockly.Cubelets.set_bar = function(block) {
 
 Blockly.Cubelets.clear_bar = function(block) {
   var bar_index = Blockly.Cubelets.valueToCode(block, 'bar_index', Blockly.Cubelets.ORDER_ATOMIC); 
-  console.log(bar_index);
   if(bar_index>9||bar_index<0){
     block.setWarningText("The bar graph takes values between 0 and 9");
   }
