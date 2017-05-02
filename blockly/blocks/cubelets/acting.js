@@ -124,7 +124,8 @@ Blockly.Blocks['ramp_func'] = {
     }
   ],
   "inputsInline": true,
-  "output": Blockly.Types.UNDEF.output,
+  "previousStatement": null,
+  "nextStatement": null,
   "colour": Blockly.Blocks.acting.HUE,
   "tooltip": "",
   "helpUrl": ""

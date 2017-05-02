@@ -122,7 +122,7 @@ Blockly.Cubelets['ramp_func']=function(block){
   Blockly.Cubelets.addInclude("function_"+funcName, forwardDeclartion);
 
 
-  return [code, Blockly.Cubelets.ORDER_UNARY_POSTFIX];
+  return code;
 }; 
 
 
