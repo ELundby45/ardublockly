@@ -95,22 +95,6 @@ Blockly.Blocks['set_direction_reverse'] = {
   }
 };
 
-Blockly.Blocks['bidirectional_rotate']={
-  init: function() {
-    this.jsonInit({
-    "type": "block_type",
-   "message0": "bidirectional rotate %1",
-    "args0": [
-    {
-      "type": "input_value",
-      "name": "source"
-    }
-  ],
-  "previousStatement": null,
-  "nextStatement": null,
-  "colour": Blockly.Blocks.acting.HUE,
-  })
-}};
   /**
    * Block for increasing/decreasing actuator value over a period of time 
    * @this Blockly.Block
@@ -153,3 +137,20 @@ Blockly.Blocks['ramp_func'] = {
       });
     }
 };
+
+Blockly.Blocks['bidirectional_rotate']={
+  init: function() {
+    this.jsonInit({
+    "type": "block_type",
+   "message0": "bidirectional rotate %1",
+    "args0": [
+    {
+      "type": "input_value",
+      "name": "source"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": Blockly.Blocks.acting.HUE,
+  })
+}};
