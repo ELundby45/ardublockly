@@ -36,6 +36,11 @@ Cublockly.TOOLBOX_XML =
 '    <block type="toggle_directions"></block>' +
 '    <block type="set_direction_forward"></block>' +
 '    <block type="set_direction_reverse"></block>' +
+'	 <block type="bidirectional_rotate">' +
+'		<value name="source">' +
+'			<block type="weighted_average"></block>'+
+'		</value>'+
+'	 </block>'  +
 '	 <block type="ramp_func">'+
 '		<value name="from_ramp">'+
 '			<block type="math_number">'+
@@ -180,7 +185,7 @@ Cublockly.TOOLBOX_XML =
 '    <block type="math_random_float"></block>' +
 /*'    <block type="mapFunc">' +
 '      <value name="value">' +
-'   	 <block type="get_sensor_value"></block>' +
+'   	 <block type="weighted_average"></block>' +
 '      </value>' +
 '      <value name="startMinVal">' +
 '        <block type="math_number">' +
