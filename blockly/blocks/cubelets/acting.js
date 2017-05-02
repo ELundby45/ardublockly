@@ -94,3 +94,42 @@ Blockly.Blocks['set_direction_reverse'] = {
     //this.setHelpUrl('http://www.example.com/');
   }
 };
+
+  /**
+   * Block for increasing/decreasing actuator value over a period of time 
+   * @this Blockly.Block
+   */
+Blockly.Blocks['ramp_func'] = {
+
+  init: function() {
+    this.jsonInit(
+{
+  "type": "block_type",
+  "message0": "Ramp %1 to %2 in  %3 milliseconds",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "from_ramp",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "to_ramp",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "time_ramp",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": Blockly.Blocks.acting.HUE,
+  "tooltip": "",
+  "helpUrl": ""
+
+      });
+    }
+};
