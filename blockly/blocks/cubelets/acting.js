@@ -13,7 +13,6 @@ Blockly.Blocks['set_actuator_value'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('For use with Action Cubelets only. Sets the actuator value to a number 0-255.');
-    //set what cubelet types this will work for 
     var cubelets=[45,48,46,47];
     this.setCubelet(cubelets);
   }
@@ -141,8 +140,11 @@ Blockly.Blocks['ramp_func'] = {
   "nextStatement": null,
   "colour": Blockly.Blocks.acting.HUE,
   "tooltip": "",
-  "helpUrl": ""
+  "helpUrl": "",
 
       });
+    //Ramp works for  flashlight, drive, rotate, and speaker 
+    var cubelets=[45,48,46,47];
+    this.setCubelet(cubelets);
     }
 };
