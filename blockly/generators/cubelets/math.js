@@ -310,7 +310,6 @@ Blockly.Cubelets['math_constrain'] = function(block) {
  * Cubelets code: loop { math_random_int(X, Y); }
  *               and an aditional math_random_int function
  * Adapted code for a smaller random function 
- * TODO: figure out how to add seed
  * @param {!Blockly.Block} block Block to generate the code from.
  * @return {array} Completed code with order of operation.
  */
@@ -323,7 +322,7 @@ Blockly.Cubelets['math_random_int'] = function(block) {
       'math_random_int', Blockly.Generator.NAME_TYPE);
   Blockly.Cubelets.math_random_int.random_function = functionName;
   var func = [
-      'uint8_t prn;',
+      'uint8_t prn //declare prn as a global varible;',
       'uint8_t ' + Blockly.Cubelets.DEF_FUNC_NAME + '(uint8_t min, uint8_t max) {',
       '   uint8_t feedback_bit= ((prn >> 0) ^ (prn >> 2) ^ (prn >> 3) ^ (prn >> 4)) & 1;',
       '   prn = (prn >> 1) | (feedback_bit << 7);',
@@ -334,6 +333,7 @@ Blockly.Cubelets['math_random_int'] = function(block) {
   var forwardDeclartion = 'uint8_t ' + funcName + '(uint8_t min, uint8_t max);';
   Blockly.Cubelets.addInclude("function_"+funcName, forwardDeclartion);
 
+//this line of code adds the seed to the set up, with out adding a block, 'seed' could be anything not already used
    Blockly.Cubelets.addSetup('seed', 'prn = (MyID0 == 0) ? 1 : MyID0;  //used for random function\n', true);
 
   return [code, Blockly.Cubelets.ORDER_UNARY_POSTFIX];
@@ -366,8 +366,13 @@ Blockly.Cubelets['mapFunc'] = function(block) {
       Blockly.Cubelets.ORDER_MULTIPLICATIVE) || '0';
   var argument4 = Blockly.Cubelets.valueToCode(block, 'endMaxVal',
       Blockly.Cubelets.ORDER_MULTIPLICATIVE) || '0';
-  var code= '((' + argument0 + '-' + argument1 + ')*(' + argument4 + '-' + argument3+'))/('+argument2+ '-' +argument1+')'+ '+' + argument3;
-  console.log(code);
+  if(argument2-argument1>0 ){
+      var code= '((' + argument0 + '-' + argument1 + ')*(' + argument4 + '-' + argument3+'))/('+argument2+ '-' +argument1+')'+ '+' + argument3;
+  }
+  else{
+      var code=argument0;
+  }
+
   return [code, Blockly.Cubelets.ORDER_UNARY_POSTFIX];
 };
 
