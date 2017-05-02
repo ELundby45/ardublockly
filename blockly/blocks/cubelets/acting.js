@@ -122,6 +122,9 @@ Blockly.Blocks['bidirectional_rotate']={
   "nextStatement": null,
   "colour": Blockly.Blocks.acting.HUE,
   })
+    //works for drive and rotate cubelet
+        var cubelets=[45,46];
+    this.setCubelet(cubelets);
 }};
 
   /**
