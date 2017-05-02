@@ -57,6 +57,7 @@ Blockly.Cubelets['procedures_defreturn'] = function(block) {
     returnType = block.getReturnType();
   }
   returnType = Blockly.Cubelets.getCubeletsType_(returnType);
+
   // Construct code
   var code = returnType + ' ' + funcName + '(' + args.join(', ') + ') {\n' +
       branch + returnValue + '}';
