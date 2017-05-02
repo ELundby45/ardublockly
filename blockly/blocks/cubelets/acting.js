@@ -13,7 +13,9 @@ Blockly.Blocks['set_actuator_value'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('For use with Action Cubelets only. Sets the actuator value to a number 0-255.');
-    //this.setHelpUrl('http://www.example.com/');
+    //set what cubelet types this will work for 
+    var cubelets=[45,48,46,47];
+    this.setCubelet(cubelets);
   }
 };
 
@@ -27,7 +29,9 @@ Blockly.Blocks['set_flashlight'] = {
     this.setNextStatement(true);
     this.setColour(Blockly.Blocks.acting.HUE);
     this.setTooltip('');
-    //this.setHelpUrl('http://www.example.com/');
+    var cubelets=[48];
+    this.setCubelet(cubelets);
+
   }
 };
 
@@ -41,7 +45,8 @@ Blockly.Blocks['set_bar'] = {
     this.setNextStatement(true);
     this.setColour(Blockly.Blocks.acting.HUE);
     this.setTooltip('Turns an individual LED on on a Bar Graph Cubelet. Pass in a number 0-9');
-    //this.setHelpUrl('http://www.example.com/');
+    var cubelets=[43];
+    this.setCubelet(cubelets);
   }
 };
 
@@ -56,6 +61,8 @@ Blockly.Blocks['clear_bar'] = {
     this.setColour(Blockly.Blocks.acting.HUE);
     this.setTooltip('Turns an individual LED off on a Bar Graph Cubelet. Pass in a number 0-9');
     //this.setHelpUrl('http://www.example.com/');
+    var cubelets=[43];
+    this.setCubelet(cubelets);
   }
 };
 
@@ -68,6 +75,8 @@ Blockly.Blocks['toggle_directions'] = {
     this.setTooltip('Can be used only on Rotate or Drive Cubelets.');
     this.setColour(Blockly.Blocks.acting.HUE);
     //this.setHelpUrl('http://www.example.com/');
+    var cubelets=[45,46];
+    this.setCubelet(cubelets);
   }
 };
 
@@ -80,6 +89,8 @@ Blockly.Blocks['set_direction_forward'] = {
     this.setTooltip('Can be used only on Rotate or Drive Cubelets.');
     this.setColour(Blockly.Blocks.acting.HUE);
     //this.setHelpUrl('http://www.example.com/');
+    var cubelets=[45,46];
+    this.setCubelet(cubelets);
   }
 };
 
@@ -92,6 +103,8 @@ Blockly.Blocks['set_direction_reverse'] = {
     this.setTooltip('Can be used only on Rotate or Drive Cubelets.');
     this.setColour(Blockly.Blocks.acting.HUE);
     //this.setHelpUrl('http://www.example.com/');
+    var cubelets=[45,46];
+    this.setCubelet(cubelets);
   }
 };
 

@@ -587,20 +587,6 @@ Blockly.Blocks['math_random_int'] = {
   }
 };
 
-  /**
-   * Block that gets automatically added to Set Up when random integer is called. Served the purpose of setting a seed.
-   * @this Blockly.Block
-   */
-Blockly.Blocks['seed']={
-  init: function(){
-    this.jsonInit({
-        "message0": "set up for random integer",
-        "previousStatement": null,
-        "nextStatement": null,
-        "colour": Blockly.Blocks.math.HUE,
-    });
-  }
-}
 
 Blockly.Blocks['math_random_float'] = {
   /**

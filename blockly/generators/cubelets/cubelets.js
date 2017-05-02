@@ -15,7 +15,50 @@ Blockly.Cubelets['cubelets_setup'] = function(block) {
 
 Blockly.Cubelets['cubelets_loop'] = function(block) {
   var args = Blockly.Cubelets.statementToCode(block, 'loop_do');
-
   var loopBranch = Blockly.Cubelets.statementToCode(block, 'loop_do');
   return loopBranch;
+};
+
+/**
+ ** Check to see if blockly block can be uploaded to cubelet
+ ** @param {cubeletType: cubelet type id} If it is not a valid type comment it out and display error 
+ ** Also uses the added block feature block.cubelet which is a list of valid cubelet block types 
+ ** If no valid cubelet types defined (NULL) assume it is valid for all 
+ **   Void function.
+ */
+Blockly.Cubelets['check_cubelets']=function(cubeletType){
+  //get all blocks in the workspace 
+   var blocks=Cublockly.workspace.getAllBlocks();
+   if(!cubeletType) return;
+   /*start at 2 because the first two blocks will always be setup and loop
+   Use boolean variable to track if it is a valid cuebelet type 
+   go through each block and check if block.cubelet is NULL, assume all cubelet types will work
+   and set the boolean to true other wise loop through cubelet array and compare with cubelet type
+   */  
+   for(var i=2;i<blocks.length;i++){
+    var check=false;
+    if(blocks[i].cubelet){
+      for(var j=0;j<blocks[i].cubelet.length;j++){
+          if(blocks[i].cubelet[j]==cubeletType){
+            check=true;
+            break;
+          }
+      }
+    }
+    else{
+     check=true;
+   }
+   //For each block if check is false display warning and disable 
+    if(!check){
+        blocks[i].setWarningText("This block can't be used with the selected Cubelet type");
+        blocks[i].setDisabled(true);
+      }
+      //if it is true get rid of the warning (if there is one) and enable
+      //Currently this also makes any previously disabled valid blocks get enabled 
+      else{
+        blocks[i].setWarningText(null);
+        blocks[i].setDisabled(false);
+      }
+   }
+   return;
 };

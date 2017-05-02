@@ -72,6 +72,7 @@ Blockly.Block = function(workspace, prototypeName, opt_id) {
   /** @type {boolean} */
   this.contextMenu = true;
 
+
   /**
    * @type {Blockly.Block}
    * @private
@@ -129,6 +130,7 @@ Blockly.Block = function(workspace, prototypeName, opt_id) {
   this.isInFlyout = workspace.isFlyout;
   /** @type {boolean} */
   this.RTL = workspace.RTL;
+
 
   // Copy the type-specific functions and data from the prototype.
   if (prototypeName) {
@@ -613,7 +615,14 @@ Blockly.Block.prototype.setHelpUrl = function(url) {
 Blockly.Block.prototype.setTooltip = function(newTip) {
   this.tooltip = newTip;
 };
-
+/**
+ * Stores the cubelet id for all of the cubelet block types the block will work on 
+ * @param {array} an array of cubelet type ids that the block will work for 
+ *This block element is used to check if a block should be disabled before uploading
+ */
+Blockly.Block.prototype.setCubelet=function(newcubelet){
+  this.cubelet=newcubelet;
+};
 /**
  * Get the colour of a block.
  * @return {string} #RRGGBB string.
@@ -1008,6 +1017,9 @@ Blockly.Block.prototype.jsonInit = function(json) {
   }
   if (json['helpUrl'] !== undefined) {
     this.setHelpUrl(json['helpUrl']);
+  }
+    if (json['cubelet'] !== undefined) {
+    this.setCubelet(json['cubelet']);
   }
 };
 

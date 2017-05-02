@@ -178,7 +178,7 @@ Cublockly.TOOLBOX_XML =
 '      </value>' +
 '    </block>' +
 '    <block type="math_random_float"></block>' +
-'    <block type="mapFunc">' +
+/*'    <block type="mapFunc">' +
 '      <value name="value">' +
 '   	 <block type="get_sensor_value"></block>' +
 '      </value>' +
@@ -192,7 +192,7 @@ Cublockly.TOOLBOX_XML =
 '          <field name="NUM">255</field>' +
 '        </block>' +
 '      </value>' +
-'    </block>' +
+'    </block>' +*/
 '  </category>' +
 '  <sep></sep>' +
 '  <category id="catVariables" name="Variables">' +
