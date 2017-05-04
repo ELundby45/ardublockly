@@ -331,6 +331,12 @@ Blockly.Cubelets['math_random_int'] = function(block) {
       '}'];
   var funcName = Blockly.Cubelets.addFunction('mathRandomInt', func.join('\n'));
   var code = funcName + '(' + argument0 + ', ' + argument1 + ')';
+  if(argument0<0||argument0>255||argument1<0||argument1>255){
+    block.setWarningText("Please enter integers between 0 and 255"); 
+  }
+  else{
+    block.setWarningText(null);
+  }
   var forwardDeclartion = 'uint8_t ' + funcName + '(uint8_t min, uint8_t max);';
   Blockly.Cubelets.addInclude("function_"+funcName, forwardDeclartion);
 
