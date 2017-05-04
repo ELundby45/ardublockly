@@ -325,7 +325,11 @@ Blockly.Cubelets['math_random_int'] = function(block) {
   var func = [
       'uint8_t prn;',
       'uint8_t ' + Blockly.Cubelets.DEF_FUNC_NAME + '(uint8_t min, uint8_t max) {',
-      '   uint8_t feedback_bit= ((prn >> 0) ^ (prn >> 2) ^ (prn >> 3) ^ (prn >> 4)) & 1;',
+      '   if(max<min){',
+      '      max=max^min; ',
+      '      min=max^min;',
+      '      max=max^min;',
+      '   }uint8_t feedback_bit= ((prn >> 0) ^ (prn >> 2) ^ (prn >> 3) ^ (prn >> 4)) & 1;',
       '   prn = (prn >> 1) | (feedback_bit << 7);',
       '  return min + prn % (max - min +1);',
       '}'];
