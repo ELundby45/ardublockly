@@ -17,25 +17,25 @@ Cublockly.TOOLBOX_XML =
 '  </category>' +
 '  <sep></sep>' +
 '  <category id="catActing" name="Acting">' +
-'    <block type="set_actuator_value"></block>' +
+'    <block type="set_actuator_value" data-blockTypes="[45,48,46,47]"></block>' +
 //'    <block type="set_flashlight"></block>' +
-'    <block type="set_bar">' +
+'    <block type="set_bar" data-blockTypes="[43]">' +
 '        <value name="bar_index">' +
 '          <block type="math_number">' +
 '              <field name="NUM">0</field>' +
 '          </block>' +
 '        </value>' +
 '    </block>' +
-'    <block type="clear_bar">' +
+'    <block type="clear_bar" data-blockTypes="[43]">' +
 '        <value name="bar_index">' +
 '          <block type="math_number">' +
 '              <field name="NUM">0</field>' +
 '          </block>' +
 '        </value>' +
 '    </block>' +
-'    <block type="toggle_directions"></block>' +
-'    <block type="set_direction_forward"></block>' +
-'    <block type="set_direction_reverse"></block>' +
+'    <block type="toggle_directions" data-blockTypes="[45,46]"></block>' +
+'    <block type="set_direction_forward" data-blockTypes="[45,46]"></block>' +
+'    <block type="set_direction_reverse" data-blockTypes="[45,46]"></block>' +
 '	 <block type="bidirectional_rotate">' +
 '		<value name="source">' +
 '			<block type="weighted_average"></block>'+

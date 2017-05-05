@@ -30,11 +30,11 @@ Blockly.Cubelets['check_cubelets']=function(cubeletType){
   //get all blocks in the workspace 
    var blocks=Cublockly.workspace.getAllBlocks();
    if(!cubeletType) return;
-   /*start at 2 because the first two blocks will always be setup and loop
-   Use boolean variable to track if it is a valid cuebelet type 
-   go through each block and check if block.cubelet is NULL, assume all cubelet types will work
-   and set the boolean to true other wise loop through cubelet array and compare with cubelet type
-   */  
+   /**start at 2 because the first two blocks will always be setup and loop
+    **Use boolean variable to track if it is a valid cuebelet type 
+    **go through each block and check if block.cubelet is NULL, assume all cubelet types will work
+    ** and set the boolean to true other wise loop through cubelet array and compare with cubelet type
+    **/  
    for(var i=2;i<blocks.length;i++){
     var check=false;
     if(blocks[i].cubelet){
@@ -60,5 +60,28 @@ Blockly.Cubelets['check_cubelets']=function(cubeletType){
         blocks[i].setDisabled(false);
       }
    }
+
+   /**The following code is used disable the invalid blocks in the toolbox based on the cubelet type
+    ** It gets the element data-blocksTypes from the xmlTree for the toolbox. For each of these 
+    ** it checks if it is a valid type and updates the boolean if it is. It then disables/enables. 
+    ** Currently only action cubelets have the attribute
+    */ 
+
+//Convert to jquery and find the attribute data-blockTypes for each 
+$(Cublockly.xmlTree).find("[data-blockTypes]").each(function(){
+    
+    var restrictedTypes = JSON.parse($(this).attr('data-blockTypes'));
+    console.log(restrictedTypes);
+    check=false; 
+    for(var i=0;i<restrictedTypes.length;i++){
+      if(restrictedTypes[i]==cubeletType) check=true;
+    }
+    if(!check) $(this).attr('disabled', 'true');
+    else $(this).attr('disabled', 'false'); 
+});
+
+
+//Update the toolbox
+Cublockly.workspace.updateToolbox(Cublockly.xmlTree);
    return;
 };
