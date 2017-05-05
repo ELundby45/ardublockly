@@ -127,7 +127,7 @@ Blockly.Blocks['ramp_func'] = {
   "previousStatement": null,
   "nextStatement": null,
   "colour": Blockly.Blocks.acting.HUE,
-  "tooltip": "",
+  "tooltip": "Increase or decrease the actuator value over time",
   "helpUrl": ""
 
       });
