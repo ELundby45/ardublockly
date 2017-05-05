@@ -17,7 +17,6 @@ Cublockly.TOOLBOX_XML =
 '  </category>' +
 '  <sep></sep>' +
 '  <category id="catActing" name="Acting">' +
-//attribute data-blockTypes tracks what cubelet types are valid so it can disable invalid
 '    <block type="set_actuator_value" data-blockTypes="[45,48,46,47]"></block>' +
 //'    <block type="set_flashlight"></block>' +
 '    <block type="set_bar" data-blockTypes="[43]">' +
