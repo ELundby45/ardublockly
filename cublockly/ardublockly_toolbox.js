@@ -9,7 +9,6 @@
 /** Create a namespace for the application. */
 var Cublockly = Cublockly || {};
 
-
 Cublockly.TOOLBOX_XML =
 '<xml>' +
 '  <sep></sep>' +
