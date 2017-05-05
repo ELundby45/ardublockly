@@ -28,14 +28,25 @@ Blockly.Cubelets['cubelets_loop'] = function(block) {
  */
 Blockly.Cubelets['check_cubelets']=function(cubeletType){
   //get all blocks in the workspace 
+  var i;
    var blocks=Cublockly.workspace.getAllBlocks();
-   if(!cubeletType) return;
+   //if no block type is specified enable everything  
+   if(!cubeletType){
+      for (i=0;i<blocks.length;i++){
+        blocks[i].setDisabled(false);
+        blocks[i].setWarningText(null);
+      }
+      $(Cublockly.xmlTree).find("[data-blockTypes]").each(function(){
+      $(this).attr('disabled', 'false'); 
+    });
+    return;
+  }
    /**start at 2 because the first two blocks will always be setup and loop
     **Use boolean variable to track if it is a valid cuebelet type 
     **go through each block and check if block.cubelet is NULL, assume all cubelet types will work
     ** and set the boolean to true other wise loop through cubelet array and compare with cubelet type
     **/  
-   for(var i=2;i<blocks.length;i++){
+   for(i=2;i<blocks.length;i++){
     var check=false;
     if(blocks[i].cubelet){
       for(var j=0;j<blocks[i].cubelet.length;j++){
