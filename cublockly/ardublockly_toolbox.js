@@ -36,12 +36,12 @@ Cublockly.TOOLBOX_XML =
 '    <block type="toggle_directions" data-blockTypes="[45,46]"></block>' +
 '    <block type="set_direction_forward" data-blockTypes="[45,46]"></block>' +
 '    <block type="set_direction_reverse" data-blockTypes="[45,46]"></block>' +
-'	 <block type="bidirectional_rotate">' +
+'	 <block type="bidirectional_rotate" data-blockTypes="[45,46]">' +
 '		<value name="source">' +
 '			<block type="weighted_average"></block>'+
 '		</value>'+
 '	 </block>'  +
-'	 <block type="ramp_func">'+
+'	 <block type="ramp_func" data-blockTypes="[45,48,46,47]">'+
 '		<value name="from_ramp">'+
 '			<block type="math_number">'+
 '				<field name="NUM">0</field>'+
