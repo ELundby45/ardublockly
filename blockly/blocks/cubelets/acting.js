@@ -120,6 +120,7 @@ Blockly.Blocks['bidirectional_rotate']={
   ],
   "previousStatement": null,
   "nextStatement": null,
+  "tooltip": "Bases the direction and actuator value off of the input.",
   "colour": Blockly.Blocks.acting.HUE,
   })
     //works for drive and rotate cubelet
@@ -159,7 +160,7 @@ Blockly.Blocks['ramp_func'] = {
   "previousStatement": null,
   "nextStatement": null,
   "colour": Blockly.Blocks.acting.HUE,
-  "tooltip": "",
+  "tooltip": "Increase or decrease the actuator value over time a time period.",
   "helpUrl": "",
 
       });
