@@ -110,5 +110,4 @@ Blockly.Blocks['bidirectional_rotate']={
   "nextStatement": null,
   "colour": Blockly.Blocks.acting.HUE,
   })
-    this.setTooltip('Bases the direction and speed off of the input.');
 }};
