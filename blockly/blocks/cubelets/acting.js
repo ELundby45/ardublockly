@@ -6,14 +6,13 @@ Blockly.Blocks.acting.HUE = 53;
 
 Blockly.Blocks['set_actuator_value'] = {
   init: function() {
-  	this.setColour(Blockly.Blocks.acting.HUE);
+    this.setColour(Blockly.Blocks.acting.HUE);
     this.appendValueInput("actuator_value")
         .setCheck("Number")
         .appendField("set actuator value to");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('For use with Action Cubelets only. Sets the actuator value to a number 0-255.');
-    //set what cubelet types this will work for 
     var cubelets=[45,48,46,47];
     this.setCubelet(cubelets);
   }
@@ -106,4 +105,67 @@ Blockly.Blocks['set_direction_reverse'] = {
     var cubelets=[45,46];
     this.setCubelet(cubelets);
   }
+};
+
+Blockly.Blocks['bidirectional_rotate']={
+  init: function() {
+    this.jsonInit({
+    "type": "block_type",
+   "message0": "two-way motor %1",
+    "args0": [
+    {
+      "type": "input_value",
+      "name": "source"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "tooltip": "Bases the direction and actuator value off of the input.",
+  "colour": Blockly.Blocks.acting.HUE,
+  })
+    //works for drive and rotate cubelet
+        var cubelets=[45,46];
+    this.setCubelet(cubelets);
+}};
+
+  /**
+   * Block for increasing/decreasing actuator value over a period of time 
+   * @this Blockly.Block
+   */
+Blockly.Blocks['ramp_func'] = {
+
+  init: function() {
+    this.jsonInit(
+{
+  "type": "block_type",
+  "message0": "Ramp %1 to %2 in  %3 milliseconds",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "from_ramp",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "to_ramp",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "time_ramp",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": Blockly.Blocks.acting.HUE,
+  "tooltip": "Increase or decrease the actuator value over time a time period.",
+  "helpUrl": "",
+
+      });
+    //Ramp works for  flashlight, drive, rotate, and speaker 
+    var cubelets=[45,48,46,47];
+    this.setCubelet(cubelets);
+    }
 };

@@ -13,7 +13,7 @@ Cublockly.TOOLBOX_XML =
 '<xml>' +
 '  <sep></sep>' +
 '  <category id="catSensing" name="Sensing">' +
-'    <block type="get_sensor_value"></block>' +
+'    <block type="get_sensor_value" data-blockTypes="[21,22,24,25]"></block>' +
 '  </category>' +
 '  <sep></sep>' +
 '  <category id="catActing" name="Acting">' +
@@ -36,6 +36,28 @@ Cublockly.TOOLBOX_XML =
 '    <block type="toggle_directions" data-blockTypes="[45,46]"></block>' +
 '    <block type="set_direction_forward" data-blockTypes="[45,46]"></block>' +
 '    <block type="set_direction_reverse" data-blockTypes="[45,46]"></block>' +
+'	 <block type="bidirectional_rotate" data-blockTypes="[45,46]">' +
+'		<value name="source">' +
+'			<block type="weighted_average"></block>'+
+'		</value>'+
+'	 </block>'  +
+'	 <block type="ramp_func" data-blockTypes="[45,48,46,47]">'+
+'		<value name="from_ramp">'+
+'			<block type="math_number">'+
+'				<field name="NUM">0</field>'+
+'			</block>'+
+'		</value>'+
+'		<value name="to_ramp">'+
+'			<block type="math_number">'+
+'				<field name="NUM">255</field>'+
+'			</block>'+
+'		</value>'+
+'		<value name="time_ramp">'+
+'			<block type="math_number">'+
+'				<field name="NUM">10000</field>'+
+'			</block>'+
+'		</value>'+
+'	</block>'+
 '  </category>' +
 '  <sep></sep>' +
 '  <category id="catThinking" name="Thinking">' +
@@ -148,15 +170,15 @@ Cublockly.TOOLBOX_XML =
 '        </block>' +
 '      </value>' +
 '    </block>' +
-'    <block type="math_random_int">' +
+'    <block type="math_random_val">' +
 '      <value name="FROM">' +
 '        <block type="math_number">' +
-'          <field name="NUM">1</field>' +
+'          <field name="NUM">0</field>' +
 '        </block>' +
 '      </value>' +
 '      <value name="TO">' +
 '        <block type="math_number">' +
-'          <field name="NUM">100</field>' +
+'          <field name="NUM">255</field>' +
 '        </block>' +
 '      </value>' +
 '    </block>' +
