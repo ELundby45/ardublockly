@@ -17,7 +17,7 @@ Cublockly.TOOLBOX_XML =
 '  </category>' +
 '  <sep></sep>' +
 '  <category id="catActing" name="Acting">' +
-'    <block type="set_actuator_value" data-blockTypes="[45,48,46,47]"></block>' +
+'    <block type="set_actuator_value" data-blockTypes="[43,45,48,46,47]"></block>' +
 //'    <block type="set_flashlight"></block>' +
 '    <block type="set_bar" data-blockTypes="[43]">' +
 '        <value name="bar_index">' +
@@ -41,7 +41,7 @@ Cublockly.TOOLBOX_XML =
 '			<block type="weighted_average"></block>'+
 '		</value>'+
 '	 </block>'  +
-'	 <block type="ramp_func" data-blockTypes="[45,48,46,47]">'+
+'	 <block type="ramp_func" data-blockTypes="[43,45,48,46,47]">'+
 '		<value name="from_ramp">'+
 '			<block type="math_number">'+
 '				<field name="NUM">0</field>'+
