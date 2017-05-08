@@ -107,7 +107,7 @@ Blockly.Blocks['set_direction_reverse'] = {
   }
 };
 
-Blockly.Blocks['bidirectional_rotate']={
+Blockly.Blocks['two_way_motor']={
   init: function() {
     this.jsonInit({
     "type": "block_type",

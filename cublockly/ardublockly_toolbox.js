@@ -36,7 +36,7 @@ Cublockly.TOOLBOX_XML =
 '    <block type="toggle_directions" data-blockTypes="[45,46]"></block>' +
 '    <block type="set_direction_forward" data-blockTypes="[45,46]"></block>' +
 '    <block type="set_direction_reverse" data-blockTypes="[45,46]"></block>' +
-'	 <block type="bidirectional_rotate" data-blockTypes="[45,46]">' +
+'	 <block type="two_way_motor" data-blockTypes="[45,46]">' +
 '		<value name="source">' +
 '			<block type="weighted_average"></block>'+
 '		</value>'+

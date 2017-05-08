@@ -60,17 +60,17 @@ Blockly.Cubelets['set_direction_reverse'] = function(block) {
   return code;
 };
 
-Blockly.Cubelets['bidirectional_rotate']= function(block){
+Blockly.Cubelets['two_way_motor']= function(block){
     var argument0 = Blockly.Cubelets.valueToCode(block, 'source',
       Blockly.Cubelets.ORDER_NONE) || '0';
   /*instead of doing this just say functionName= what is wanted if the below function call is run then it checks for a safe name twice 
    *because at func name it also runs safe name, which means all the calls end up being written as function_2
    */
   //var functionName = Blockly.Cubelets.variableDB_.getDistinctName('bidirectional_rotate', Blockly.Generator.NAME_TYPE);
-  var functionName="bidirectional_rotate";
-  Blockly.Cubelets.bidirectional_rotate.bi_directional_rotate = functionName;
+  var functionName="two_way_motor";
+  Blockly.Cubelets.two_way_motor.two_way_motor = functionName;
   var func = [
-      'void bidirectional_rotate(uint8_t bv) {',
+      'void two_way_motor(uint8_t bv) {',
       '   uint8_t direction = FORWARD;',
       //Below line is specific to the snow cat, otherwise use just forward (the line above)
      // '   uint8_t direction = FORWARD-control_side;',
@@ -86,7 +86,7 @@ Blockly.Cubelets['bidirectional_rotate']= function(block){
       '       }',
       '       set_actuator_value(motor_speed);',
       '}'];
-  var funcName = Blockly.Cubelets.addFunction('bidirectional_rotate', func.join('\n'));
+  var funcName = Blockly.Cubelets.addFunction('two_way_motor', func.join('\n'));
   var code = funcName + '('+argument0+');';
   var forwardDeclartion = 'void ' + funcName + '(uint8_t bv);';
   Blockly.Cubelets.addInclude("function_"+funcName, forwardDeclartion);
