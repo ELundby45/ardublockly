@@ -108,6 +108,7 @@ Blockly.Blocks['bidirectional_rotate']={
   ],
   "previousStatement": null,
   "nextStatement": null,
+  "tooltip": "Bases the direction and actuator value off of the input.",
   "colour": Blockly.Blocks.acting.HUE,
   })
 }};
