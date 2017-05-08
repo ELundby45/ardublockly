@@ -36,7 +36,8 @@ Blockly.Cubelets['check_cubelets']=function(cubeletType){
    //if no block type is specified enable everything  
    if(!cubeletType){
       for (i=0;i<blocks.length;i++){
-        blocks[i].setDisabled(false);
+        
+        if(blocks[i].userDisabled!="true") blocks[i].setDisabled(false);
         blocks[i].setWarningText(null);
       }
       $(Cublockly.xmlTree).find("[data-blockTypes]").each(function(){
