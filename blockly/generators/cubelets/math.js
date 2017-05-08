@@ -305,15 +305,7 @@ Blockly.Cubelets['math_constrain'] = function(block) {
   return [code, Blockly.Cubelets.ORDER_UNARY_POSTFIX];
 };
 
-/**
- * Generator for a random integer between two numbers (X and Y).
- * Cubelets code: loop { math_random_int(X, Y); }
- *               and an aditional math_random_int function
- * Adapted code for a smaller random function 
- * TODO: figure out how to add seed
- * @param {!Blockly.Block} block Block to generate the code from.
- * @return {array} Completed code with order of operation.
- */
+
 Blockly.Cubelets['math_random_int'] = function(block) {
   var argument0 = Blockly.Cubelets.valueToCode(block, 'FROM',
       Blockly.Cubelets.ORDER_NONE) || '0';
@@ -323,16 +315,52 @@ Blockly.Cubelets['math_random_int'] = function(block) {
       'math_random_int', Blockly.Generator.NAME_TYPE);
   Blockly.Cubelets.math_random_int.random_function = functionName;
   var func = [
+      'int ' + Blockly.Cubelets.DEF_FUNC_NAME + '(int min, int max) {',
+      '  if (min > max) {',
+      '    // Swap min and max to ensure min is smaller.',
+      '    int temp = min;',
+      '    min = max;',
+      '    max = temp;',
+      '  }',
+      '  return min + (rand() % (max - min + 1));',
+      '}'];
+  var funcName = Blockly.Cubelets.addFunction('mathRandomint', func.join('\n'));
+  var code= funcName + '(' + argument0 + ', ' + argument1 + ')';
+  var forwardDeclartion = 'int ' + funcName + '(int min, int max);';
+  Blockly.Cubelets.addInclude("function_"+funcName, forwardDeclartion);
+  return [code, Blockly.Cubelets.ORDER_UNARY_POSTFIX];
+}; 
+
+
+
+/**
+ * Generator for a random integer between two numbers (X and Y).
+ * Cubelets code: loop { math_random_int(X, Y); }
+ *               and an aditional math_random_int function
+ * Adapted code for a smaller random function 
+ * TODO: figure out how to add seed
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {array} Completed code with order of operation.
+ */
+Blockly.Cubelets['math_random_val'] = function(block) {
+  var argument0 = Blockly.Cubelets.valueToCode(block, 'FROM',
+      Blockly.Cubelets.ORDER_NONE) || '0';
+  var argument1 = Blockly.Cubelets.valueToCode(block, 'TO',
+      Blockly.Cubelets.ORDER_NONE) || '0';
+  var functionName = Blockly.Cubelets.variableDB_.getDistinctName(
+      'math_random_val', Blockly.Generator.NAME_TYPE);
+  Blockly.Cubelets.math_random_val.random_function = functionName;
+  var func = [
       'uint8_t prn;',
       'uint8_t ' + Blockly.Cubelets.DEF_FUNC_NAME + '(uint8_t min, uint8_t max) {',
       '   uint8_t feedback_bit= ((prn >> 0) ^ (prn >> 2) ^ (prn >> 3) ^ (prn >> 4)) & 1;',
       '   prn = (prn >> 1) | (feedback_bit << 7);',
       '  return min + prn % (max - min +1);',
       '}'];
-  var funcName = Blockly.Cubelets.addFunction('mathRandomInt', func.join('\n'));
+  var funcName = Blockly.Cubelets.addFunction('mathRandomVal', func.join('\n'));
   if (argument0<argument1) var code = funcName + '(' + argument0 + ', ' + argument1 + ')';
   else var code = funcName + '(' + argument1 + ', ' + argument0 + ')';
-  if(argument0<0||argument0>255||argument1<0||argument1>255) block.setWarningText("Please enter integers between 0 and 255"); 
+  if(argument0<0||argument0>255||argument1<0||argument1>255) block.setWarningText("Please enter values between 0 and 255"); 
   else block.setWarningText(null);
   var forwardDeclartion = 'uint8_t ' + funcName + '(uint8_t min, uint8_t max);';
   Blockly.Cubelets.addInclude("function_"+funcName, forwardDeclartion);

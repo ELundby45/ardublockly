@@ -148,15 +148,15 @@ Cublockly.TOOLBOX_XML =
 '        </block>' +
 '      </value>' +
 '    </block>' +
-'    <block type="math_random_int">' +
+'    <block type="math_random_val">' +
 '      <value name="FROM">' +
 '        <block type="math_number">' +
-'          <field name="NUM">1</field>' +
+'          <field name="NUM">0</field>' +
 '        </block>' +
 '      </value>' +
 '      <value name="TO">' +
 '        <block type="math_number">' +
-'          <field name="NUM">100</field>' +
+'          <field name="NUM">255</field>' +
 '        </block>' +
 '      </value>' +
 '    </block>' +

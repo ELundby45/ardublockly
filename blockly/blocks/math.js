@@ -554,14 +554,14 @@ Blockly.Blocks['math_constrain'] = {
   //TODO: a getBlockType of the same type as the inputs.
 };
 
-Blockly.Blocks['math_random_int'] = {
+Blockly.Blocks['math_random_val'] = {
   /**
    * Block for random integer between [X] and [Y].
    * @this Blockly.Block
    */
   init: function() {
     this.jsonInit({
-      "message0": Blockly.Msg.MATH_RANDOM_INT_TITLE,
+      "message0": "random value from %1 to %2",
       "args0": [
         {
           "type": "input_value",
@@ -587,6 +587,38 @@ Blockly.Blocks['math_random_int'] = {
   }
 };
 
+Blockly.Blocks['math_random_int'] = {
+  /**
+   * Block for random integer between [X] and [Y].
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.jsonInit({
+      "message0": "random value from %1 to %2",
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "FROM",
+          "check": Blockly.Types.NUMBER.checkList
+        },
+        {
+          "type": "input_value",
+          "name": "TO",
+          "check": Blockly.Types.NUMBER.checkList
+        }
+      ],
+      "inputsInline": true,
+      "output": Blockly.Types.NUMBER.output,
+      "colour": Blockly.Blocks.math.HUE,
+      "tooltip": Blockly.Msg.MATH_RANDOM_INT_TOOLTIP,
+      //"helpUrl": Blockly.Msg.MATH_RANDOM_INT_HELPURL
+    });
+  },
+  /** @return {!string} Type of the block, by definition always an integer. */
+  getBlockType: function() {
+    return Blockly.Types.NUMBER;
+  }
+};
 
 Blockly.Blocks['math_random_float'] = {
   /**
