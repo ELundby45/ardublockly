@@ -6,7 +6,7 @@ Blockly.Blocks.acting.HUE = 53;
 
 Blockly.Blocks['set_actuator_value'] = {
   init: function() {
-  	this.setColour(Blockly.Blocks.acting.HUE);
+    this.setColour(Blockly.Blocks.acting.HUE);
     this.appendValueInput("actuator_value")
         .setCheck("Number")
         .appendField("set actuator value to");

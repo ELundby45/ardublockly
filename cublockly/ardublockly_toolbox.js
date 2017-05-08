@@ -13,7 +13,7 @@ Cublockly.TOOLBOX_XML =
 '<xml>' +
 '  <sep></sep>' +
 '  <category id="catSensing" name="Sensing">' +
-'    <block type="get_sensor_value"></block>' +
+'    <block type="get_sensor_value" data-blockTypes="[21,22,24,25]"></block>' +
 '  </category>' +
 '  <sep></sep>' +
 '  <category id="catActing" name="Acting">' +

@@ -5,7 +5,7 @@ goog.provide('Blockly.Cubelets.acting');
 goog.require('Blockly.Cubelets');
 
 Blockly.Cubelets['set_actuator_value'] = function(block) {
-	var value_actuator_value = Blockly.Cubelets.valueToCode(block, 'actuator_value', Blockly.Cubelets.ORDER_ATOMIC);
+  var value_actuator_value = Blockly.Cubelets.valueToCode(block, 'actuator_value', Blockly.Cubelets.ORDER_ATOMIC);
   if(value_actuator_value>255||value_actuator_value<0){
     block.setWarningText("The actuator value should be between 0 and 255");
   }
