@@ -82,6 +82,7 @@ Blockly.Cubelets['check_cubelets']=function(cubeletType){
 $(Cublockly.xmlTree).find("[data-blockTypes]").each(function(){
     
     var restrictedTypes = JSON.parse($(this).attr('data-blockTypes'));
+    console.log(restrictedTypes);
     check=false; 
     for(var i=0;i<restrictedTypes.length;i++){
       if(restrictedTypes[i]==cubeletType) check=true;
