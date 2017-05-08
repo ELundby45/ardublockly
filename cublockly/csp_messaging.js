@@ -32,6 +32,10 @@ window.addEventListener('message', function(event) {
   {
     Cublockly.workspace.addChangeListener(onBlocklyWorkspaceChanged);
   }
+  else if(message.request == 'setCubeletType'){
+    var type = message.data.blockTypeId;
+    Blockly.Cubelets['check_cubelets'](type);
+  }
  });
 
  function onBlocklyWorkspaceChanged(){

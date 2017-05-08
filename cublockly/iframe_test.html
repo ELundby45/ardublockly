@@ -30,6 +30,12 @@
 
       message.request = "registerChangeListener"
       sendBlocklyMessage(message);
+
+      message.request = "setCubeletType"
+      message.data = {
+        blockTypeId: 45
+      }
+      sendBlocklyMessage(message);
     }
     function sendBlocklyMessage(message){
       Cublockly.postMessage(JSON.stringify(message),  '*');
