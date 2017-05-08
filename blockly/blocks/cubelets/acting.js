@@ -111,7 +111,7 @@ Blockly.Blocks['bidirectional_rotate']={
   init: function() {
     this.jsonInit({
     "type": "block_type",
-   "message0": "bidirectional rotate %1",
+   "message0": "two-way motor %1",
     "args0": [
     {
       "type": "input_value",
