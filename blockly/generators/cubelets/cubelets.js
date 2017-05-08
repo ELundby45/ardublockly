@@ -26,6 +26,9 @@ Blockly.Cubelets['cubelets_loop'] = function(block) {
  ** If no valid cubelet types defined (NULL) assume it is valid for all 
  **   Void function.
  */
+var disableArr=[];
+
+
 Blockly.Cubelets['check_cubelets']=function(cubeletType){
   //get all blocks in the workspace 
   var i;
@@ -68,7 +71,9 @@ Blockly.Cubelets['check_cubelets']=function(cubeletType){
       //Currently this also makes any previously disabled valid blocks get enabled 
       else{
         blocks[i].setWarningText(null);
-        blocks[i].setDisabled(false);
+        //if the user diabled the block previously then it will remain disabled while the rest get enabled 
+        if(blocks[i].userDisabled!="true") blocks[i].setDisabled(false);
+ 
       }
    }
 

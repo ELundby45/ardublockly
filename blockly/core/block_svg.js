@@ -732,6 +732,7 @@ Blockly.BlockSvg.prototype.showContextMenu_ = function(e) {
         enabled: !this.getInheritedDisabled(),
         callback: function() {
           block.setDisabled(!block.disabled);
+          block.setUserDisabled("true");
         }
       };
       menuOptions.push(disableOption);
