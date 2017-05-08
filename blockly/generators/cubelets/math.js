@@ -305,7 +305,7 @@ Blockly.Cubelets['math_constrain'] = function(block) {
   return [code, Blockly.Cubelets.ORDER_UNARY_POSTFIX];
 };
 
-
+//old random integer generator, left in so that if a old program uses it can still be referenced 
 Blockly.Cubelets['math_random_int'] = function(block) {
   var argument0 = Blockly.Cubelets.valueToCode(block, 'FROM',
       Blockly.Cubelets.ORDER_NONE) || '0';
