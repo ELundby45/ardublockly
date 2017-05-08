@@ -164,7 +164,7 @@ Blockly.Blocks['ramp_func'] = {
   "helpUrl": "",
 
       });
-    //Ramp works for  flashlight, drive, rotate, and speaker 
+    //Ramp works for bar graph flashlight, drive, rotate, and speaker 
     var cubelets=[43,45,48,46,47];
     this.setCubelet(cubelets);
     }
