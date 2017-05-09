@@ -623,6 +623,12 @@ Blockly.Block.prototype.setTooltip = function(newTip) {
 Blockly.Block.prototype.setCubelet=function(newcubelet){
   this.cubelet=newcubelet;
 };
+
+Blockly.Block.prototype.setUserDisabled=function(userDisabledState){
+  this.userDisabled=userDisabledState;
+};
+
+
 /**
  * Get the colour of a block.
  * @return {string} #RRGGBB string.
@@ -1020,6 +1026,9 @@ Blockly.Block.prototype.jsonInit = function(json) {
   }
     if (json['cubelet'] !== undefined) {
     this.setCubelet(json['cubelet']);
+  }
+      if (json['userDisabled'] !== undefined) {
+    this.setCubelet(json['userDisabled']);
   }
 };
 
