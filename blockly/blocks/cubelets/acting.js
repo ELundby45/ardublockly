@@ -138,7 +138,7 @@ Blockly.Blocks['ramp_func'] = {
     this.jsonInit(
 {
   "type": "block_type",
-  "message0": "Ramp %1 to %2 in  %3 milliseconds",
+  "message0": "ramp %1 to %2 in  %3 milliseconds",
   "args0": [
     {
       "type": "input_value",

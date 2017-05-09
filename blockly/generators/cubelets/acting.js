@@ -168,7 +168,7 @@ Blockly.Cubelets['ramp_func']=function(block){
       '  return;',
       '}'];
   var funcName = Blockly.Cubelets.addFunction('ramp', func.join('\n'));
-  var code = funcName + '(' + argument0 + ',' + argument1 + ','+argument2+')';
+  var code = funcName + '(' + argument0 + ',' + argument1 + ','+argument2+');';
   var forwardDeclartion = 'void ' + funcName + '(int from, int to, int time);';
   Blockly.Cubelets.addInclude("function_"+funcName, forwardDeclartion);
 
