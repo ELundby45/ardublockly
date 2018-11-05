@@ -47,7 +47,7 @@ Cublockly.htmlPrompt = function(message, defaultValue, callback) {
 
   //These don't behave nicely on iOS
   //input.click();
-  //input.focus();
+  input.focus();
   //input.select();
   //window.location.hash = '';
 };
