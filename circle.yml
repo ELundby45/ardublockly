@@ -5,7 +5,7 @@ machine:
 
   # Indicating node also offers advantage of bypassing virtual environments
   node:
-    version: 5.1.0
+    version: 5.5.0
 
   # Override /etc/hosts
   hosts:
@@ -27,31 +27,43 @@ dependencies:
     - lsb_release -d
 
     # Install and check Python 2 and 3
+    - sudo apt-get update
     - sudo apt-get install -y python-support
+    - sudo apt-get install -y python-tk
     - sudo apt-get install -y python3-setuptools
     - sudo apt-get install -y python3-dev
     - sudo apt-get install -y python3-tk
     - sudo easy_install3 pip
     - python --version
     - python -c "import struct; print(struct.calcsize('P') * 8)"
+    - pip2 --version
     - python3 --version
     - python3 -c "import struct; print(struct.calcsize('P') * 8)"
+    - pip3 --version
 
-    # Python packages (built on Python 2, tests run both 2 and 3)
-    - sudo pip2 install mock
+    # The GLIBC version might have been updated with apt-get installs
+    - ldd --version
+
+    # Python packages (built on Python 3, tests run both 2 and 3)
     - sudo pip2 install awscli
+    - sudo pip2 install mock
+    #- sudo pip2 install pydocstyle
+    - sudo pip2 install requests --upgrade
+    - sudo pip2 install coverage
+    - sudo pip3 install requests --upgrade
+    - sudo pip3 install coverage
     - sudo pip3 install mkdocs
     - sudo pip3 install pyinstaller
     - pyinstaller --version
     - pip2 freeze
     # A current issue with pip causes this command to fail
     # https://github.com/pypa/pip/issues/3681
+    # Fixed on the 26 May 2016, waiting for release > 8.1.2
     #- pip3 freeze
 
-    # Install node.js
-    #- curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -
-    #- sudo apt-get install -y nodejs
+    # Check node.js versions
     - node --version
+    - node -p "process.arch"
     - npm --version
 
   override:
@@ -66,10 +78,11 @@ dependencies:
 # Customize test commands
 test:
   override:
-    - python  ardublocklyserver/tests/sketchcreator_test.py
-    - python3 ardublocklyserver/tests/sketchcreator_test.py
-    - python  ardublocklyserver/tests/compilersettings_test.py
-    - python3 ardublocklyserver/tests/compilersettings_test.py
+    - python -m coverage run ardublocklyserver/tests/run_all.py
+    - python -m coverage report
+    - python3 -m coverage run ardublocklyserver/tests/run_all.py
+    - python3 -m coverage report
+    #- pydocstyle ardublocklyserver --match-dir='ardublocklyserver'
 
 general:
   artifacts:
